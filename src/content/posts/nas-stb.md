@@ -1,9 +1,11 @@
 ---
 title: 'Building a NAS and AI Assistant from a Used Set-Top Box'
-pubDate: '2024-08-16'
+pubDate: '2025-08-16'
 ---
 
 Sometimes small experiments lead to big results. From an inexpensive device, a mini server was born that now works <mark>24/7</mark> at home.
+
+![HG680P B860H Front](./_assets/nas-front.webp) ![HG680P B860H Back](./_assets/nas-back.webp)
 
 ## It Started with Curiosity
 
@@ -47,6 +49,8 @@ With CasaOS, I could:
 
 The installation was quick, and as soon as I opened the device's IP address, a clean dashboard greeted me.
 
+![CasaOS Dashboard](./_assets/nas-casa.webp)
+
 ## Setting Up n8n for Automation
 
 **n8n** is a flexible automation tool that allows me to create <mark>workflows without having to write code from scratch</mark>.
@@ -56,6 +60,8 @@ In CasaOS, the installation was as simple as:
 1. Search for `n8n` in the App Store
 2. Click **Install**
 3. Wait a few minutes, then open it from the dashboard
+
+![n8n on CasaOS Store](./_assets/nas-n8n.webp)
 
 ## First Workflow: Curated AI News
 
@@ -67,9 +73,13 @@ The flow was simple but effective:
 2. **Function Node** → Filters news so only articles published in the <mark>last 24 hours</mark> make the list. 
 3. **Telegram Node** → Sends the news list to my personal Telegram chat. The format is clean: article title, link, and brief summary.
 
+![n8n Workflow](./_assets/nas-workflow.webp)
+
 The result? Every morning I get a notification containing a collection of the latest AI news. <mark>No more habit of opening multiple tabs</mark> just to find the latest updates — just open one chat, everything is already curated.
 
 This workflow is simple, but it immediately <mark>saves time</mark> and ensures I don't miss important information in the field I'm interested in.
+
+![Telegram Notification](./_assets/nas-telegram.webp)
 
 ## New Possibilities Unlocked
 
@@ -77,50 +87,34 @@ After the first workflow succeeded, it felt like <mark>opening a door to a room 
 
 Some ideas I started thinking about:
 
-### Automatic Work File Backup
+- Automatic Work File Backup - Set `n8n` to monitor certain folders on my main NAS, then periodically make copies to **Google Drive**.
 
-Set `n8n` to monitor certain folders on my main NAS, then periodically make copies to **Google Drive**.
+- Public Data Scraper - `n8n` pulls data from specific sites — for example, product prices on marketplaces, event schedules, or specific news — then saves it in **spreadsheet or database format**. From there, I can create <mark>automatic analysis or reports</mark>.
 
-### Automate Social Media Content Upload
+- Smart Home Control Dashboard - Connect this STB to smart home devices via **API** or **MQTT broker**, then create a simple UI interface to monitor room temperature, turn on lights, or control other devices.
 
-`n8n` takes image or video files from a specific folder, adds a **watermark**, then posts them to Instagram, Facebook, or Twitter. Perfect for <mark>small businesses or personal branding</mark>.
-
-### Public Data Scraper
-
-`n8n` pulls data from specific sites — for example, product prices on marketplaces, event schedules, or specific news — then saves it in **spreadsheet or database format**. From there, I can create <mark>automatic analysis or reports</mark>.
-
-### Smart Home Control Dashboard
-
-Connect this STB to smart home devices via **API** or **MQTT broker**, then create a simple UI interface to monitor room temperature, turn on lights, or control other devices.
-
-### Online Service Monitoring
-
-Create a workflow that routinely checks the status of websites or APIs I use, then sends **Telegram notifications** if there are problems. Perfect for <mark>maintaining uptime</mark> of personal services or side hustle projects.
-
-### Automatic Reminders
-
-For example, pulling **calendar data**, combining it with **weather data**, then sending morning notifications with a schedule summary and weather forecast.
+- Automatic Reminders - For example, pulling **calendar data**, combining it with **weather data**, then sending morning notifications with a schedule summary and weather forecast.
 
 ## Lessons from This Experiment
 
 From this process, I gained several important notes — some technical, some related to device usage management:
 
-### SD Card Works for Starting, but External HDD/SSD is Far More Durable
+- SD Card Works for Starting, but External HDD/SSD is Far More Durable
 
-The **128GB SD card** I used was sufficient for installation and initial experiments. But for <mark>long-term use</mark>, especially if workflows start storing large data or making routine backups, an **external SSD/HDD** will be much safer from damage risk and have <mark>stable read-write speeds</mark>.
+  The **128GB SD card** I used was sufficient for installation and initial experiments. But for <mark>long-term use</mark>, especially if workflows start storing large data or making routine backups, an **external SSD/HDD** will be much safer from damage risk and have <mark>stable read-write speeds</mark>.
 
-### 2GB RAM is Enough for Light Applications
+- 2GB RAM is Enough for Light Applications
 
-With this much RAM, the STB can run `n8n`, file manager, and several background processes without problems. However, running <mark>heavy applications or multiple containers</mark> simultaneously will clearly cause performance degradation. This means I must <mark>selectively choose</mark> which applications to run and optimize workflows to avoid burdening RAM.
+  With this much RAM, the STB can run `n8n`, file manager, and several background processes without problems. However, running <mark>heavy applications or multiple containers</mark> simultaneously will clearly cause performance degradation. This means I must <mark>selectively choose</mark> which applications to run and optimize workflows to avoid burdening RAM.
 
-### Monitor Performance to Keep the Server Running Smoothly
+- Monitor Performance to Keep the Server Running Smoothly
 
-Regularly checking **CPU**, **RAM**, and **storage** usage is important. In CasaOS, this information can be seen from the dashboard. For more detail, I usually enter the terminal and use `htop` or `iotop` to see active processes.
+  Regularly checking **CPU**, **RAM**, and **storage** usage is important. In CasaOS, this information can be seen from the dashboard. For more detail, I usually enter the terminal and use `htop` or `iotop` to see active processes.
 
-### Backup n8n Workflows Regularly
+- Backup n8n Workflows Regularly
 
-`n8n` workflows are stored in a specific data folder. I created a <mark>weekly backup schedule</mark> for this folder to my main NAS. That way, if the SD card fails or the system needs to be reinstalled, I can <mark>restore all workflows</mark> without having to create them from scratch.
+  `n8n` workflows are stored in a specific data folder. I created a <mark>weekly backup schedule</mark> for this folder to my main NAS. That way, if the SD card fails or the system needs to be reinstalled, I can <mark>restore all workflows</mark> without having to create them from scratch.
 
 ---
 
-_From a simple experiment, I now have a small digital assistant that's always on standby. The **HG680P B860H** that was once just an STB now works tirelessly. Who knows, maybe old devices in your home can also have a new story._
+From a simple experiment, I now have a small digital assistant that's always on standby. The **HG680P B860H** that was once just an STB now works tirelessly. Who knows, maybe old devices in your home can also have a new story.
