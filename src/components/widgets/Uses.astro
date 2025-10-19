@@ -1,0 +1,85 @@
+---
+import { getEntry } from 'astro:content'
+import { render } from 'astro:content'
+
+const usesEntry = await getEntry('uses', 'uses')
+const hasContent = usesEntry?.body
+  ? usesEntry.body.replace(/<!--[\s\S]*?-->/g, '').trim().length > 0
+  : false
+const { Content } = hasContent && usesEntry ? await render(usesEntry) : { Content: null }
+---
+
+{hasContent && Content && (
+  <div class="uses-container prose">
+    <Content />
+  </div>
+)}
+
+<style>
+  .uses-container {
+    margin-top: 2rem;
+  }
+  
+  .uses-container :global(h2) {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+  .uses-container :global(h2:first-of-type) {
+    margin-top: 0;
+  }
+  
+  .uses-container :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .uses-container :global(p) {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  
+  .uses-container :global(p strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  .uses-container :global(hr) {
+    margin: 3rem 0;
+    border: none;
+    border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  }
+  
+  .uses-container :global(ul) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .uses-container :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  
+  /* Dark mode support */
+  :global([data-theme="dark"]) .uses-container :global(hr) {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .uses-container :global(h2) {
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    
+    .uses-container :global(h3) {
+      font-size: 1.1rem;
+    }
+  }
+</style>

@@ -1,0 +1,9 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import UseWidget from '@/components/widgets/Uses.astro'
+import { themeConfig } from '@/config'
+---
+
+<IndexLayout title={`Uses - ${themeConfig.site.title}`} description="Tools, gear, and setup I use for development">
+  <UseWidget />
+</IndexLayout>
