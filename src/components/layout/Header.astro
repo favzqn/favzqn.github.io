@@ -17,14 +17,42 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
   }
   nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  nav .title {
+    margin-right: auto;
   }
   header a {
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
     text-decoration: none;
-    min-width: 3rem;
     display: inline-block;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 640px) {
+    nav {
+      gap: 1rem;
+    }
+    header a:not(.title) {
+      font-size: 0.875rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav {
+      gap: 0.75rem;
+      row-gap: 0.5rem;
+    }
+    header a:not(.title) {
+      font-size: 0.8125rem;
+    }
+    nav .title {
+      width: 100%;
+      margin-bottom: 0.25rem;
+    }
   }
 </style>
