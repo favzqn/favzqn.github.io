@@ -1,0 +1,15 @@
+
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { themeConfig } from '@/config'
+import PostList from '@/components/widgets/PostList.astro'
+import { getSortedFilteredPosts } from '@/utils/draft'
+
+const posts = await getSortedFilteredPosts()
+---
+
+<IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
+  <div style="padding-top: 3rem;">
+    <PostList posts={posts} />
+  </div>
+</IndexLayout>
