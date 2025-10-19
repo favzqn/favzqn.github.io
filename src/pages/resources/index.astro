@@ -1,0 +1,112 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { themeConfig } from '@/config'
+---
+
+<IndexLayout title={`Resources - ${themeConfig.site.title}`} description="Books, podcasts, music, and things I'm learning">
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Resources</h1>
+    <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
+      Things I consume when not writing code (or debugging production)
+    </p>
+    
+    <div class="resources-grid">
+      <a href="/resources/books" class="resource-card">
+        <span class="icon">📚</span>
+        <h2>Books</h2>
+        <p>Because Stack Overflow doesn't have all the answers</p>
+      </a>
+      
+      <a href="/resources/podcasts" class="resource-card">
+        <span class="icon">🎧</span>
+        <h2>Podcasts</h2>
+        <p>Learning while pretending to go for a walk</p>
+      </a>
+      
+      <a href="/resources/music" class="resource-card">
+        <span class="icon">🎵</span>
+        <h2>Music</h2>
+        <p>Kendrick Lamar > debugging in silence</p>
+      </a>
+      
+      <a href="/resources/gaming" class="resource-card">
+        <span class="icon">🎮</span>
+        <h2>Gaming</h2>
+        <p>100+ hours in BG3 (no regrets)</p>
+      </a>
+      
+      <a href="/resources/hobbies" class="resource-card">
+        <span class="icon">🎨</span>
+        <h2>Hobbies</h2>
+        <p>Proof that I touch grass occasionally</p>
+      </a>
+    </div>
+  </div>
+</IndexLayout>
+
+<style>
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  
+  .resource-card {
+    background: var(--card-bg, rgba(0, 0, 0, 0.02));
+    border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent, #3b82f6);
+  }
+  
+  .icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  
+  .resource-card h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .resource-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-size: 0.875rem;
+  }
+  
+  :global([data-theme="dark"]) .resource-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  :global([data-theme="dark"]) .resource-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    
+    .resource-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
