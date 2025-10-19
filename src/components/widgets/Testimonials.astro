@@ -1,0 +1,190 @@
+---
+import { getEntry } from 'astro:content'
+import { render } from 'astro:content'
+
+const testimonialsEntry = await getEntry('testimonials', 'testimonials')
+const hasContent = testimonialsEntry?.body
+  ? testimonialsEntry.body.replace(/<!--[\s\S]*?-->/g, '').trim().length > 0
+  : false
+const { Content } = hasContent && testimonialsEntry ? await render(testimonialsEntry) : { Content: null }
+
+// Parse the markdown content to extract testimonials
+const testimonials = testimonialsEntry?.body
+  .split(/^---$/m)
+  .filter(section => section.trim().length > 0 && section.includes('###'))
+  .map(section => {
+    const lines = section.trim().split('\n').filter(line => line.trim())
+    
+    const quoteLine = lines[0]?.replace(/^###\s*/, '').trim() || ''
+    const quote = quoteLine.replace(/^[""]|[""]$/g, '')
+    
+    let name = ''
+    let title = ''
+    let role = ''
+    let testimonial = ''
+    
+    if (lines[1]) {
+      const authorLine = lines[1]
+      const parts = authorLine.split('•')
+      name = parts[0]?.replace(/^\*\*|\*\*$/g, '').trim() || ''
+      title = parts[1]?.trim() || ''
+    }
+    
+    if (lines[2]) {
+      role = lines[2].replace(/^\*|\*$/g, '').trim()
+    }
+    
+    testimonial = lines.slice(3).join(' ').replace(/^[""]|[""]$/g, '').trim()
+    
+    return {
+      quote,
+      name,
+      title,
+      role,
+      testimonial
+    }
+  })
+  .filter(t => t.name)
+---
+
+{hasContent && Content && (
+  <div class="testimonials-container">
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="quote">{testimonial.quote}</p>
+          <p class="testimonial-text">{testimonial.testimonial}</p>
+          <div class="author">
+            <div class="author-info">
+              <p class="author-name">{testimonial.name}</p>
+              <p class="author-title">{testimonial.title}</p>
+              <p class="author-role">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .testimonials-container {
+    margin-bottom: 3rem;
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .testimonial-card {
+    position: relative;
+    background: var(--card-bg, rgba(0, 0, 0, 0.02));
+    border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent, #3b82f6);
+  }
+  
+  .quote-icon {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent, #3b82f6);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+    margin-bottom: -0.75rem;
+  }
+  
+  .quote {
+    margin: 0 0 0.875rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary);
+  }
+  
+  .testimonial-text {
+    margin: 0 0 1.25rem 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.875rem;
+    flex: 1;
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  }
+  
+  .author-info {
+    flex: 1;
+  }
+  
+  .author-name {
+    margin: 0 0 0.2rem 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+  }
+  
+  .author-title {
+    margin: 0 0 0.1rem 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  
+  .author-role {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
+  
+  /* Dark mode support */
+  :global([data-theme="dark"]) .testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  :global([data-theme="dark"]) .testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  :global([data-theme="dark"]) .author {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .testimonial-card {
+      padding: 1.25rem;
+    }
+    
+    .quote {
+      font-size: 0.95rem;
+    }
+    
+    .testimonial-text {
+      font-size: 0.85rem;
+    }
+  }
+</style>

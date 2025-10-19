@@ -4,17 +4,17 @@ title: 'Experience'
 
 <a href="https://www.frankieone.com" target="_blank" rel="noopener noreferrer">**FrankieOne**</a>, Melbourne - Senior Software Engineer in Test (Sep 2024 – Present) → <span style="color: #10b981">**↓80% regression time**</span>, AI test-case generator, Automated OneSDK flows
 
-<a href="https://www.tiptip.id" target="_blank" rel="noopener noreferrer">**TipTip**</a> (<mark>$13M Series A</mark>), Jakarta - Lead Software Engineer in Test (Jul 2022 – Sep 2024) → <span style="color: #10b981">**↑90% automation coverage**</span>, <span style="color: #10b981">**↓85% regression effort**</span>, <span style="color: #10b981">**↑30% API performance**</span>
+<a href="https://www.tiptip.id" target="_blank" rel="noopener noreferrer">**TipTip**</a> (<mark>$13M Series A</mark>), Indonesia - Lead Software Engineer in Test (Jul 2022 – Sep 2024) → <span style="color: #10b981">**↑90% automation coverage**</span>, <span style="color: #10b981">**↓85% regression effort**</span>, <span style="color: #10b981">**↑30% API performance**</span>
 
-<a href="https://www.chatbiz.id" target="_blank" rel="noopener noreferrer">**Chatbiz**</a> (<mark>YC W21</mark>), Bandung - Lead Software Engineer (Apr 2021 – Jan 2024) → <span style="color: #10b981">**30+ chatbots**</span>, <span style="color: #10b981">**100k+ msgs/day**</span>, <span style="color: #10b981">**↑15% WoW GTV**</span>, <span style="color: #10b981">**↓40% infra costs**</span>
+<a href="https://www.chatbiz.id" target="_blank" rel="noopener noreferrer">**Chatbiz**</a> (<mark>YC W21</mark>), Indonesia - Lead Software Engineer (Apr 2021 – Jan 2024) → <span style="color: #10b981">**30+ chatbots**</span>, <span style="color: #10b981">**100k+ msgs/day**</span>, <span style="color: #10b981">**↑15% WoW GTV**</span>, <span style="color: #10b981">**↓40% infra costs**</span>
 
-<a href="https://www.mekari.com" target="_blank" rel="noopener noreferrer">**Mekari**</a>, Jakarta - Lead Software Engineer in Test (2021 – 2022) → <span style="color: #10b981">**↑90% automation**</span>, <span style="color: #10b981">20+ Jenkins jobs</span>, <span style="color: #10b981">50+ daily tests</span>, TestRail + Slack integration
+<a href="https://www.mekari.com" target="_blank" rel="noopener noreferrer">**Mekari**</a>, Indonesia - Lead Software Engineer in Test (2021 – 2022) → <span style="color: #10b981">**↑90% automation**</span>, <span style="color: #10b981">20+ Jenkins jobs</span>, <span style="color: #10b981">50+ daily tests</span>, TestRail + Slack integration
 
-<a href="https://radyalabs.com" target="_blank" rel="noopener noreferrer">**Radya Labs**</a>, Bandung - Quality & Software Engineer (2019 – 2021) → <span style="color: #10b981">**5+ chatbots**</span> for multinationals, University grants platform (<span style="color: #10b981">**↓75% processing time**</span>)
+<a href="https://radyalabs.com" target="_blank" rel="noopener noreferrer">**Radya Labs**</a>, Indonesia - Quality & Software Engineer (2019 – 2021) → <span style="color: #10b981">**5+ chatbots**</span> for multinationals, University grants platform (<span style="color: #10b981">**↓75% processing time**</span>)
 
 <a href="https://www.active8me.com" target="_blank" rel="noopener noreferrer">**Active8Me**</a>, Singapore - QA Lead → <span style="color: #10b981">**20k+ users**</span>, Enhanced app reliability, Established comprehensive QA processes
 
-<a href="https://fantasyshowdown.com" target="_blank" rel="noopener noreferrer">**FantasyShowdown.com**</a> - Full-Stack Engineer → Built US-based **Web3 fantasy-sports platform**, Blockchain + Sports APIs
+<a href="https://fantasyshowdown.com" target="_blank" rel="noopener noreferrer">**Fantasy Showdown**</a>, United States - Full-Stack Engineer → Built US-based **Web3 fantasy-sports platform**, Blockchain + Sports APIs
 
 ---
 

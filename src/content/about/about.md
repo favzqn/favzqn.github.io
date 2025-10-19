@@ -8,4 +8,4 @@ I've built and scaled products used by <mark>thousands</mark>, automated pipelin
 
 What drives me? The intersection of <mark>**engineering craft and business outcomes**</mark>. I don't just want to write elegant code; I want to see it <mark>move metrics, unlock growth, and make teams more effective</mark>.
 
-**Want to connect?** Reach out on <a href="https://www.linkedin.com/in/fauzan-fathurrahman/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or check out my [experience](/experience) and [projects](/projects).
+**Want to connect?** Reach out on <a href="https://www.linkedin.com/in/fauzan-fathurrahman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a href="https://github.com/favzqn" target="_blank" rel="noopener noreferrer">Github</a>, <a href="mailto:fauzan08fauzan@gmail.com">e-mail</a> or check out my [experience](/experience) and [projects](/projects).

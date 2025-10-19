@@ -1,0 +1,15 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import TestimonialWidget from '@/components/widgets/Testimonials.astro'
+import { themeConfig } from '@/config'
+---
+
+<IndexLayout title={`Testimonials - ${themeConfig.site.title}`} description="What colleagues, managers, and mentees say about working with Fauzan">
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">What People Say</h1>
+    <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
+      Feedback from colleagues, managers, and mentees I've worked with
+    </p>
+    <TestimonialWidget />
+  </div>
+</IndexLayout>
