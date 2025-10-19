@@ -20,7 +20,14 @@ Fahri Muhamad Zulkarnaen • Software Engineer at Ebuddy PTE. LTD, Singapore
 
 ---
 
-### "A humble visioner who stays focused to move forward."
+### "A humble visionary who stays focused to move forward"
 Putri Dewi Purnamasari • Software Engineer at Wortal.ai, Japan
 *Former Colleague*
 "I was always amazed by his ideas to make an impact on a better world. Fauzan also helped me a lot and encourage me in order to chase my dream in the IT field. He's such a sweetheart to all his friends, and really professional at work."
+
+---
+
+### "A versatile learner who masters everything he touches"
+Mugia Nurul Matin • Tech Lead at PT. KB Finansia Multi Finance, Indonesia
+*Former Colleague*
+"Fauzan's learning ability amazes me. One day he's mastering coding, the next he's diving into pentesting—and there are countless other skills to mention. I've known him for 7 years, and he's consistently been a great person who adapts to any situation with ease."
