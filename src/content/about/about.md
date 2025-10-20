@@ -2,7 +2,7 @@
 title: 'About'
 ---
 
-Hey, I'm Fauzan - a software engineer who turns technical excellence into business impact.
+Hey, I'm <mark>Fauzan</mark> - a software engineer who turns technical excellence into business impact.
 
 I've built and scaled products used by <mark>thousands</mark>, automated pipelines that save teams <mark>countless hours</mark>, mentored over <mark>180 engineers</mark>, and helped grow tech communities along the way. Whether it's shipping apps, improving workflows, or empowering people, I focus on creating <mark>leverage that compounds</mark>.
 

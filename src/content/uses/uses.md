@@ -21,7 +21,7 @@ Daily driver for work. Handles Docker containers, multiple IDEs, and 50+ Chrome 
 **Custom NAS/Media Server** • Old Set Top Box  
 Repurposed hardware running Plex, Jellyfin, and various Docker services. Because why buy expensive NAS when you can build one?
 
-**Lenovo 24" Monitor** • 1920x1080  
+**MSI 24" Monitor** • 1920x1080  
 Gets the job done. Nothing fancy, just reliable.
 
 **Audio Setup**  
@@ -69,8 +69,6 @@ Everything runs in containers. Makes environment setup reproducible and deployme
 **Jenkins + GitHub Actions** • CI/CD  
 Jenkins for complex enterprise pipelines, GitHub Actions for simpler workflows
 
----
-
 ### ☁️ Cloud & Infrastructure
 
 **AWS** • Primary cloud provider  
@@ -78,5 +76,3 @@ EC2, S3, Lambda, RDS, CloudWatch.
 
 **Netlify** • Static site hosting  
 This site runs on Netlify. Deploy previews and instant rollbacks are incredible.
-
----
