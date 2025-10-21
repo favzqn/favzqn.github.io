@@ -53,8 +53,8 @@ const testimonials = testimonialsEntry?.body
       {testimonials.map((testimonial) => (
         <div class="testimonial-card">
           <div class="quote-icon">"</div>
-          <p class="quote">{testimonial.quote}</p>
-          <p class="testimonial-text">{testimonial.testimonial}</p>
+          <p class="quote" set:html={testimonial.quote} />
+          <p class="testimonial-text" set:html={testimonial.testimonial} />
           <div class="author">
             <div class="author-info">
               <p class="author-name">{testimonial.name}</p>
@@ -121,6 +121,20 @@ const testimonials = testimonialsEntry?.body
     flex: 1;
   }
   
+  .testimonial-card :global(mark) {
+    background: var(--mark, #f3ffc4);
+    color: var(--text-primary);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .testimonial-card:hover :global(mark) {
+    background: var(--mark, #f3ffc4);
+    opacity: 0.9;
+  }
+  
   .author {
     display: flex;
     align-items: center;
@@ -158,6 +172,7 @@ const testimonials = testimonialsEntry?.body
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(255, 255, 255, 0.1);
   }
+  
   
   :global([data-theme="dark"]) .testimonial-card:hover {
     background: rgba(255, 255, 255, 0.05);
