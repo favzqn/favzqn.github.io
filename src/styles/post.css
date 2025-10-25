@@ -76,6 +76,11 @@
   text-decoration-color: var(--text-primary);
 }
 
+.prose a:visited {
+  color: var(--primary);
+  text-decoration-color: var(--text-tertiary);
+}
+
 /* Paragraphs */
 .prose p {
   line-height: 1.75;
