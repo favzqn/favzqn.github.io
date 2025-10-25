@@ -2,7 +2,7 @@
 import { themeConfig } from '@/config'
 ---
 
-<a href="/" class="back-button">
+<a href="#" class="back-button" id="backButton">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M2.5 6.5H9.5C11.1569 6.5 12.5 7.84315 12.5 9.5V9.5C12.5 11.1569 11.1569 12.5 9.5 12.5H7.5M2.5 6.5L5.5 9.5M2.5 6.5L5.5 3.5"
@@ -23,6 +23,37 @@ import { themeConfig } from '@/config'
   }}
 >
   ;(function () {
+    // Store current page in sessionStorage when navigating
+    function storeCurrentPage() {
+      const pathname = window.location.pathname
+      if (pathname.includes('/blog') || pathname.includes('/projects')) {
+        sessionStorage.setItem('lastPage', pathname)
+      }
+    }
+
+    // Determine back button destination based on sessionStorage or referrer
+    function setBackButtonHref() {
+      const button = document.getElementById('backButton')
+      if (!button) return
+
+      let backHref = '/'
+      const lastPage = sessionStorage.getItem('lastPage')
+      const referrer = document.referrer
+
+      // First try sessionStorage
+      if (lastPage && (lastPage.includes('/blog') || lastPage.includes('/projects'))) {
+        backHref = lastPage.split('/').slice(0, 4).join('/') // Get /blog or /projects
+      }
+      // Fallback to referrer
+      else if (referrer.includes('/blog')) {
+        backHref = '/blog'
+      } else if (referrer.includes('/projects')) {
+        backHref = '/projects'
+      }
+
+      button.href = backHref
+    }
+
     // Adjust back button position based on layout and screen size
     function adjustBackButtonPosition() {
       const button = document.querySelector('.back-button')
@@ -60,12 +91,18 @@ import { themeConfig } from '@/config'
       }
     }
 
+    storeCurrentPage()
+    setBackButtonHref()
     adjustBackButtonPosition()
 
     document.addEventListener('astro:page-load', () => {
+      storeCurrentPage()
+      setBackButtonHref()
       adjustBackButtonPosition()
     })
     document.addEventListener('DOMContentLoaded', () => {
+      storeCurrentPage()
+      setBackButtonHref()
       adjustBackButtonPosition()
     })
     window.addEventListener('resize', adjustBackButtonPosition)
