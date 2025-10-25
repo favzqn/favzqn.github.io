@@ -43,6 +43,16 @@ Tactical perfection meets crushing difficulty. 99% hit chance? You'll still miss
 
 ---
 
+### Board Games
+
+**Exploding Kittens**  
+Chaos in card form. Perfect for when you want to destroy friendships in 15 minutes. The art is hilarious, the rules are simple, and the backstabbing is real.
+
+**Here to Slay**  
+Dungeon crawler meets card game. Surprisingly strategic for something so fun. Great for quick sessions without the 3-hour commitment.
+
+---
+
 ### Why I Game
 
 Gaming isn't just entertainment—it's:
