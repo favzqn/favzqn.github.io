@@ -1,0 +1,26 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { getEntry, render } from 'astro:content'
+import { themeConfig } from '@/config'
+
+const gamingEntry = await getEntry('resources', 'gaming')
+const { Content } = gamingEntry ? await render(gamingEntry) : { Content: null }
+---
+
+<IndexLayout title={`Gaming - ${themeConfig.site.title}`} description="Games I play and love">
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Gaming</h1>
+    <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
+      Games I play and love
+    </p>
+    <div class="resource-page prose">
+      {Content && <Content />}
+    </div>
+  </div>
+</IndexLayout>
+
+<style>
+  .resource-page {
+    margin-top: 2rem;
+  }
+</style>
