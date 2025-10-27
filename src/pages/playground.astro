@@ -1,0 +1,125 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { themeConfig } from '@/config'
+---
+
+<IndexLayout title={`Playground - ${themeConfig.site.title}`} description="Interactive tools and experiments">
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Playground</h1>
+    <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
+      A collection of interactive tools and experiments
+    </p>
+    
+    <div class="tools-grid">
+      <a href="/playground/json-formatter" class="tool-card">
+        <h3>JSON Formatter</h3>
+        <p>Format, validate, and minify JSON with syntax highlighting</p>
+      </a>
+      <a href="/playground/regex-tester" class="tool-card">
+        <h3>Regex Tester</h3>
+        <p>Test regex patterns with real-time matching</p>
+      </a>
+      <a href="/playground/markdown-previewer" class="tool-card">
+        <h3>Markdown Previewer</h3>
+        <p>Live markdown to HTML converter</p>
+      </a>
+      <a href="/playground/color-palette" class="tool-card">
+        <h3>Color Palette Generator</h3>
+        <p>Create accessible color schemes</p>
+      </a>
+      <a href="/playground/base64" class="tool-card">
+        <h3>Base64 Encoder/Decoder</h3>
+        <p>Encode and decode text and images</p>
+      </a>
+      <a href="/playground/uuid-generator" class="tool-card">
+        <h3>UUID Generator</h3>
+        <p>Generate v1, v4, and v5 UUIDs</p>
+      </a>
+      <a href="/playground/password-generator" class="tool-card">
+        <h3>Password Generator</h3>
+        <p>Create secure passwords with custom rules</p>
+      </a>
+      <a href="/playground/qr-code" class="tool-card">
+        <h3>QR Code Generator</h3>
+        <p>Convert URLs and text to QR codes</p>
+      </a>
+      <a href="/playground/text-stats" class="tool-card">
+        <h3>Text Statistics</h3>
+        <p>Word count, character count, reading time</p>
+      </a>
+      <a href="/playground/slug-generator" class="tool-card">
+        <h3>Slug Generator</h3>
+        <p>Convert titles to URL-friendly slugs</p>
+      </a>
+      <a href="/playground/pomodoro" class="tool-card">
+        <h3>Pomodoro Timer</h3>
+        <p>Customizable work/break intervals</p>
+      </a>
+      <a href="/playground/typing-test" class="tool-card">
+        <h3>Typing Speed Test</h3>
+        <p>Test your typing speed and accuracy</p>
+      </a>
+      <a href="/playground/dice-roller" class="tool-card">
+        <h3>D&D Dice Roller</h3>
+        <p>Roll dice with statistics and history tracking</p>
+      </a>
+      <a href="/playground/coin-flipper" class="tool-card">
+        <h3>Coin Flipper</h3>
+        <p>Flip coins with weighted options and statistics</p>
+      </a>
+      <a href="/playground/npc-generator" class="tool-card">
+        <h3>NPC Generator</h3>
+        <p>Generate random NPCs with personalities and backgrounds</p>
+      </a>
+      <a href="/playground/loot-generator" class="tool-card">
+        <h3>Loot Generator</h3>
+        <p>Generate random treasure and loot for campaigns</p>
+      </a>
+      <a href="/playground/game-timer" class="tool-card">
+        <h3>Game Timer</h3>
+        <p>Multiple countdown timers for game sessions</p>
+      </a>
+      <a href="/playground/skill-check" class="tool-card">
+        <h3>Skill Check Roller</h3>
+        <p>Roll D&D skill checks with advantage/disadvantage and DC</p>
+      </a>
+    </div>
+  </div>
+</IndexLayout>
+
+<style>
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tool-card {
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    background: var(--bg-secondary);
+  }
+
+  .tool-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color, rgba(0, 0, 0, 0.1));
+  }
+
+  .tool-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .tool-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+</style>

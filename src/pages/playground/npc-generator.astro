@@ -1,0 +1,498 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="NPC Generator" description="Generate random NPCs with names, personalities, and backgrounds">
+
+    <div class="generator-container">
+      <div class="controls-section">
+        <div class="section-header">
+          <h3>Generator Settings</h3>
+        </div>
+
+        <div class="settings-grid">
+          <div class="setting-group">
+            <label for="npcRace">Race</label>
+            <select id="npcRace" class="select-input">
+              <option value="any">Any</option>
+              <option value="human">Human</option>
+              <option value="elf">Elf</option>
+              <option value="dwarf">Dwarf</option>
+              <option value="halfling">Halfling</option>
+              <option value="dragonborn">Dragonborn</option>
+              <option value="gnome">Gnome</option>
+              <option value="half-orc">Half-Orc</option>
+              <option value="tiefling">Tiefling</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="npcClass">Class/Profession</label>
+            <select id="npcClass" class="select-input">
+              <option value="any">Any</option>
+              <option value="warrior">Warrior</option>
+              <option value="rogue">Rogue</option>
+              <option value="mage">Mage</option>
+              <option value="cleric">Cleric</option>
+              <option value="ranger">Ranger</option>
+              <option value="bard">Bard</option>
+              <option value="merchant">Merchant</option>
+              <option value="scholar">Scholar</option>
+              <option value="guard">Guard</option>
+              <option value="farmer">Farmer</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="npcGender">Gender</label>
+            <select id="npcGender" class="select-input">
+              <option value="any">Any</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="neutral">Neutral</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="npcCount">Generate Count</label>
+            <input id="npcCount" type="number" min="1" max="10" value="1" class="number-input" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="generateBtn" class="btn btn-primary">Generate NPC</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear All</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Generated NPCs</h3>
+          <button id="copyBtn" class="btn btn-secondary">Copy All</button>
+        </div>
+
+        <div id="npcList" class="npc-list">
+          <div class="empty-state">Generate an NPC to get started</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reference-section">
+      <h4>Personality Traits</h4>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0.5rem 0;">Each NPC gets random traits like: Optimistic, Cynical, Brave, Cautious, Friendly, Suspicious, Honest, Deceptive, Ambitious, Humble</p>
+    </div>
+</ToolLayout>
+
+<style>
+  .generator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .generator-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .controls-section,
+  .results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .section-header h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .setting-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .select-input,
+  .number-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .select-input:focus,
+  .number-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .npc-list {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .npc-card {
+    padding: 1.25rem;
+    background: var(--bg-primary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .npc-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .npc-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(100, 116, 139, 0.3);
+  }
+
+  .npc-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .npc-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .npc-detail-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    font-weight: 700;
+  }
+
+  .npc-detail-value {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .npc-traits {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(100, 116, 139, 0.3);
+  }
+
+  .npc-traits-label {
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    font-size: 0.75rem;
+    display: block;
+  }
+
+  .npc-traits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .trait-tag {
+    padding: 0.4rem 0.8rem;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 0.375rem;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .npc-background {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(100, 116, 139, 0.3);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .npc-background strong {
+    color: var(--text-primary);
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+  }
+
+  .reference-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .reference-section h4 {
+    margin-top: 0;
+  }
+</style>
+
+<script is:inline>
+  function initializeNPCGenerator() {
+    const npcRace = document.getElementById('npcRace')
+    const npcClass = document.getElementById('npcClass')
+    const npcGender = document.getElementById('npcGender')
+    const npcCount = document.getElementById('npcCount')
+    const generateBtn = document.getElementById('generateBtn')
+    const clearBtn = document.getElementById('clearBtn')
+    const copyBtn = document.getElementById('copyBtn')
+    const npcList = document.getElementById('npcList')
+
+    const names = {
+      male: ['Aldric', 'Borin', 'Cedric', 'Darius', 'Eamon', 'Fenwick', 'Garrett', 'Hadrian', 'Isidor', 'Jaxon', 'Kael', 'Loren', 'Marcus', 'Nolan', 'Orion', 'Percival', 'Quincy', 'Ragnar', 'Silas', 'Theron', 'Ulric', 'Vance', 'Waldo', 'Xavier', 'Yoren', 'Zephyr'],
+      female: ['Aria', 'Brynn', 'Cassandra', 'Delilah', 'Elowen', 'Freya', 'Giselle', 'Hera', 'Iris', 'Juno', 'Kira', 'Lyra', 'Mara', 'Nora', 'Ophelia', 'Piper', 'Quinn', 'Roslyn', 'Selene', 'Thalia', 'Ursula', 'Violet', 'Willa', 'Xenia', 'Yara', 'Zara'],
+      neutral: ['Alex', 'Bailey', 'Casey', 'Dakota', 'Emery', 'Finley', 'Gray', 'Harper', 'Indigo', 'Jordan', 'Kai', 'Logan', 'Morgan', 'Nyx', 'Oakley', 'Parker', 'Quinn', 'Riley', 'Sage', 'Taylor', 'Umber', 'Vale', 'Wren', 'Xander', 'Yuki', 'Zion']
+    }
+
+    const traits = ['Optimistic', 'Cynical', 'Brave', 'Cautious', 'Friendly', 'Suspicious', 'Honest', 'Deceptive', 'Ambitious', 'Humble', 'Witty', 'Serious', 'Charming', 'Awkward', 'Confident', 'Insecure', 'Generous', 'Stingy', 'Curious', 'Indifferent']
+
+    const backgrounds = [
+      'Former soldier seeking redemption',
+      'Escaped from nobility',
+      'Lost everything in a fire',
+      'Searching for a lost loved one',
+      'Running from the law',
+      'Seeking revenge',
+      'Trying to start a new life',
+      'Cursed by a wizard',
+      'Blessed by the gods',
+      'Haunted by past mistakes',
+      'On a quest for knowledge',
+      'Protecting a dark secret',
+      'Recently widowed',
+      'Exiled from their homeland',
+      'Seeking fortune and glory'
+    ]
+
+    function getRandomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)]
+    }
+
+    function getRandomTraits(count = 2) {
+      const selected = []
+      const copy = [...traits]
+      for (let i = 0; i < Math.min(count, copy.length); i++) {
+        const idx = Math.floor(Math.random() * copy.length)
+        selected.push(copy[idx])
+        copy.splice(idx, 1)
+      }
+      return selected
+    }
+
+    function generateNPC() {
+      const race = npcRace.value === 'any' ? getRandomElement(['human', 'elf', 'dwarf', 'halfling', 'dragonborn', 'gnome', 'half-orc', 'tiefling']) : npcRace.value
+      const profession = npcClass.value === 'any' ? getRandomElement(['warrior', 'rogue', 'mage', 'cleric', 'ranger', 'bard', 'merchant', 'scholar', 'guard', 'farmer']) : npcClass.value
+      const gender = npcGender.value === 'any' ? getRandomElement(['male', 'female', 'neutral']) : npcGender.value
+      const name = getRandomElement(names[gender])
+      const traits = getRandomTraits(2)
+      const background = getRandomElement(backgrounds)
+      const age = Math.floor(Math.random() * 60) + 18
+
+      return { name, race, profession, gender, traits, background, age }
+    }
+
+    function createNPCCard(npc) {
+      const card = document.createElement('div')
+      card.className = 'npc-card'
+      card.innerHTML = `
+        <div class="npc-name">${npc.name}</div>
+        <div class="npc-details">
+          <div class="npc-detail">
+            <div class="npc-detail-label">Race</div>
+            <div class="npc-detail-value">${npc.race.charAt(0).toUpperCase() + npc.race.slice(1)}</div>
+          </div>
+          <div class="npc-detail">
+            <div class="npc-detail-label">Class</div>
+            <div class="npc-detail-value">${npc.profession.charAt(0).toUpperCase() + npc.profession.slice(1)}</div>
+          </div>
+          <div class="npc-detail">
+            <div class="npc-detail-label">Age</div>
+            <div class="npc-detail-value">${npc.age} years</div>
+          </div>
+          <div class="npc-detail">
+            <div class="npc-detail-label">Gender</div>
+            <div class="npc-detail-value">${npc.gender.charAt(0).toUpperCase() + npc.gender.slice(1)}</div>
+          </div>
+        </div>
+        <div class="npc-traits">
+          <span class="npc-traits-label">Personality</span>
+          <div class="npc-traits-list">
+            ${npc.traits.map(t => `<span class="trait-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="npc-background">
+          <strong>Background</strong>
+          ${npc.background}
+        </div>
+      `
+      return card
+    }
+
+    function performGeneration() {
+      const count = Math.max(1, Math.min(10, parseInt(npcCount.value) || 1))
+      
+      if (npcList.querySelector('.empty-state')) {
+        npcList.innerHTML = ''
+      }
+
+      for (let i = 0; i < count; i++) {
+        const npc = generateNPC()
+        const card = createNPCCard(npc)
+        npcList.insertBefore(card, npcList.firstChild)
+      }
+
+      // Keep only last 20 NPCs
+      const cards = npcList.querySelectorAll('.npc-card')
+      if (cards.length > 20) {
+        cards[cards.length - 1].remove()
+      }
+    }
+
+    function clearAll() {
+      npcList.innerHTML = '<div class="empty-state">Generate an NPC to get started</div>'
+    }
+
+    async function copyAll() {
+      const cards = npcList.querySelectorAll('.npc-card')
+      if (cards.length === 0) return
+
+      let text = ''
+      cards.forEach((card, idx) => {
+        const name = card.querySelector('.npc-name').textContent
+        const details = card.querySelectorAll('.npc-detail-value')
+        const traits = card.querySelectorAll('.trait-tag')
+        const background = card.querySelector('[style*="margin-top"]').textContent.replace('Background: ', '')
+        
+        text += `${idx + 1}. ${name}\n`
+        text += `   Race: ${details[0].textContent}\n`
+        text += `   Class: ${details[1].textContent}\n`
+        text += `   Age: ${details[2].textContent}\n`
+        text += `   Personality: ${Array.from(traits).map(t => t.textContent).join(', ')}\n`
+        text += `   Background: ${background}\n\n`
+      })
+
+      try {
+        await navigator.clipboard.writeText(text)
+        alert('NPCs copied to clipboard!')
+      } catch (error) {
+        alert('Failed to copy')
+      }
+    }
+
+    if (generateBtn) generateBtn.addEventListener('click', performGeneration)
+    if (clearBtn) clearBtn.addEventListener('click', clearAll)
+    if (copyBtn) copyBtn.addEventListener('click', copyAll)
+  }
+
+  // Initialize immediately and on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNPCGenerator)
+  } else {
+    setTimeout(initializeNPCGenerator, 100)
+  }
+</script>

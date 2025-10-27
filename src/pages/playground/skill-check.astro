@@ -1,0 +1,223 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Skill Check Roller" description="Roll D&D skill checks with advantage/disadvantage and DC comparison">
+
+    <div class="roller-container">
+      <div class="controls-section">
+        <div class="section-header">
+          <h3>Skill Check</h3>
+        </div>
+
+        <div class="settings-grid">
+          <div class="setting-group">
+            <label for="ability">Ability</label>
+            <select id="ability" class="select-input">
+              <option value="STR">STR</option>
+              <option value="DEX">DEX</option>
+              <option value="CON">CON</option>
+              <option value="INT">INT</option>
+              <option value="WIS">WIS</option>
+              <option value="CHA">CHA</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="abilityMod">Ability Mod</label>
+            <input id="abilityMod" type="number" value="0" class="number-input" />
+          </div>
+
+          <div class="setting-group">
+            <label for="profBonus">Prof Bonus</label>
+            <input id="profBonus" type="number" value="0" class="number-input" />
+          </div>
+
+          <div class="setting-group">
+            <label for="miscBonus">Misc Bonus</label>
+            <input id="miscBonus" type="number" value="0" class="number-input" />
+          </div>
+
+          <div class="setting-group">
+            <label for="dc">DC</label>
+            <input id="dc" type="number" value="10" class="number-input" />
+          </div>
+
+          <div class="toggle-group">
+            <label class="toggle">
+              <input type="checkbox" id="advantage" />
+              <span>Advantage</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="disadvantage" />
+              <span>Disadvantage</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="expertise" />
+              <span>Expertise (2× prof)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="rollBtn" class="btn btn-primary">Roll</button>
+          <button id="clearHistoryBtn" class="btn btn-secondary">Clear History</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Result</h3>
+        </div>
+
+        <div class="result-panel">
+          <div class="result-value" id="resultValue">-</div>
+          <div class="result-outcome" id="resultOutcome">—</div>
+          <div class="result-breakdown" id="resultBreakdown"></div>
+        </div>
+
+        <div class="history-section">
+          <div class="section-header">
+            <h3>History</h3>
+          </div>
+          <div id="historyList" class="history-list">
+            <div class="empty-history">No rolls yet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .roller-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 1024px) {
+    .roller-container { grid-template-columns: 1fr; }
+  }
+
+  .controls-section, .results-section { display: flex; flex-direction: column; gap: 1.5rem; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; }
+  .section-header h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+
+  .settings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+  @media (max-width: 640px) { .settings-grid { grid-template-columns: 1fr 1fr; } }
+
+  .setting-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .setting-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .5px; }
+
+  .toggle-group { display: flex; flex-direction: column; gap: 0.5rem; grid-column: 1 / -1; }
+  .toggle { display: flex; gap: 0.5rem; align-items: center; font-size: 0.9rem; color: var(--text-primary); }
+
+  .text-input, .number-input, .select-input { padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 0.375rem; background: var(--bg-primary); color: var(--text-primary); font-size: 0.9rem; font-weight: 500; }
+  .text-input:focus, .number-input:focus, .select-input:focus { outline: none; border-color: var(--accent-color); }
+
+  .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .btn { padding: 0.75rem 1rem; border: 2px solid var(--border-color); border-radius: 0.375rem; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all .2s ease; }
+  .btn:hover { border-color: var(--accent-color); background: var(--accent-color); color: #fff; transform: translateY(-1px); }
+  .btn-primary { border-color: var(--accent-color); background: var(--accent-color); color: #fff; }
+  .btn-primary:hover { opacity: .9; }
+
+  .result-panel { padding: 1rem; background: var(--bg-secondary); border: 2px solid rgba(100,116,139,.5); border-radius: .5rem; display: flex; flex-direction: column; gap: .5rem; }
+  .result-value { font-size: 3rem; font-weight: 800; color: var(--accent-color); text-align: center; font-family: 'Monaco','Menlo','Ubuntu Mono',monospace; }
+  .result-outcome { text-align: center; font-weight: 700; }
+  .result-outcome.success { color: #22c55e; }
+  .result-outcome.fail { color: #ef4444; }
+  .result-breakdown { font-family: 'Monaco','Menlo','Ubuntu Mono',monospace; font-size: .9rem; color: var(--text-secondary); text-align: center; }
+
+  .history-list { border: 2px solid rgba(100,116,139,.5); border-radius: .5rem; background: var(--bg-secondary); padding: .75rem; max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; }
+  .empty-history { text-align: center; color: var(--text-secondary); padding: 1rem; }
+  .history-item { padding: .5rem .75rem; background: var(--bg-primary); border-left: 3px solid var(--accent-color); border-radius: .25rem; font-size: .9rem; display: flex; justify-content: space-between; align-items: center; }
+  .history-item .left { display: flex; gap: .5rem; }
+  .history-roll { font-weight: 700; color: var(--accent-color); }
+  .history-dc { color: var(--text-secondary); font-size: .8rem; }
+</style>
+
+<script is:inline>
+  function initializeSkillCheck() {
+    const ability = document.getElementById('ability')
+    const abilityMod = document.getElementById('abilityMod')
+    const profBonus = document.getElementById('profBonus')
+    const miscBonus = document.getElementById('miscBonus')
+    const dc = document.getElementById('dc')
+    const advantage = document.getElementById('advantage')
+    const disadvantage = document.getElementById('disadvantage')
+    const expertise = document.getElementById('expertise')
+    const rollBtn = document.getElementById('rollBtn')
+    const clearHistoryBtn = document.getElementById('clearHistoryBtn')
+
+    const resultValue = document.getElementById('resultValue')
+    const resultOutcome = document.getElementById('resultOutcome')
+    const resultBreakdown = document.getElementById('resultBreakdown')
+    const historyList = document.getElementById('historyList')
+
+    let history = []
+
+    function d20() { return Math.floor(Math.random() * 20) + 1 }
+
+    function rollCheck() {
+      const mod = parseInt(abilityMod.value) || 0
+      const prof = (parseInt(profBonus.value) || 0) * (expertise.checked ? 2 : 1)
+      const misc = parseInt(miscBonus.value) || 0
+      const target = parseInt(dc.value) || 0
+
+      let r1 = d20(), r2 = d20(), base = r1
+      let note = 'normal'
+      if (advantage.checked && disadvantage.checked) {
+        note = 'normal'
+      } else if (advantage.checked) {
+        base = Math.max(r1, r2); note = 'advantage'
+      } else if (disadvantage.checked) {
+        base = Math.min(r1, r2); note = 'disadvantage'
+      }
+
+      const total = base + mod + prof + misc
+      const success = total >= target
+
+      // Update UI
+      resultValue.textContent = total
+      resultOutcome.textContent = success ? 'Success' : 'Fail'
+      resultOutcome.className = 'result-outcome ' + (success ? 'success' : 'fail')
+      const advText = note === 'normal' ? '' : ` (${note}: ${r1} vs ${r2})`
+      resultBreakdown.textContent = `d20${advText} + mod(${mod}) + prof(${prof}) + misc(${misc}) => ${total} vs DC ${target}`
+
+      // History
+      const item = { when: new Date(), ability: ability.value, total, r1, r2, note, mod, prof, misc, target, success }
+      history.unshift(item)
+      renderHistory()
+    }
+
+    function renderHistory() {
+      if (history.length === 0) {
+        historyList.innerHTML = '<div class="empty-history">No rolls yet</div>'
+        return
+      }
+      historyList.innerHTML = history.slice(0, 20).map(h => {
+        const ts = h.when.toLocaleTimeString()
+        return `<div class="history-item"><div class="left"><span class="history-roll">${h.ability}</span> <span>${h.total}</span></div><div class="history-dc">DC ${h.target} • ${ts}</div></div>`
+      }).join('')
+    }
+
+    function clearHistory() { history = []; renderHistory() }
+
+    rollBtn?.addEventListener('click', rollCheck)
+    clearHistoryBtn?.addEventListener('click', clearHistory)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSkillCheck)
+  } else {
+    initializeSkillCheck()
+  }
+</script>

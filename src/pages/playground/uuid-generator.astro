@@ -1,0 +1,335 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="UUID Generator" description="Generate v1, v4, and v5 UUIDs">
+
+    <div class="uuid-container">
+      <div class="controls-section">
+        <div class="section-header">
+          <h3>UUID Settings</h3>
+        </div>
+
+        <div class="settings-group">
+          <label for="uuidVersion">Version</label>
+          <select id="uuidVersion" class="select-input">
+            <option value="v4">v4 (Random)</option>
+            <option value="v1">v1 (Timestamp)</option>
+            <option value="v5">v5 (SHA-1 Hash)</option>
+          </select>
+        </div>
+
+        <div class="settings-group" id="v5Settings" style="display: none;">
+          <label for="v5Namespace">Namespace</label>
+          <select id="v5Namespace" class="select-input">
+            <option value="dns">DNS</option>
+            <option value="url">URL</option>
+            <option value="oid">OID</option>
+            <option value="x500">X.500</option>
+          </select>
+          <label for="v5Name" style="margin-top: 0.5rem;">Name</label>
+          <input id="v5Name" type="text" placeholder="e.g., example.com" class="text-input" />
+        </div>
+
+        <div class="button-group">
+          <button id="generateBtn" class="btn btn-primary">Generate UUID</button>
+          <button id="generateMultipleBtn" class="btn btn-secondary">Generate 5</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Generated UUIDs</h3>
+          <button id="copyAllBtn" class="btn btn-secondary">Copy All</button>
+        </div>
+
+        <div id="uuidList" class="uuid-list">
+          <div class="empty-state">Generate UUIDs to get started</div>
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .uuid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .uuid-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .controls-section, .results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .settings-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .select-input, .text-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .select-input:focus, .text-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .uuid-list {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .uuid-item {
+    padding: 0.75rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0.375rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .uuid-value {
+    flex: 1;
+    word-break: break-all;
+    color: var(--text-primary);
+  }
+
+  .uuid-copy-btn {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .uuid-copy-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+  }
+</style>
+
+<script is:inline>
+  function initializeUUIDGenerator() {
+    const uuidVersion = document.getElementById('uuidVersion')
+    const v5Settings = document.getElementById('v5Settings')
+    const v5Namespace = document.getElementById('v5Namespace')
+    const v5Name = document.getElementById('v5Name')
+    const generateBtn = document.getElementById('generateBtn')
+    const generateMultipleBtn = document.getElementById('generateMultipleBtn')
+    const copyAllBtn = document.getElementById('copyAllBtn')
+    const uuidList = document.getElementById('uuidList')
+
+    let uuids = []
+
+    // UUID v4 generator
+    function generateV4() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0
+        const v = c === 'x' ? r : (r & 0x3 | 0x8)
+        return v.toString(16)
+      })
+    }
+
+    // UUID v1 generator (simplified)
+    function generateV1() {
+      const now = Date.now()
+      const timestamp = ((now + 12219292800000) * 10000).toString(16)
+      const clockSeq = Math.floor(Math.random() * 0x4000 | 0x8000).toString(16)
+      const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('')
+      return `${timestamp.slice(-8)}-${timestamp.slice(-12, -8)}-1${timestamp.slice(-15, -12)}-${clockSeq}-${node}`
+    }
+
+    // Simple UUID v5 (SHA-1 based, simplified)
+    function generateV5() {
+      const namespaces = {
+        dns: '6ba7b810-9dad-11d1-80b4-00c04fd430c8',
+        url: '6ba7b811-9dad-11d1-80b4-00c04fd430c8',
+        oid: '6ba7b812-9dad-11d1-80b4-00c04fd430c8',
+        x500: '6ba7b814-9dad-11d1-80b4-00c04fd430c8'
+      }
+      const ns = namespaces[v5Namespace.value]
+      const name = v5Name.value || 'example'
+      // Simplified: just combine namespace and name hash
+      const hash = btoa(ns + name).replace(/[^a-z0-9]/gi, '').slice(0, 32)
+      return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-5${hash.slice(13, 16)}-${hash.slice(16, 20)}-${hash.slice(20, 32)}`
+    }
+
+    function generateUUID() {
+      const version = uuidVersion.value
+      let uuid
+      if (version === 'v4') uuid = generateV4()
+      else if (version === 'v1') uuid = generateV1()
+      else uuid = generateV5()
+      return uuid
+    }
+
+    function addUUID(uuid) {
+      uuids.unshift(uuid)
+      if (uuids.length > 50) uuids.pop()
+      renderUUIDs()
+    }
+
+    function renderUUIDs() {
+      if (uuids.length === 0) {
+        uuidList.innerHTML = '<div class="empty-state">Generate UUIDs to get started</div>'
+        return
+      }
+      uuidList.innerHTML = uuids.map((uuid, idx) => `
+        <div class="uuid-item">
+          <div class="uuid-value">${uuid}</div>
+          <button class="uuid-copy-btn" data-uuid="${uuid}">Copy</button>
+        </div>
+      `).join('')
+
+      document.querySelectorAll('.uuid-copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const uuid = btn.getAttribute('data-uuid')
+          try {
+            await navigator.clipboard.writeText(uuid)
+            btn.textContent = '✓'
+            setTimeout(() => { btn.textContent = 'Copy' }, 1500)
+          } catch (e) {
+            btn.textContent = '✗'
+          }
+        })
+      })
+    }
+
+    function performGenerate(count = 1) {
+      for (let i = 0; i < count; i++) {
+        addUUID(generateUUID())
+      }
+    }
+
+    async function copyAll() {
+      if (uuids.length === 0) return
+      try {
+        await navigator.clipboard.writeText(uuids.join('\n'))
+        alert('All UUIDs copied!')
+      } catch (e) {
+        alert('Failed to copy')
+      }
+    }
+
+    uuidVersion?.addEventListener('change', (e) => {
+      v5Settings.style.display = e.target.value === 'v5' ? 'flex' : 'none'
+    })
+
+    if (generateBtn) generateBtn.addEventListener('click', () => performGenerate(1))
+    if (generateMultipleBtn) generateMultipleBtn.addEventListener('click', () => performGenerate(5))
+    if (copyAllBtn) copyAllBtn.addEventListener('click', copyAll)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeUUIDGenerator)
+  } else {
+    setTimeout(initializeUUIDGenerator, 100)
+  }
+</script>

@@ -1,0 +1,505 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Game Timer" description="Multiple countdown timers for game sessions">
+
+    <div class="timer-container">
+      <div class="controls-section">
+        <div class="section-header">
+          <h3>Create Timer</h3>
+        </div>
+
+        <div class="timer-input-group">
+          <div class="input-field">
+            <label for="timerName">Name</label>
+            <input id="timerName" type="text" placeholder="e.g., Combat Round" class="text-input" />
+          </div>
+          <div class="input-field">
+            <label for="timerMinutes">Minutes</label>
+            <input id="timerMinutes" type="number" min="0" max="60" value="1" class="number-input" />
+          </div>
+          <div class="input-field">
+            <label for="timerSeconds">Seconds</label>
+            <input id="timerSeconds" type="number" min="0" max="59" value="0" class="number-input" />
+          </div>
+        </div>
+
+        <div class="quick-buttons">
+          <button id="add30sBtn" class="btn btn-secondary">+30s</button>
+          <button id="add1mBtn" class="btn btn-secondary">+1m</button>
+          <button id="add5mBtn" class="btn btn-secondary">+5m</button>
+          <button id="addTimerBtn" class="btn btn-primary">Add Timer</button>
+        </div>
+      </div>
+
+      <div class="timers-section">
+        <div class="section-header">
+          <h3>Active Timers</h3>
+          <button id="clearAllBtn" class="btn btn-secondary">Clear All</button>
+        </div>
+
+        <div id="timersList" class="timers-list">
+          <div class="empty-state">No timers yet. Create one to get started.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reference-section">
+      <h4>Common Timers</h4>
+      <div class="reference-grid">
+        <div class="ref-item">
+          <strong>Combat Round</strong> - 6 seconds (1 turn)
+        </div>
+        <div class="ref-item">
+          <strong>Potion Cooldown</strong> - 1 minute
+        </div>
+        <div class="ref-item">
+          <strong>Spell Duration</strong> - 10 minutes
+        </div>
+        <div class="ref-item">
+          <strong>Long Rest</strong> - 8 hours
+        </div>
+        <div class="ref-item">
+          <strong>Short Rest</strong> - 1 hour
+        </div>
+        <div class="ref-item">
+          <strong>Turn Timer</strong> - 2 minutes
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .timer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .timer-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .controls-section,
+  .timers-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .section-header h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .timer-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .text-input,
+  .number-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .text-input:focus,
+  .number-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .timers-list {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .timer-card {
+    padding: 1rem;
+    background: var(--bg-primary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.375rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .timer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timer-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .timer-display {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    letter-spacing: 0.1em;
+  }
+
+  .timer-display.warning {
+    color: #f39c12;
+  }
+
+  .timer-display.danger {
+    color: #e74c3c;
+  }
+
+  .timer-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .timer-btn {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .timer-btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .timer-btn.delete {
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+
+  .timer-btn.delete:hover {
+    background: #e74c3c;
+    color: white;
+  }
+
+  .reference-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .reference-section h4 {
+    margin-top: 0;
+  }
+
+  .reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .ref-item {
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .ref-item strong {
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+</style>
+
+<script is:inline>
+  function initializeGameTimer() {
+    const timerName = document.getElementById('timerName')
+    const timerMinutes = document.getElementById('timerMinutes')
+    const timerSeconds = document.getElementById('timerSeconds')
+    const addTimerBtn = document.getElementById('addTimerBtn')
+    const add30sBtn = document.getElementById('add30sBtn')
+    const add1mBtn = document.getElementById('add1mBtn')
+    const add5mBtn = document.getElementById('add5mBtn')
+    const clearAllBtn = document.getElementById('clearAllBtn')
+    const timersList = document.getElementById('timersList')
+
+    let timers = []
+    let nextId = 0
+
+    function createTimer(name, minutes, seconds) {
+      const totalSeconds = minutes * 60 + seconds
+      if (totalSeconds <= 0) return
+
+      const id = nextId++
+      const timer = {
+        id,
+        name: name || `Timer ${id + 1}`,
+        totalSeconds,
+        remainingSeconds: totalSeconds,
+        isRunning: false,
+        intervalId: null
+      }
+
+      timers.push(timer)
+      renderTimer(timer)
+      
+      if (timersList.querySelector('.empty-state')) {
+        timersList.innerHTML = ''
+      }
+    }
+
+    function renderTimer(timer) {
+      let card = document.getElementById(`timer-${timer.id}`)
+      
+      if (!card) {
+        card = document.createElement('div')
+        card.id = `timer-${timer.id}`
+        card.className = 'timer-card'
+        timersList.appendChild(card)
+      }
+
+      const minutes = Math.floor(timer.remainingSeconds / 60)
+      const seconds = timer.remainingSeconds % 60
+      const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+
+      let displayClass = ''
+      if (timer.remainingSeconds <= 10 && timer.remainingSeconds > 0) {
+        displayClass = 'warning'
+      } else if (timer.remainingSeconds === 0) {
+        displayClass = 'danger'
+      }
+
+      card.innerHTML = `
+        <div class="timer-info">
+          <div class="timer-name">${timer.name}</div>
+          <div class="timer-display ${displayClass}">${display}</div>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-btn play-btn" data-id="${timer.id}">${timer.isRunning ? '⏸' : '▶'}</button>
+          <button class="timer-btn reset-btn" data-id="${timer.id}">↻</button>
+          <button class="timer-btn delete delete-btn" data-id="${timer.id}">✕</button>
+        </div>
+      `
+
+      const playBtn = card.querySelector('.play-btn')
+      const resetBtn = card.querySelector('.reset-btn')
+      const deleteBtn = card.querySelector('.delete-btn')
+
+      playBtn.addEventListener('click', () => toggleTimer(timer.id))
+      resetBtn.addEventListener('click', () => resetTimer(timer.id))
+      deleteBtn.addEventListener('click', () => deleteTimer(timer.id))
+    }
+
+    function toggleTimer(id) {
+      const timer = timers.find(t => t.id === id)
+      if (!timer) return
+
+      timer.isRunning = !timer.isRunning
+
+      if (timer.isRunning) {
+        timer.intervalId = setInterval(() => {
+          timer.remainingSeconds--
+          renderTimer(timer)
+
+          if (timer.remainingSeconds <= 0) {
+            clearInterval(timer.intervalId)
+            timer.isRunning = false
+            playSound()
+            renderTimer(timer)
+          }
+        }, 1000)
+      } else {
+        clearInterval(timer.intervalId)
+      }
+
+      renderTimer(timer)
+    }
+
+    function resetTimer(id) {
+      const timer = timers.find(t => t.id === id)
+      if (!timer) return
+
+      clearInterval(timer.intervalId)
+      timer.isRunning = false
+      timer.remainingSeconds = timer.totalSeconds
+      renderTimer(timer)
+    }
+
+    function deleteTimer(id) {
+      const timer = timers.find(t => t.id === id)
+      if (timer) {
+        clearInterval(timer.intervalId)
+      }
+      timers = timers.filter(t => t.id !== id)
+      
+      const card = document.getElementById(`timer-${id}`)
+      if (card) card.remove()
+
+      if (timers.length === 0) {
+        timersList.innerHTML = '<div class="empty-state">No timers yet. Create one to get started.</div>'
+      }
+    }
+
+    function playSound() {
+      // Create a simple beep using Web Audio API
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)()
+        const oscillator = audioContext.createOscillator()
+        const gainNode = audioContext.createGain()
+
+        oscillator.connect(gainNode)
+        gainNode.connect(audioContext.destination)
+
+        oscillator.frequency.value = 800
+        oscillator.type = 'sine'
+
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5)
+
+        oscillator.start(audioContext.currentTime)
+        oscillator.stop(audioContext.currentTime + 0.5)
+      } catch (e) {
+        console.log('Audio not available')
+      }
+    }
+
+    function addTimer() {
+      const name = timerName.value.trim()
+      const minutes = parseInt(timerMinutes.value) || 0
+      const seconds = parseInt(timerSeconds.value) || 0
+
+      createTimer(name, minutes, seconds)
+      
+      timerName.value = ''
+      timerMinutes.value = '1'
+      timerSeconds.value = '0'
+    }
+
+    if (addTimerBtn) addTimerBtn.addEventListener('click', addTimer)
+    if (add30sBtn) add30sBtn.addEventListener('click', () => createTimer('30 Seconds', 0, 30))
+    if (add1mBtn) add1mBtn.addEventListener('click', () => createTimer('1 Minute', 1, 0))
+    if (add5mBtn) add5mBtn.addEventListener('click', () => createTimer('5 Minutes', 5, 0))
+    if (clearAllBtn) clearAllBtn.addEventListener('click', () => {
+      timers.forEach(t => clearInterval(t.intervalId))
+      timers = []
+      timersList.innerHTML = '<div class="empty-state">No timers yet. Create one to get started.</div>'
+    })
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+      timers.forEach(t => clearInterval(t.intervalId))
+    })
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeGameTimer)
+  } else {
+    setTimeout(initializeGameTimer, 100)
+  }
+</script>

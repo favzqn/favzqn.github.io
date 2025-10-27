@@ -1,0 +1,518 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Coin Flipper" description="Flip coins with weighted options and history tracking">
+
+    <div class="flipper-container">
+      <div class="flip-section">
+        <div class="section-header">
+          <h3>Coin Flipper</h3>
+        </div>
+
+        <div class="coin-config">
+          <div class="config-group">
+            <label for="coinType">Coin Type</label>
+            <select id="coinType" class="select-input">
+              <option value="fair">Fair Coin (50/50)</option>
+              <option value="heads-weighted">Heads Weighted (70/30)</option>
+              <option value="tails-weighted">Tails Weighted (30/70)</option>
+              <option value="custom">Custom Odds</option>
+            </select>
+          </div>
+
+          <div class="config-group" id="customOddsGroup" style="display: none;">
+            <label for="headsOdds">Heads Odds (%)</label>
+            <input id="headsOdds" type="number" min="0" max="100" value="50" class="number-input" />
+          </div>
+
+          <div class="config-group">
+            <label for="flipCount">Number of Flips</label>
+            <input id="flipCount" type="number" min="1" max="1000" value="1" class="number-input" />
+          </div>
+        </div>
+
+        <div class="flip-buttons">
+          <button id="flipBtn" class="btn btn-primary">Flip Coin</button>
+          <button id="multiFlipBtn" class="btn btn-secondary">Flip Multiple</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <div id="flipResult" class="flip-result">
+          <div class="coin-display">
+            <div id="coinFace" class="coin-face">?</div>
+            <div id="flipAnimation" class="flip-animation"></div>
+          </div>
+          <div id="resultText" class="result-text">Ready to flip</div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="section-header">
+          <h3>Statistics</h3>
+          <button id="clearStatsBtn" class="btn btn-secondary">Reset</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Flips</div>
+            <div id="totalFlips" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Heads</div>
+            <div id="headsCount" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Tails</div>
+            <div id="tailsCount" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Heads %</div>
+            <div id="headsPercent" class="stat-value">-</div>
+          </div>
+        </div>
+
+        <div class="history-section">
+          <div class="section-header">
+            <h3>Flip History</h3>
+            <button id="clearHistoryBtn" class="btn btn-secondary">Clear</button>
+          </div>
+          <div id="historyDisplay" class="history-display">
+            <div class="empty-history">No flips yet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h4>Coin Types</h4>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>Fair Coin</strong> - 50% heads, 50% tails
+        </div>
+        <div class="info-item">
+          <strong>Heads Weighted</strong> - 70% heads, 30% tails
+        </div>
+        <div class="info-item">
+          <strong>Tails Weighted</strong> - 30% heads, 70% tails
+        </div>
+        <div class="info-item">
+          <strong>Custom</strong> - Set your own odds
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .flipper-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .flipper-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .flip-section,
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .section-header h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .coin-config {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .config-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .select-input,
+  .number-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .select-input:focus,
+  .number-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .flip-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .flip-result {
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    gap: 1.5rem;
+  }
+
+  .coin-display {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  .coin-face {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-color), rgba(59, 130, 246, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .coin-face.flipping {
+    animation: coinFlip 0.6s ease-in-out;
+  }
+
+  @keyframes coinFlip {
+    0% {
+      transform: rotateY(0) rotateX(0);
+    }
+    50% {
+      transform: rotateY(180deg) rotateX(10deg);
+    }
+    100% {
+      transform: rotateY(360deg) rotateX(0);
+    }
+  }
+
+  .flip-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .result-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-align: center;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+
+  .history-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .history-display {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 150px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .empty-history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    letter-spacing: normal;
+  }
+
+  .info-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .info-section h4 {
+    margin-top: 0;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .info-item {
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .info-item strong {
+    color: var(--accent-color);
+  }
+</style>
+
+<script is:inline>
+  function initializeCoinFlipper() {
+    const coinType = document.getElementById('coinType')
+    const customOddsGroup = document.getElementById('customOddsGroup')
+    const headsOdds = document.getElementById('headsOdds')
+    const flipCount = document.getElementById('flipCount')
+    const coinFace = document.getElementById('coinFace')
+    const resultText = document.getElementById('resultText')
+    const historyDisplay = document.getElementById('historyDisplay')
+    const totalFlips = document.getElementById('totalFlips')
+    const headsCount = document.getElementById('headsCount')
+    const tailsCount = document.getElementById('tailsCount')
+    const headsPercent = document.getElementById('headsPercent')
+    const flipBtn = document.getElementById('flipBtn')
+    const multiFlipBtn = document.getElementById('multiFlipBtn')
+    const clearBtn = document.getElementById('clearBtn')
+    const clearStatsBtn = document.getElementById('clearStatsBtn')
+    const clearHistoryBtn = document.getElementById('clearHistoryBtn')
+
+    let stats = { heads: 0, tails: 0 }
+    let history = []
+
+    function getOdds() {
+      const type = coinType.value
+      if (type === 'fair') return 50
+      if (type === 'heads-weighted') return 70
+      if (type === 'tails-weighted') return 30
+      if (type === 'custom') return Math.max(0, Math.min(100, parseInt(headsOdds.value) || 50))
+      return 50
+    }
+
+    function flipCoin() {
+      const odds = getOdds()
+      return Math.random() * 100 < odds ? 'H' : 'T'
+    }
+
+    function updateStats() {
+      const total = stats.heads + stats.tails
+      totalFlips.textContent = total
+      headsCount.textContent = stats.heads
+      tailsCount.textContent = stats.tails
+      headsPercent.textContent = total > 0 ? ((stats.heads / total) * 100).toFixed(1) + '%' : '-'
+    }
+
+    function updateHistory() {
+      if (history.length === 0) {
+        historyDisplay.innerHTML = '<div class="empty-history">No flips yet</div>'
+        return
+      }
+
+      historyDisplay.textContent = history.join(' ')
+    }
+
+    function performFlip() {
+      coinFace.classList.add('flipping')
+      resultText.textContent = 'Flipping...'
+
+      setTimeout(() => {
+        const result = flipCoin()
+        coinFace.textContent = result === 'H' ? '🪙' : '🪙'
+        coinFace.classList.remove('flipping')
+        resultText.textContent = result === 'H' ? 'Heads' : 'Tails'
+
+        if (result === 'H') {
+          stats.heads++
+        } else {
+          stats.tails++
+        }
+
+        history.push(result)
+        if (history.length > 100) {
+          history.shift()
+        }
+
+        updateStats()
+        updateHistory()
+      }, 600)
+    }
+
+    function performMultiFlip() {
+      const count = Math.max(1, Math.min(1000, parseInt(flipCount.value) || 1))
+      
+      coinFace.textContent = '...'
+      resultText.textContent = `Flipping ${count} times...`
+
+      setTimeout(() => {
+        for (let i = 0; i < count; i++) {
+          const result = flipCoin()
+          if (result === 'H') {
+            stats.heads++
+          } else {
+            stats.tails++
+          }
+          history.push(result)
+        }
+
+        if (history.length > 100) {
+          history = history.slice(-100)
+        }
+
+        coinFace.textContent = history[history.length - 1] === 'H' ? '🪙' : '🪙'
+        resultText.textContent = `Flipped ${count} times`
+        updateStats()
+        updateHistory()
+      }, 300)
+    }
+
+    function clearAll() {
+      stats = { heads: 0, tails: 0 }
+      history = []
+      coinFace.textContent = '?'
+      resultText.textContent = 'Ready to flip'
+      updateStats()
+      updateHistory()
+    }
+
+    coinType?.addEventListener('change', (e) => {
+      customOddsGroup.style.display = e.target.value === 'custom' ? 'flex' : 'none'
+    })
+
+    flipBtn?.addEventListener('click', performFlip)
+    multiFlipBtn?.addEventListener('click', performMultiFlip)
+    clearBtn?.addEventListener('click', clearAll)
+    clearStatsBtn?.addEventListener('click', clearAll)
+    clearHistoryBtn?.addEventListener('click', clearAll)
+
+    updateStats()
+    updateHistory()
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCoinFlipper)
+  } else {
+    initializeCoinFlipper()
+  }
+</script>

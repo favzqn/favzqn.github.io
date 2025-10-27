@@ -1,0 +1,585 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Loot Generator" description="Generate random treasure and loot for D&D campaigns">
+
+    <div class="loot-container">
+      <div class="controls-section">
+        <div class="section-header">
+          <h3>Loot Settings</h3>
+        </div>
+
+        <div class="settings-grid">
+          <div class="setting-group">
+            <label for="lootRarity">Rarity</label>
+            <select id="lootRarity" class="select-input">
+              <option value="common">Common</option>
+              <option value="uncommon">Uncommon</option>
+              <option value="rare" selected>Rare</option>
+              <option value="very-rare">Very Rare</option>
+              <option value="legendary">Legendary</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="lootType">Type</label>
+            <select id="lootType" class="select-input">
+              <option value="any">Any</option>
+              <option value="weapon">Weapon</option>
+              <option value="armor">Armor</option>
+              <option value="accessory">Accessory</option>
+              <option value="potion">Potion</option>
+              <option value="scroll">Scroll</option>
+              <option value="treasure">Treasure</option>
+            </select>
+          </div>
+
+          <div class="setting-group">
+            <label for="lootCount">Generate Count</label>
+            <input id="lootCount" type="number" min="1" max="20" value="1" class="number-input" />
+          </div>
+
+          <div class="setting-group">
+            <label for="goldAmount">Gold (gp)</label>
+            <input id="goldAmount" type="number" min="0" max="10000" value="100" class="number-input" />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="generateBtn" class="btn btn-primary">Generate Loot</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Generated Loot</h3>
+          <button id="copyBtn" class="btn btn-secondary">Copy All</button>
+        </div>
+
+        <div id="lootList" class="loot-list">
+          <div class="empty-state">Generate loot to get started</div>
+        </div>
+        <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+          <div class="spinner"></div>
+          <p>Generating loot...</p>
+        </div>
+
+        <div id="goldDisplay" class="gold-display" style="display: none;">
+          <div class="gold-amount">
+            <span class="gold-icon">💰</span>
+            <span id="goldValue">0</span> gp
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reference-section">
+      <h4>Rarity Guide</h4>
+      <div class="rarity-grid">
+        <div class="rarity-item">
+          <strong style="color: #808080;">Common</strong> - Basic items, 1d4 × 10 gp
+        </div>
+        <div class="rarity-item">
+          <strong style="color: #2ecc71;">Uncommon</strong> - Enhanced items, 1d6 × 50 gp
+        </div>
+        <div class="rarity-item">
+          <strong style="color: #3498db;">Rare</strong> - Magical items, 1d8 × 100 gp
+        </div>
+        <div class="rarity-item">
+          <strong style="color: #9b59b6;">Very Rare</strong> - Powerful magic, 1d10 × 500 gp
+        </div>
+        <div class="rarity-item">
+          <strong style="color: #f39c12;">Legendary</strong> - Artifacts, 1d12 × 1000 gp
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .loot-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .loot-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .controls-section,
+  .results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .section-header h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .setting-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .select-input,
+  .number-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .select-input:focus,
+  .number-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .loot-list {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .loot-item {
+    padding: 1rem;
+    background: var(--bg-primary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .loot-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .loot-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .loot-rarity {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .rarity-common {
+    background: rgba(128, 128, 128, 0.2);
+    color: #808080;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+  }
+
+  .rarity-uncommon {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+  }
+
+  .rarity-rare {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+  }
+
+  .rarity-very-rare {
+    background: rgba(155, 89, 182, 0.2);
+    color: #9b59b6;
+    border: 1px solid rgba(155, 89, 182, 0.4);
+  }
+
+  .rarity-legendary {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    border: 1px solid rgba(243, 156, 18, 0.4);
+  }
+
+  .loot-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .loot-value {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .gold-display {
+    padding: 1.5rem;
+    background: rgba(243, 156, 18, 0.1);
+    border: 2px solid rgba(243, 156, 18, 0.3);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .gold-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f39c12;
+  }
+
+  .gold-icon {
+    margin-right: 0.5rem;
+  }
+
+  #goldValue {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+
+  .loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(59, 130, 246, 0.2);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-indicator p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .reference-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .reference-section h4 {
+    margin-top: 0;
+  }
+
+  .rarity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .rarity-item {
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+  }
+</style>
+
+<script is:inline>
+  function initializeLootGenerator() {
+    const lootRarity = document.getElementById('lootRarity')
+    const lootType = document.getElementById('lootType')
+    const lootCount = document.getElementById('lootCount')
+    const goldAmount = document.getElementById('goldAmount')
+    const generateBtn = document.getElementById('generateBtn')
+    const clearBtn = document.getElementById('clearBtn')
+    const copyBtn = document.getElementById('copyBtn')
+    const lootList = document.getElementById('lootList')
+    const goldDisplay = document.getElementById('goldDisplay')
+    const goldValue = document.getElementById('goldValue')
+    const loadingIndicator = document.getElementById('loadingIndicator')
+
+    const weapons = {
+      common: ['Dagger', 'Shortsword', 'Quarterstaff', 'Hand Axe', 'Mace'],
+      uncommon: ['Longsword', 'Battleaxe', 'Spear', 'Bow', 'Warhammer'],
+      rare: ['+1 Longsword', '+1 Bow', 'Flaming Sword', 'Frost Dagger', 'Lightning Mace'],
+      'very-rare': ['+2 Longsword', 'Flaming Longsword', 'Frost Axe', 'Vorpal Sword', 'Holy Mace'],
+      legendary: ['+3 Longsword', 'Sword of Sharpness', 'Flaming Longsword +2', 'Legendary Bow', 'Artifact Blade']
+    }
+
+    const armor = {
+      common: ['Leather Armor', 'Studded Leather', 'Chain Shirt', 'Hide Armor'],
+      uncommon: ['Chain Mail', 'Plate Armor', 'Scale Mail', 'Splint Armor'],
+      rare: ['+1 Chain Mail', '+1 Plate Armor', 'Mithral Armor', 'Dragonscale Armor'],
+      'very-rare': ['+2 Plate Armor', 'Adamantite Armor', 'Elven Plate', 'Dragon Armor'],
+      legendary: ['+3 Plate Armor', 'Armor of Invulnerability', 'Legendary Dragon Plate', 'Holy Armor']
+    }
+
+    const accessories = {
+      common: ['Ring of Protection', 'Amulet of Health', 'Cloak of Elvenkind', 'Boots of Speed'],
+      uncommon: ['Ring of Spell Storing', 'Amulet of Proof Against Detection', 'Cloak of Billowing', 'Boots of Levitation'],
+      rare: ['Ring of Evasion', 'Amulet of the Planes', 'Cloak of Invisibility', 'Boots of Speed +1'],
+      'very-rare': ['Ring of Wishes', 'Amulet of Undying', 'Cloak of Arachnida', 'Boots of Teleportation'],
+      legendary: ['Ring of Omnipotence', 'Amulet of Immortality', 'Cloak of Eternity', 'Boots of Speed +3']
+    }
+
+    const potions = {
+      common: ['Potion of Healing', 'Potion of Climbing', 'Potion of Water Breathing'],
+      uncommon: ['Potion of Greater Healing', 'Potion of Fire Resistance', 'Potion of Invisibility'],
+      rare: ['Potion of Supreme Healing', 'Potion of Flying', 'Potion of Giant Strength'],
+      'very-rare': ['Potion of Longevity', 'Potion of Invulnerability', 'Potion of Godhood'],
+      legendary: ['Elixir of Immortality', 'Potion of True Resurrection', 'Essence of Divinity']
+    }
+
+    const scrolls = {
+      common: ['Scroll of Identify', 'Scroll of Light', 'Scroll of Mending'],
+      uncommon: ['Scroll of Fireball', 'Scroll of Lightning Bolt', 'Scroll of Teleport'],
+      rare: ['Scroll of Wish', 'Scroll of True Polymorph', 'Scroll of Gate'],
+      'very-rare': ['Scroll of Meteor Storm', 'Scroll of Time Stop', 'Scroll of Imprisonment'],
+      legendary: ['Scroll of Apocalypse', 'Scroll of Divine Intervention', 'Scroll of Creation']
+    }
+
+    const treasures = {
+      common: ['Gold Coin (10 gp)', 'Silver Brooch (25 gp)', 'Copper Bracelet (5 gp)', 'Gem (50 gp)'],
+      uncommon: ['Ruby (100 gp)', 'Sapphire (150 gp)', 'Emerald (200 gp)', 'Pearl Necklace (300 gp)'],
+      rare: ['Diamond (500 gp)', 'Platinum Crown (1000 gp)', 'Ancient Artifact (2000 gp)', 'Jeweled Chalice (1500 gp)'],
+      'very-rare': ['Dragon Hoard (5000 gp)', 'Royal Scepter (3000 gp)', 'Ancient Relic (4000 gp)', 'Cursed Treasure (2500 gp)'],
+      legendary: ['Infinite Gold Pouch', 'Philosopher\'s Stone (10000 gp)', 'Legendary Artifact (8000 gp)', 'Divine Treasure (15000 gp)']
+    }
+
+    const allLoot = { weapon: weapons, armor: armor, accessory: accessories, potion: potions, scroll: scrolls, treasure: treasures }
+
+    function getRandomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)]
+    }
+
+    function generateLoot() {
+      const rarity = lootRarity.value === 'mixed' ? getRandomElement(['common', 'uncommon', 'rare', 'very-rare', 'legendary']) : lootRarity.value
+      const type = lootType.value === 'any' ? getRandomElement(['weapon', 'armor', 'accessory', 'potion', 'scroll', 'treasure']) : lootType.value
+      
+      const lootArray = allLoot[type] && allLoot[type][rarity] ? allLoot[type][rarity] : ['Unknown Item']
+      const name = getRandomElement(lootArray)
+      
+      return { name, rarity, type }
+    }
+
+    function createLootItem(loot) {
+      const item = document.createElement('div')
+      item.className = 'loot-item'
+      
+      const rarityClass = `rarity-${loot.rarity.replace(' ', '-')}`
+      const rarityLabel = loot.rarity.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+      
+      item.innerHTML = `
+        <div class="loot-name">${loot.name}</div>
+        <div class="loot-rarity ${rarityClass}">${rarityLabel}</div>
+        <div class="loot-description">${loot.type.charAt(0).toUpperCase() + loot.type.slice(1)}</div>
+      `
+      return item
+    }
+
+    function performGeneration() {
+      try {
+        const count = Math.max(1, Math.min(20, parseInt(lootCount.value) || 1))
+        const gold = Math.max(0, parseInt(goldAmount.value) || 0)
+        
+        // Show loading
+        loadingIndicator.style.display = 'flex'
+        lootList.style.display = 'none'
+        goldDisplay.style.display = 'none'
+
+        // Simulate generation with small delay for visual feedback
+        setTimeout(() => {
+          try {
+            // Clear empty state
+            const emptyState = lootList.querySelector('.empty-state')
+            if (emptyState) {
+              emptyState.remove()
+            }
+
+            for (let i = 0; i < count; i++) {
+              const loot = generateLoot()
+              const item = createLootItem(loot)
+              lootList.appendChild(item)
+            }
+
+            if (gold > 0) {
+              goldDisplay.style.display = 'block'
+              goldValue.textContent = gold
+            }
+
+            // Keep only last 50 items
+            const items = lootList.querySelectorAll('.loot-item')
+            if (items.length > 50) {
+              for (let i = 0; i < items.length - 50; i++) {
+                items[i].remove()
+              }
+            }
+
+            // Hide loading and show results
+            loadingIndicator.style.display = 'none'
+            lootList.style.display = 'block'
+          } catch (err) {
+            console.error('Generation error:', err)
+            loadingIndicator.style.display = 'none'
+            lootList.style.display = 'block'
+          }
+        }, 600)
+      } catch (err) {
+        console.error('Generation error:', err)
+        loadingIndicator.style.display = 'none'
+        lootList.style.display = 'block'
+      }
+    }
+
+    function clearAll() {
+      lootList.innerHTML = '<div class="empty-state">Generate loot to get started</div>'
+      lootList.style.display = 'block'
+      goldDisplay.style.display = 'none'
+      loadingIndicator.style.display = 'none'
+    }
+
+    async function copyAll() {
+      const items = lootList.querySelectorAll('.loot-item')
+      if (items.length === 0) return
+
+      let text = 'LOOT GENERATED\n' + '='.repeat(40) + '\n\n'
+      
+      items.forEach((item, idx) => {
+        const name = item.querySelector('.loot-name').textContent
+        const rarity = item.querySelector('.loot-rarity').textContent
+        const type = item.querySelector('.loot-description').textContent
+        
+        text += `${idx + 1}. ${name}\n`
+        text += `   Rarity: ${rarity}\n`
+        text += `   Type: ${type}\n\n`
+      })
+
+      if (goldDisplay.style.display !== 'none') {
+        text += `\nGold: ${goldValue.textContent} gp\n`
+      }
+
+      try {
+        await navigator.clipboard.writeText(text)
+        alert('Loot copied to clipboard!')
+      } catch (error) {
+        alert('Failed to copy')
+      }
+    }
+
+    if (generateBtn) generateBtn.addEventListener('click', performGeneration)
+    if (clearBtn) clearBtn.addEventListener('click', clearAll)
+    if (copyBtn) copyBtn.addEventListener('click', copyAll)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLootGenerator)
+  } else {
+    setTimeout(initializeLootGenerator, 100)
+  }
+</script>

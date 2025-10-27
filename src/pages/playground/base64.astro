@@ -1,0 +1,227 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Base64 Encoder/Decoder" description="Encode and decode text to/from Base64">
+
+    <div class="encoder-container">
+      <div class="input-section">
+        <div class="section-header">
+          <h3>Input</h3>
+          <button id="clearInputBtn" class="btn btn-secondary">Clear</button>
+        </div>
+        <textarea id="inputText" placeholder="Enter text to encode or Base64 to decode..." class="textarea"></textarea>
+        <div class="button-group">
+          <button id="encodeBtn" class="btn btn-primary">Encode to Base64</button>
+          <button id="decodeBtn" class="btn btn-primary">Decode from Base64</button>
+        </div>
+      </div>
+
+      <div class="output-section">
+        <div class="section-header">
+          <h3>Output</h3>
+          <button id="copyOutputBtn" class="btn btn-secondary">Copy</button>
+        </div>
+        <textarea id="outputText" placeholder="Result will appear here..." class="textarea" readonly></textarea>
+        <div id="statusMessage" class="status-message"></div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .encoder-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .encoder-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .input-section, .output-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+  }
+
+  .textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .textarea[readonly] {
+    background: var(--bg-primary);
+    cursor: not-allowed;
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+
+  .status-message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    min-height: 1.5rem;
+  }
+
+  .status-message.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: rgb(34, 197, 94);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .status-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+</style>
+
+<script is:inline>
+  function initializeBase64() {
+    const inputText = document.getElementById('inputText')
+    const outputText = document.getElementById('outputText')
+    const statusMessage = document.getElementById('statusMessage')
+    const encodeBtn = document.getElementById('encodeBtn')
+    const decodeBtn = document.getElementById('decodeBtn')
+    const clearInputBtn = document.getElementById('clearInputBtn')
+    const copyOutputBtn = document.getElementById('copyOutputBtn')
+
+    function showStatus(message, type) {
+      statusMessage.textContent = message
+      statusMessage.className = `status-message ${type}`
+      setTimeout(() => {
+        statusMessage.textContent = ''
+        statusMessage.className = 'status-message'
+      }, 3000)
+    }
+
+    function encode() {
+      try {
+        const text = inputText.value
+        if (!text) {
+          showStatus('Please enter text to encode', 'error')
+          return
+        }
+        const encoded = btoa(unescape(encodeURIComponent(text)))
+        outputText.value = encoded
+        showStatus('Encoded successfully', 'success')
+      } catch (error) {
+        showStatus('Encoding failed', 'error')
+      }
+    }
+
+    function decode() {
+      try {
+        const text = inputText.value
+        if (!text) {
+          showStatus('Please enter Base64 to decode', 'error')
+          return
+        }
+        const decoded = decodeURIComponent(escape(atob(text)))
+        outputText.value = decoded
+        showStatus('Decoded successfully', 'success')
+      } catch (error) {
+        showStatus('Invalid Base64 or decoding failed', 'error')
+      }
+    }
+
+    function clearInput() {
+      inputText.value = ''
+      outputText.value = ''
+      statusMessage.textContent = ''
+      inputText.focus()
+    }
+
+    async function copyOutput() {
+      try {
+        if (!outputText.value) {
+          showStatus('Nothing to copy', 'error')
+          return
+        }
+        await navigator.clipboard.writeText(outputText.value)
+        showStatus('Copied to clipboard', 'success')
+      } catch (error) {
+        showStatus('Failed to copy', 'error')
+      }
+    }
+
+    if (encodeBtn) encodeBtn.addEventListener('click', encode)
+    if (decodeBtn) decodeBtn.addEventListener('click', decode)
+    if (clearInputBtn) clearInputBtn.addEventListener('click', clearInput)
+    if (copyOutputBtn) copyOutputBtn.addEventListener('click', copyOutput)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeBase64)
+  } else {
+    setTimeout(initializeBase64, 100)
+  }
+</script>
