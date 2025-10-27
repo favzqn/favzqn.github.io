@@ -19,7 +19,7 @@ title: 'Experience'
 ---
 
 Education & Certifications
-<br>**AWS Certified Developer – Associate** • **JLPT N5** (Japanese Language) • **B.Sc., Computer Science** — Widyatama University (After-work program, 2021-2024)
+<br>**AWS Certified Developer – Associate** • **JLPT N5** (Japanese Language) • **B.Sc., Computer Science** — Widyatama University
 
 Community Impact
 <br><span style="color: #10b981">**Mentored 180+ engineers**</span> (88% job placement) • <span style="color: #10b981">**26k+ LinkedIn followers**</span> • **AWS Community Builder**

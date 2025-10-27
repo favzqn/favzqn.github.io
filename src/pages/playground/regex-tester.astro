@@ -1,0 +1,482 @@
+---
+import ToolLayout from '@/layouts/ToolLayout.astro'
+---
+
+<ToolLayout title="Regex Tester" description="Test regex patterns with real-time matching and explanation">
+
+    <div class="shortcuts-info">
+      <p><strong>Tip:</strong> Patterns update in real-time as you type</p>
+    </div>
+
+    <div class="regex-container">
+      <div class="pattern-section">
+        <div class="section-header">
+          <h3>Pattern</h3>
+          <button id="clearPatternBtn" class="btn btn-secondary">Clear</button>
+        </div>
+        <div class="pattern-input-group">
+          <span class="regex-delimiter">/</span>
+          <input id="regexPattern" type="text" placeholder="Enter regex pattern..." class="regex-input" />
+          <span class="regex-delimiter">/</span>
+          <input id="regexFlags" type="text" placeholder="flags (g, i, m, s)" class="regex-flags" maxlength="4" />
+        </div>
+        <div id="patternError" class="error-message"></div>
+      </div>
+
+      <div class="test-section">
+        <div class="section-header">
+          <h3>Test String</h3>
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="loadExampleBtn" class="btn btn-secondary">Load Example</button>
+            <button id="clearTestBtn" class="btn btn-secondary">Clear</button>
+          </div>
+        </div>
+        <textarea id="testString" placeholder="Enter text to test against the pattern..." class="test-textarea"></textarea>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Results</h3>
+          <button id="copyResultsBtn" class="btn btn-secondary">Copy</button>
+        </div>
+        <div id="matchesContainer" class="matches-container">
+          <div id="noMatches" class="no-matches">No matches yet. Enter a pattern and test string.</div>
+          <div id="matchesList" class="matches-list"></div>
+        </div>
+        <div id="statusMessage" class="status-message"></div>
+      </div>
+
+      <div class="info-section">
+        <h4>Quick Reference</h4>
+        <div class="reference-grid">
+          <div class="ref-item">
+            <code>.</code> - Any character
+          </div>
+          <div class="ref-item">
+            <code>*</code> - 0 or more
+          </div>
+          <div class="ref-item">
+            <code>+</code> - 1 or more
+          </div>
+          <div class="ref-item">
+            <code>?</code> - 0 or 1
+          </div>
+          <div class="ref-item">
+            <code>[abc]</code> - Character set
+          </div>
+          <div class="ref-item">
+            <code>^</code> - Start of string
+          </div>
+          <div class="ref-item">
+            <code>$</code> - End of string
+          </div>
+          <div class="ref-item">
+            <code>\d</code> - Digit
+          </div>
+          <div class="ref-item">
+            <code>\w</code> - Word char
+          </div>
+          <div class="ref-item">
+            <code>\s</code> - Whitespace
+          </div>
+          <div class="ref-item">
+            <code>()</code> - Group
+          </div>
+          <div class="ref-item">
+            <code>|</code> - OR
+          </div>
+        </div>
+      </div>
+    </div>
+</ToolLayout>
+
+<style>
+  .shortcuts-info {
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .shortcuts-info p {
+    margin: 0;
+  }
+
+  .regex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .section-header h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .pattern-section,
+  .test-section,
+  .results-section,
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pattern-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-secondary);
+  }
+
+  .regex-delimiter {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .regex-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .regex-flags {
+    width: 80px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    text-align: center;
+  }
+
+  .error-message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    min-height: 1.5rem;
+    display: none;
+  }
+
+  .error-message.show {
+    display: block;
+  }
+
+  .test-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+  }
+
+  .test-textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  .matches-container {
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 1rem;
+    min-height: 150px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .no-matches {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .match-item {
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 3px solid rgb(59, 130, 246);
+    border-radius: 0.25rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .match-index {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .match-value {
+    color: var(--text-primary);
+    word-break: break-all;
+  }
+
+  .match-groups {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(59, 130, 246, 0.3);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .status-message {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    min-height: 1.5rem;
+  }
+
+  .status-message.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: rgb(34, 197, 94);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .status-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .info-section {
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid rgba(100, 116, 139, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .info-section h4 {
+    margin-top: 0;
+  }
+
+  .reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .ref-item {
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .ref-item code {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-secondary {
+    border-color: var(--border-color);
+  }
+</style>
+
+<script is:inline>
+  function initializeRegexTester() {
+    const regexPattern = document.getElementById('regexPattern')
+    const regexFlags = document.getElementById('regexFlags')
+    const testString = document.getElementById('testString')
+    const matchesContainer = document.getElementById('matchesContainer')
+    const noMatches = document.getElementById('noMatches')
+    const matchesList = document.getElementById('matchesList')
+    const patternError = document.getElementById('patternError')
+    const statusMessage = document.getElementById('statusMessage')
+    const clearPatternBtn = document.getElementById('clearPatternBtn')
+    const clearTestBtn = document.getElementById('clearTestBtn')
+    const copyResultsBtn = document.getElementById('copyResultsBtn')
+    const loadExampleBtn = document.getElementById('loadExampleBtn')
+
+    const exampleText = `Contact us at support@example.com or sales@company.org
+Phone: +1-555-123-4567 or +1 (555) 987-6543
+Visit our website: https://www.example.com
+Email me at john.doe@email.co.uk
+Price: $99.99 or €85.50
+Date: 2024-10-27 or 10/27/2024
+Time: 14:30:45 or 2:30 PM
+Username: user_123, admin-456, test.user
+Hashtags: #javascript #regex #testing #webdev
+IPv4: 192.168.1.1 and 10.0.0.1
+Hex colors: #FF5733 #00FF00 #0000FF`
+
+    function showStatus(message, type) {
+      statusMessage.textContent = message
+      statusMessage.className = `status-message ${type}`
+      setTimeout(() => {
+        statusMessage.textContent = ''
+        statusMessage.className = 'status-message'
+      }, 3000)
+    }
+
+    function testRegex() {
+      const pattern = regexPattern.value.trim()
+      const flags = regexFlags.value.trim()
+      const text = testString.value
+
+      if (!pattern) {
+        patternError.textContent = ''
+        patternError.classList.remove('show')
+        matchesList.innerHTML = ''
+        noMatches.style.display = 'block'
+        return
+      }
+
+      try {
+        const regex = new RegExp(pattern, flags)
+        const matches = [...text.matchAll(regex)]
+
+        patternError.textContent = ''
+        patternError.classList.remove('show')
+
+        if (matches.length === 0) {
+          matchesList.innerHTML = ''
+          noMatches.style.display = 'block'
+          showStatus(`No matches found`, 'error')
+          return
+        }
+
+        noMatches.style.display = 'none'
+        matchesList.innerHTML = matches
+          .map((match, index) => {
+            const groups = match.slice(1).filter(g => g !== undefined)
+            const groupsHtml = groups.length > 0
+              ? `<div class="match-groups">Groups: ${groups.map((g, i) => `$${i + 1}: "${g}"`).join(', ')}</div>`
+              : ''
+
+            return `
+              <div class="match-item">
+                <div class="match-index">Match #${index + 1} at index ${match.index}</div>
+                <div class="match-value">"${match[0]}"</div>
+                ${groupsHtml}
+              </div>
+            `
+          })
+          .join('')
+
+        showStatus(`Found ${matches.length} match${matches.length !== 1 ? 'es' : ''}`, 'success')
+      } catch (error) {
+        patternError.textContent = `Invalid regex: ${error instanceof Error ? error.message : 'Unknown error'}`
+        patternError.classList.add('show')
+        matchesList.innerHTML = ''
+        noMatches.style.display = 'block'
+      }
+    }
+
+    function clearPattern() {
+      regexPattern.value = ''
+      regexFlags.value = ''
+      patternError.textContent = ''
+      patternError.classList.remove('show')
+      matchesList.innerHTML = ''
+      noMatches.style.display = 'block'
+      regexPattern.focus()
+    }
+
+    function clearTest() {
+      testString.value = ''
+      testRegex()
+    }
+
+    async function copyResults() {
+      if (matchesList.innerHTML === '') {
+        showStatus('No results to copy', 'error')
+        return
+      }
+
+      const matches = [...document.querySelectorAll('.match-value')]
+      const text = matches.map(m => m.textContent.slice(1, -1)).join('\n')
+
+      try {
+        await navigator.clipboard.writeText(text)
+        showStatus('Results copied to clipboard', 'success')
+      } catch (error) {
+        showStatus('Failed to copy', 'error')
+      }
+    }
+
+    function loadExample() {
+      testString.value = exampleText
+      regexPattern.value = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'
+      regexFlags.value = 'g'
+      testRegex()
+      showStatus('Example loaded - testing email pattern', 'success')
+    }
+
+    regexPattern?.addEventListener('input', testRegex)
+    regexFlags?.addEventListener('input', testRegex)
+    testString?.addEventListener('input', testRegex)
+    clearPatternBtn?.addEventListener('click', clearPattern)
+    clearTestBtn?.addEventListener('click', clearTest)
+    copyResultsBtn?.addEventListener('click', copyResults)
+    loadExampleBtn?.addEventListener('click', loadExample)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeRegexTester)
+  } else {
+    initializeRegexTester()
+  }
+</script>
