@@ -2,23 +2,18 @@
   <slot />
 </div>
 
-<script>
+<script is:inline>
   function updateMask() {
-    const mask = document.querySelector('.gradient-mask') as HTMLElement
+    const mask = document.querySelector('.gradient-mask')
+    if (!mask) return
     const threshold = 64
     const scrollY = window.scrollY
-
-    if (scrollY >= threshold) {
-      mask.style.opacity = '1'
-    } else {
-      mask.style.opacity = '0'
-    }
+    mask.style.opacity = scrollY >= threshold ? '1' : '0'
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    updateMask()
-    window.addEventListener('scroll', updateMask)
-  })
+  // Run immediately without waiting for DOMContentLoaded
+  updateMask()
+  window.addEventListener('scroll', updateMask, { passive: true })
 </script>
 
 <style>
