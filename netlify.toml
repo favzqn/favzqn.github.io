@@ -20,6 +20,10 @@
 [build.processing.html]
   pretty_urls = true
 
+# Image optimization
+[build.processing.images]
+  compress = true
+
 # Global headers
 [[headers]]
   for = "/*"
@@ -29,6 +33,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), fullscreen=(self)"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' data: https:; frame-src https: player.bilibili.com; connect-src 'self' https:; object-src 'none'; worker-src 'self' blob:; child-src 'self' blob: player.bilibili.com;"
+    Link = "</fonts/Inter.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, </fonts/Besley-Italic.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
 
 # HTML pages
 [[headers]]
