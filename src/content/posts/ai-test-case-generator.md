@@ -1,6 +1,6 @@
 ---
 title: 'The Test Case Problem: How AI Turned Hours into Minutes'
-pubDate: '2025-11-03'
+pubDate: '2025-11-01'
 ---
 
 ![Jira AI Automation](./_assets/tc-gen-jira.png)
