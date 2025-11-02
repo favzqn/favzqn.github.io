@@ -1,6 +1,6 @@
 ---
 title: "Breaking Down Silos: The Day My Tickets Started Speaking Everyone's Language"
-pubDate: '2025-02-25'
+pubDate: '2025-11-01'
 ---
 
 ![Ai Role-Based Insights](./_assets/ai-insights.png)

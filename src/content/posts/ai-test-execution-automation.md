@@ -1,6 +1,6 @@
 ---
 title: 'From Hours to Seconds: Automating Test Execution Tickets'
-pubDate: '2025-03-01'
+pubDate: '2025-11-02'
 ---
 
 ![Test Execution Automation](./_assets/tx-gen.png)
