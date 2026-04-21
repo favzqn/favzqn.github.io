@@ -1,6 +1,9 @@
 ---
 title: 'How a Donkey Konga Drum Taught Me to Never Underestimate Nostalgia'
 pubDate: '2025-05-15'
+description: 'A GameCube drum controller sold for 8x its price taught me that niche nostalgia markets are real, and that selling emotion is more powerful than selling products.'
+tags: ['business', 'ecommerce', 'nostalgia', 'kokuhaku-hobby']
+category: 'personal'
 ---
 
 ![Donkey Konga Drum](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*9i61N8lHdX5OG_Pf.jpg)

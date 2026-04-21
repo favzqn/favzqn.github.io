@@ -1,6 +1,9 @@
 ---
 title: "Muslim Produktif — Bagian 1"
 pubDate: '2022-10-23'
+description: 'Mendefinisikan produktivitas dari sudut pandang Islam: Produktivitas = Fokus × Energi × Waktu. Membedakan sibuk vs produktif dan nilai-nilai amanah, shiddiq, dan ihsan.'
+tags: ['productivity', 'islam', 'personal-development']
+category: 'personal'
 ---
 
 > إِنَّ اللَّهَ عَزَّ وَجَلَّ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلًا أَنْ يُتْقِنَهُ

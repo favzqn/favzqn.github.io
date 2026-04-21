@@ -1,6 +1,9 @@
 ---
 title: 'From Hours to Seconds: Automating Test Execution Tickets'
 pubDate: '2025-11-02'
+description: 'How I built a GitHub Action that automatically creates and links Jira test execution tickets, cutting manual QA planning time by 90%.'
+tags: ['automation', 'qa', 'jira', 'github-actions', 'python']
+category: 'automation'
 ---
 
 ![Test Execution Automation](./_assets/tx-gen.png)

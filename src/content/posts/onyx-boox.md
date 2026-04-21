@@ -1,6 +1,9 @@
 ---
 title: 'Onyx Boox Nova 3 Review: A Great E-Reader for Book Lovers'
 pubDate: '2024-01-20'
+description: 'An honest review of the Onyx Boox Nova 3 after daily use. Why I chose it over Kindle, how it handles Android apps, manga, and note-taking, and who should buy it.'
+tags: ['review', 'ereader', 'books', 'gadget']
+category: 'reviews'
 ---
 
 # Why buy an e-reader?
