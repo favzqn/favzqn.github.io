@@ -3,10 +3,10 @@ title: 'Music'
 ---
 When I need deep concentration, these are on repeat:
 
-::spotify{url="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg"}
-
-**Kendrick Lamar**  
+**Kendrick Lamar**
 DAMN., good kid m.A.A.d city, To Pimp a Butterfly. His storytelling and wordplay are unmatched.
+
+::spotify{url="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg"}
 
 ::spotify{url="https://open.spotify.com/playlist/37i9dQZF1DX8Uebhn9wzrS"}
 

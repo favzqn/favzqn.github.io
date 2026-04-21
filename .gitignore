@@ -27,3 +27,12 @@ pnpm-debug.log*
 # Netlify build output
 .netlify/
 
+# Planning and agent docs (not for public repo)
+IMPROVEMENTS.md
+IMPROVEMENTS-PART2.md
+CONTENT-IMPROVEMENTS.md
+CONTENT-STRATEGY.md
+
+# Stray lock files
+deno.lock
+

@@ -1,0 +1,13 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin/private areas (if any)
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap location
+Sitemap: https://feyzan.netlify.app/sitemap-index.xml
+
+# Crawl delay (optional, helps with server load)
+Crawl-delay: 1

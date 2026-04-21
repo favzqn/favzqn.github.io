@@ -1,6 +1,9 @@
 ---
 title: "Breaking Down Silos: The Day My Tickets Started Speaking Everyone's Language"
+description: 'AI-powered role-based insights for Jira tickets. Reduced context-gathering time by 60% by automatically generating perspectives for QA, PMs, and developers.'
 pubDate: '2025-11-01'
+tags: ['ai', 'automation', 'jira', 'aws-bedrock', 'collaboration']
+category: 'ai'
 ---
 
 ![Ai Role-Based Insights](./_assets/ai-insights.png)

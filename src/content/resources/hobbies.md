@@ -2,22 +2,22 @@
 title: 'Hobbies'
 ---
 
-### 🏋️ Fitness & Health
+### Fitness & Health
 
-**Strength Training** • 3x/week  
+**Strength Training** • 3x/week
 Push/Pull/Legs split with compounds: squat, bench, deadlift, overhead press.
 
-**Daily Walking**  
+**Daily Walking**
 Essential part of my routine. Clears my head, helps me think through problems, and keeps me sane.
 
-**Why**  
+**Why**
 Strong body → clear mind. Hard to write good code if you feel awful.
 
 ---
 
-### ✈️ Travel
+### Travel
 
-**Current Location:** Bandung, Indonesia 🇮🇩
+**Current Location:** Bandung, Indonesia
 
 **Dream Destinations:**
 - Japan (been there, want to revisit for deeper cultural immersion and language practice)
@@ -28,54 +28,59 @@ Strong body → clear mind. Hard to write good code if you feel awful.
 
 ---
 
-### 🇯🇵 Language Learning
+### Language Learning
 
-**Japanese**  
+**Japanese**
 JLPT N5 certified; working towards N4. Daily Anki reps, basic grammar drills, and anime without subtitles (increasingly comprehensible!).
 
-**Why Japanese?**  
+**Why Japanese?**
 Love the culture and it's a fun challenge. It also sharpens pattern recognition—handy for debugging.
 
 ---
 
-### 🎬 Movies & Entertainment
+### Movies & Entertainment
 
-**Anime & Films**  
-Japanese anime, sci-fi, and indie films. 
+**Film**
+Hitchcock is a masterclass — Rear Window is a 10/10. Sci-fi and psychological thrillers are my go-to. Classic Hollywood films hold up better than most modern blockbusters.
+
+**Anime**
+Currently watching and rewatching: Attack on Titan, Vinland Saga, Steins;Gate. Prefer story-driven series over action-for-action's-sake. Monogatari series for when I want something strange and beautiful.
 
 ---
 
-### 📚 Books
+### Books
 
-**Non-Fiction:** Business, psychology, and tech books  
+**Non-Fiction:** Business, psychology, and tech books
 **Fiction:** Sci-fi and mystery novels
 
+See the full [Books](/resources/books) list.
+
 ---
 
-### 🎲 Board Games
+### Board Games
 
-**Strategy Games:** Here to Slay, 
+**Strategy Games:** Here to Slay
 **Party Games:** Exploding Kittens
 
 ---
 
-### 💼 Business & Entrepreneurship
+### Business & Entrepreneurship
 
-**Side Projects**  
+**Side Projects**
 Building and experimenting with small products and automation tools.
 
-**Learning**  
+**Learning**
 Reading about startups, product-market fit, and business strategy.
 
 ---
 
-### ✍️ Writing
+### Writing
 
-**Technical Blog Posts**  
+**Technical Blog Posts**
 Sharing lessons learned and practical guides from real projects.
 
-**LinkedIn Content**  
+**LinkedIn Content**
 26k+ followers. Writing about engineering, career growth, and building products.
 
-**Why I Write**  
+**Why I Write**
 Teaching is the best way to learn. If I can't explain it simply, I don't understand it well enough.
