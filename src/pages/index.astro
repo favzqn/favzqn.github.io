@@ -1,11 +1,54 @@
 ---
 import IndexLayout from '@/layouts/IndexLayout.astro'
 import About from '@/components/widgets/About.astro'
-import NewsletterSignup from '@/components/widgets/NewsletterSignup.astro'
+import PostList from '@/components/widgets/PostList.astro'
 import { themeConfig } from '@/config'
+import { getSortedFilteredPosts } from '@/utils/draft'
+
+const recentPosts = (await getSortedFilteredPosts()).slice(0, 5)
 ---
 
 <IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
   <About />
-  <NewsletterSignup />
+  {recentPosts.length > 0 && (
+    <div class="recent-posts">
+      <div class="recent-header">
+        <span class="recent-label">Recent Posts</span>
+        <a href="/blog/" class="view-all">View all →</a>
+      </div>
+      <PostList posts={recentPosts} />
+    </div>
+  )}
 </IndexLayout>
+
+<style>
+  .recent-posts {
+    margin-top: 2rem;
+  }
+
+  .recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+
+  .recent-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .view-all {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .view-all:hover {
+    color: var(--text-primary);
+  }
+</style>
