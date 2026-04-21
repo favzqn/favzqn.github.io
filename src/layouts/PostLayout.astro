@@ -16,6 +16,7 @@ import NeoDBCard from '@/components/ui/NeoDBCard.astro'
 import XPOST from '@/components/ui/XPOST.astro'
 import CopyCode from '@/components/ui/CopyCode.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import StructuredData from '@/components/seo/StructuredData.astro'
 
 import { themeConfig } from '@/config'
 
@@ -36,13 +37,22 @@ const ogImage = `/open-graph/${postSlug}.png`
     ogImage={ogImage}
     slot="head"
   />
+  <StructuredData 
+    type="article" 
+    title={title}
+    description={themeConfig.site.description}
+    image={ogImage}
+    datePublished={pubDate}
+    dateModified={pubDate}
+    slot="head"
+  />
   <div class="post-container">
     <main>
       <div class="prose">
         <GradientMask />
         <BackButton />
         {themeConfig.post.toc && <TableOfContents toc={toc} />}
-        <div class="title">
+        <div class="title" data-pagefind-meta="title">
           <h1>{title}</h1>
           <div class="date">
             <FormattedDate date={pubDate} context="post" />
@@ -56,7 +66,9 @@ const ogImage = `/open-graph/${postSlug}.png`
             }
           </div>
         </div>
-        <slot />
+        <div data-pagefind-body>
+          <slot />
+        </div>
       </div>
     </main>
     <ImageOptimizer />

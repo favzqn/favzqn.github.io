@@ -31,6 +31,12 @@ Putri Dewi Purnamasari • Software Engineer at Wortal.ai, Japan
 "I was always amazed by his <mark>ideas to make an impact on a better world</mark>. Fauzan also helped me a lot and encourage me in order to chase my dream in the IT field. He's such a sweetheart to all his friends, and <mark>really professional at work</mark>."
 
 ---
+### "His reliability helped carry us over the finish line"
+John Muskus • FantasyShowdown.com, United States
+*Former Client*
+"Fauzan was great to work with. He jumped in at a <mark>pivotal moment for our online game</mark> and got up to speed immediately. His output was <mark>consistently high-quality</mark>, and his reliability helped carry us over the finish line. I'd gladly recommend him for future development work."
+
+---
 ### "A versatile learner who masters everything he touches"
 Mugia Nurul Matin • Tech Lead at PT. KB Finansia Multi Finance, Indonesia
 *Former Colleague*

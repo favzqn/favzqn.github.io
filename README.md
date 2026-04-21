@@ -1,64 +1,100 @@
-# Chiri 🌸
+# Fauzan Fathurrahman's Personal Site
 
-![screenshot-light](public/screenshots/screenshot-light.png)
-![screenshot-dark](public/screenshots/screenshot-dark.png)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/feyzan/deploys)
 
-Chiri is a minimal blog theme built with [Astro](https://astro.build), offering customization options while preserving its clean aesthetic.
+Personal website and blog of Fauzan Fathurrahman - Full-stack engineer, technical leader, and builder of scalable products.
 
-Check the [demo](https://astro-chiri.netlify.app/) for more details.
+🌐 **Live Site**: [https://feyzan.netlify.app/](https://feyzan.netlify.app/)
+
+## About
+
+This site showcases my work in software engineering, test automation, and technical leadership. It includes:
+
+- **Blog**: Technical articles on AWS, automation, AI, and engineering practices
+- **Experience**: Professional journey and impact metrics
+- **Projects**: Open-source contributions and side projects
+- **Playground**: Interactive developer tools (JSON formatter, regex tester, etc.)
+- **Resources**: Curated lists of books, podcasts, and learning materials
+
+## Tech Stack
+
+- **Framework**: [Astro 5](https://astro.build) with TypeScript
+- **Styling**: Custom CSS with CSS variables for theming
+- **Content**: MDX with KaTeX for math, custom remark/rehype plugins
+- **Deployment**: Netlify with optimized caching and compression
+- **CI/CD**: GitHub Actions with automated testing and Dependabot
 
 ## Features
 
-- [x] Build with Astro
-- [x] Responsive
-- [x] Light / Dark mode
-- [x] MDX
-- [x] KaTeX
-- [x] Sitemap
-- [x] OpenGraph
-- [x] RSS
-- [ ] Pagination
+- ⚡ Optimized for performance (FCP < 1s on mobile)
+- 🌓 Light/Dark mode with no flash
+- 📱 Fully responsive design
+- 🔍 SEO optimized with sitemap, RSS/Atom feeds, OpenGraph
+- 🎨 Syntax highlighting with copy-to-clipboard
+- 📊 Reading time estimates and table of contents
+- 🖼️ Automatic image optimization (WebP, quality 80)
+- 🔗 Link cards with metadata fetching
+- 🧮 KaTeX for mathematical expressions
 
-## Getting Started
+## Development
 
-1. [Fork](https://github.com/the3ash/astro-chiri/fork) this repository, or use this template to [create a new repository](https://github.com/new?template_name=astro-chiri&template_owner=the3ash).
+```bash
+# Install dependencies
+pnpm install
 
-2. Run the following commands:
+# Start dev server
+pnpm dev
 
-   ```bash
-   git clone <your-repo-url>
+# Create new blog post
+pnpm new "Post Title"
 
-   cd <your-repo-name>
+# Create draft (prefix with underscore)
+pnpm new "_Draft Title"
 
-   pnpm install
+# Lint code
+pnpm lint
 
-   pnpm dev
-   ```
+# Format code
+pnpm format
 
-3. Edit `src/config.ts` and `src/content/about/about.md` to your liking.
+# Build for production
+pnpm build
 
-4. Use `pnpm new <title>` to create new posts, or add your posts to `src/content/posts`.
+# Preview production build
+pnpm preview
+```
 
-5. You need to set adapter as follows before deploying to Netlify, Vercel, or other platforms, but you can set `linkCard` to `false` in `src/config.ts` to skip this step:
-   - **Netlify**: `pnpm add @astrojs/netlify` and add `adapter: netlify()` in `astro.config.ts`.
-   - **Vercel**: `pnpm add @astrojs/vercel` and add `adapter: vercel()` in `astro.config.ts`.
-   - **Cloudflare Pages**: `pnpm add @astrojs/cloudflare` and add `adapter: cloudflare()` in `astro.config.ts`.
-   - **Static (e.g. GitHub Pages)**: `pnpm add @astrojs/static` and add `adapter: static()` in `astro.config.ts`.
-   - Refer to [Astro Deployment Guides](https://docs.astro.build/en/guides/deploy/) for more details.
+## Project Structure
 
-&emsp;[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start) [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new) [![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://pages.cloudflare.com/start)
+```
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── content/        # Blog posts, projects, experience
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Route pages
+│   ├── plugins/        # Custom remark/rehype plugins
+│   ├── styles/         # Global styles
+│   ├── types/          # TypeScript types
+│   └── utils/          # Utility functions
+├── public/             # Static assets
+└── scripts/            # Build and utility scripts
+```
 
-## Commands
+## Content Management
 
-- `pnpm new <title>` - Create a new post (use `_title` for drafts)
-- `pnpm update-theme` - Update the theme to the latest version
+- Blog posts: `src/content/posts/`
+- Drafts: Prefix filename with `_` (e.g., `_draft-post.md`)
+- Images: Store in `src/content/posts/_assets/`
+- Configuration: `src/config.ts`
 
-## References
+## Performance Optimizations
 
-- https://paco.me/
-- https://benji.org/
-- https://shud.in/
-- https://retypeset.radishzz.cc/
+- CSS inlining disabled for faster mobile load
+- Fade animations disabled for instant navigation
+- Image quality optimized (80 vs 85)
+- HTTP/2 font preloading
+- Aggressive caching headers
+- Brotli compression enabled
 
 ## License
 

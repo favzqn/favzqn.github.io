@@ -3,8 +3,10 @@
 // all pages through the use of the <BaseHead /> component.
 import { themeConfig } from '@/config'
 import type { BaseHeadProps } from '@/types/component.types'
+import StructuredData from '@/components/seo/StructuredData.astro'
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const plausibleDomain = new URL(themeConfig.site.website).hostname
 
 const { title, description, ogImage } = Astro.props as BaseHeadProps
 const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.png', Astro.url)
@@ -13,6 +15,9 @@ const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.p
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="author" content={themeConfig.site.author} />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="preload" href="/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -24,15 +29,23 @@ const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.p
   crossorigin="anonymous"
 />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="author" href="/humans.txt" />
 <link
   rel="alternate"
   type="application/rss+xml"
   title={themeConfig.site.title}
   href={new URL('rss.xml', Astro.site)}
 />
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  title={themeConfig.site.title}
+  href={new URL('atom.xml', Astro.site)}
+/>
 <meta name="generator" content={Astro.generator} />
 <!-- DNS prefetch for external resources -->
 <link rel="dns-prefetch" href="https://player.bilibili.com" />
+<link rel="dns-prefetch" href="https://plausible.io" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -57,3 +70,10 @@ const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.p
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageUrl} />
+
+<!-- Analytics - Plausible (privacy-friendly, GDPR compliant) -->
+<script is:inline defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+
+<!-- Structured Data for SEO -->
+<StructuredData type="website" />
+<StructuredData type="breadcrumb" />

@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Fauzan Fathurrahman
+Site: https://feyzan.netlify.app
+LinkedIn: https://www.linkedin.com/in/fauzan-fathurrahman/
+GitHub: https://github.com/favzqn
+Location: Indonesia
+
+/* SITE */
+Last update: 2026/01/06
+Standards: HTML5, CSS3, TypeScript
+Components: Astro, MDX, Tailwind CSS
+Software: VS Code, Git

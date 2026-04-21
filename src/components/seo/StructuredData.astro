@@ -1,0 +1,104 @@
+---
+import { themeConfig } from '@/config'
+
+interface Props {
+  type: 'website' | 'article' | 'person' | 'breadcrumb'
+  title?: string
+  description?: string
+  image?: string
+  datePublished?: Date
+  dateModified?: Date
+  author?: string
+}
+
+const { type, title, description, image, datePublished, dateModified, author } = Astro.props
+
+const siteUrl = Astro.site?.toString() || themeConfig.site.website
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString()
+const imageUrl = image ? new URL(image, siteUrl).toString() : new URL('/og/chiri-og.png', siteUrl).toString()
+
+let structuredData: any = {}
+
+if (type === 'website') {
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: themeConfig.site.title,
+    description: themeConfig.site.description,
+    url: siteUrl,
+    author: {
+      '@type': 'Person',
+      name: themeConfig.site.author,
+      url: siteUrl
+    }
+  }
+} else if (type === 'article') {
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    image: imageUrl,
+    datePublished: datePublished?.toISOString(),
+    dateModified: dateModified?.toISOString() || datePublished?.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: author || themeConfig.site.author,
+      url: siteUrl
+    },
+    publisher: {
+      '@type': 'Person',
+      name: themeConfig.site.author,
+      url: siteUrl
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': currentUrl
+    }
+  }
+} else if (type === 'person') {
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: themeConfig.site.author,
+    url: siteUrl,
+    image: imageUrl,
+    description: themeConfig.site.description,
+    jobTitle: 'Full-stack Engineer & Technical Leader',
+    knowsAbout: ['Software Engineering', 'Test Automation', 'AWS', 'Technical Leadership', 'Mentorship'],
+    sameAs: [
+      'https://www.linkedin.com/in/fauzan-fathurrahman/',
+      'https://github.com/favzqn'
+    ]
+  }
+} else if (type === 'breadcrumb') {
+  const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
+  const breadcrumbList = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteUrl
+    }
+  ]
+  
+  let currentPath = siteUrl
+  pathSegments.forEach((segment, index) => {
+    currentPath += `/${segment}`
+    breadcrumbList.push({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+      item: currentPath
+    })
+  })
+  
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbList
+  }
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

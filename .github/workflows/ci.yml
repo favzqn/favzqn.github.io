@@ -7,7 +7,6 @@ on:
     branches: [main, master]
   check_suite:
     types: [completed]
-  status: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -35,7 +34,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'latest'
+          node-version: '20.x'
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -62,8 +61,19 @@ jobs:
       - name: Run linting
         run: pnpm lint
 
+      - name: Run unit tests
+        run: pnpm test
+        continue-on-error: false
+
       - name: Build project
         run: pnpm build
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: pnpm test:e2e
+        continue-on-error: false
 
   auto-merge:
     name: Auto Merge
