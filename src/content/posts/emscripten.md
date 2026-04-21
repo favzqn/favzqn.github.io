@@ -1,6 +1,9 @@
 ---
 title: 'Easy Guide to WebAssembly & Emscripten'
 pubDate: '2024-03-17'
+description: 'A practical introduction to WebAssembly and Emscripten. Learn how to compile C/C++ code to run in the browser at near-native speed with step-by-step examples.'
+tags: ['webassembly', 'emscripten', 'c++', 'web', 'performance']
+category: 'engineering'
 ---
 
 <mark>WebAssembly (Wasm)</mark> has emerged as a powerful tool for bringing high-performance, low-level code to the web. With its ability to <mark>run at near-native speed</mark> in web browsers, WebAssembly opens up exciting possibilities for web development. In this tutorial, we’ll explore how to leverage <mark>Emscripten</mark>, a popular toolchain for compiling C/C++ code to WebAssembly.

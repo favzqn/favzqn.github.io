@@ -1,6 +1,9 @@
 ---
 title: 'Building a NAS and AI Assistant from a Used Set-Top Box'
 pubDate: '2025-08-16'
+description: 'How I turned a cheap Android TV set-top box into a self-hosted NAS, media server, and AI automation hub running n8n, CasaOS, Plex, and Jellyfin.'
+tags: ['homelab', 'self-hosting', 'linux', 'docker', 'n8n']
+category: 'engineering'
 ---
 
 Sometimes small experiments lead to big results. From an inexpensive device, a mini server was born that now works <mark>24/7</mark> at home.

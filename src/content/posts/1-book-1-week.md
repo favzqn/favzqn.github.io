@@ -1,6 +1,9 @@
 ---
 title: "How to Read 1 Book in 1 Week"
 pubDate: '2024-01-20'
+description: 'Three practical strategies to read one book per week: implementation intention, chunking, and accountability. Build reading as a keystone habit.'
+tags: ['reading', 'productivity', 'habits', 'self-improvement']
+category: 'personal'
 ---
 
 ![](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*6ivejSKidFUiB8Ee)

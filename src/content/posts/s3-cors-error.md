@@ -1,6 +1,9 @@
 ---
 title: 'Handling Amazon S3 CORS Errors: A Simple Guide'
 pubDate: '2024-03-03'
+description: 'How to diagnose and fix Amazon S3 CORS errors. Includes a working CORS configuration with AllowedOrigins, AllowedMethods, and AllowedHeaders explained.'
+tags: ['aws', 's3', 'cors', 'web']
+category: 'engineering'
 ---
 
 ![S3 CORS Error](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bWfUIwXAwTPSMRwCYCE1vg.png)
