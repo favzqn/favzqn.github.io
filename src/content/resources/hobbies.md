@@ -48,22 +48,6 @@ Currently watching and rewatching: Attack on Titan, Vinland Saga, Steins;Gate. P
 
 ---
 
-### Books
-
-**Non-Fiction:** Business, psychology, and tech books
-**Fiction:** Sci-fi and mystery novels
-
-See the full [Books](/resources/books) list.
-
----
-
-### Board Games
-
-**Strategy Games:** Here to Slay
-**Party Games:** Exploding Kittens
-
----
-
 ### Business & Entrepreneurship
 
 **Side Projects**

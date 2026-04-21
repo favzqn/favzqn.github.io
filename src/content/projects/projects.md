@@ -97,12 +97,12 @@ Custom integration sending automated test results from TestRail to Slack channel
 ---
 
 ### Kokuhaku Hobby
-**Tech Stack:** E-commerce ops, Inventory mgmt, Customer support  
-**Impact:** Placeholder — metrics coming soon  
-**Status:** Active  
-**Links:** [Tokopedia](#) [Shopee](#)
+**Tech Stack:** E-commerce ops, Inventory mgmt, Customer support
+**Impact:** 5.0 rating across platforms · 430+ reviews · 2,200+ Shopee followers
+**Status:** Active
+**Links:** [Tokopedia](https://www.tokopedia.com/kokuhakuhobby) · [Shopee](https://shopee.co.id/kokuhakuhobbystore)
 
-Independent hobby shop selling collectibles, action figures, books, and games. More details and store links coming soon.
+Independent hobby shop selling collectibles, action figures, books, and games. Maintained 5.0 ratings on both Tokopedia (299 reviews) and Shopee (131 ratings) with 98% chat response rate.
 
 ---
 
