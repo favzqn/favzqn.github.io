@@ -12,6 +12,7 @@ export interface PostLayoutProps {
   image?: string
   readingTime?: ReadingTime
   toc?: TOCItem[]
+  lang?: string
 }
 
 // Transition props interface
@@ -24,6 +25,7 @@ export interface TransitionProps {
 export interface LayoutProps extends TransitionProps {
   title?: string
   description?: string
+  lang?: string
 }
 
 // BaseHead component props interface
