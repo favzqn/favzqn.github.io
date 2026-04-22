@@ -8,8 +8,8 @@ import type { LayoutProps } from '@/types'
 
 type Props = LayoutProps
 
-const { type = 'page' } = Astro.props
-const language = themeConfig.site.language || 'en-US'
+const { type = 'page', lang } = Astro.props
+const language = lang || themeConfig.site.language || 'en-US'
 const contentWidth = themeConfig.general.contentWidth
 const fadeAnimation = themeConfig.general.fadeAnimation
 const widthValue = Math.min(parseFloat(contentWidth), 50)

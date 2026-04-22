@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, dev]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, dev]
   check_suite:
     types: [completed]
 
@@ -40,22 +40,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Check formatting (if prettier is available)
-        run: |
-          if [ -f "pnpm-lock.yaml" ] && pnpm list prettier &>/dev/null; then
-            pnpm exec prettier --check .
-          else
-            echo "Prettier not configured, skipping format check"
-          fi
-        continue-on-error: true
-
-      - name: Run ESLint (if available)
-        run: |
-          if [ -f "pnpm-lock.yaml" ] && pnpm list eslint &>/dev/null; then
-            pnpm exec eslint .
-          else
-            echo "ESLint not configured, skipping lint check"
-          fi
+      - name: Check formatting
+        run: pnpm format:check
         continue-on-error: true
 
       - name: Run linting
