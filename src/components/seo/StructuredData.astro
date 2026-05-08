@@ -2,7 +2,7 @@
 import { themeConfig } from '@/config'
 
 interface Props {
-  type: 'website' | 'article' | 'person' | 'breadcrumb'
+  type: 'website' | 'article' | 'breadcrumb'
   title?: string
   description?: string
   image?: string
@@ -55,21 +55,6 @@ if (type === 'website') {
       '@type': 'WebPage',
       '@id': currentUrl
     }
-  }
-} else if (type === 'person') {
-  structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: themeConfig.site.author,
-    url: siteUrl,
-    image: imageUrl,
-    description: themeConfig.site.description,
-    jobTitle: 'Full-stack Engineer & Technical Leader',
-    knowsAbout: ['Software Engineering', 'Test Automation', 'AWS', 'Technical Leadership', 'Mentorship'],
-    sameAs: [
-      'https://www.linkedin.com/in/fauzan-fathurrahman/',
-      'https://github.com/favzqn'
-    ]
   }
 } else if (type === 'breadcrumb') {
   const pathSegments = Astro.url.pathname.split('/').filter(Boolean)

@@ -1,5 +1,5 @@
 ---
-title: "Tentang AWS Elastic Beanstalk"
+title: "Tentang AWS Elastic Beanstalk (Indonesian)"
 pubDate: '2022-07-17'
 description: 'Pengenalan AWS Elastic Beanstalk: cara deploy aplikasi web tanpa mengelola infrastruktur secara manual. Mencakup environment tiers, strategi deployment, dan konfigurasi.'
 tags: ['aws', 'elastic-beanstalk', 'deployment', 'devops']

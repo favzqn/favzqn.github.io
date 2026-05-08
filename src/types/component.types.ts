@@ -35,21 +35,6 @@ export interface BaseHeadProps {
   ogImage?: string
 }
 
-// ImageOptimizer component props interface
-export interface ImageOptimizerProps {
-  src: string | ImageMetadata
-  alt: string
-  width?: number
-  height?: number
-  quality?: number
-  format?: 'avif' | 'webp' | 'jpeg' | 'png'
-  loading?: 'lazy' | 'eager'
-  decoding?: 'async' | 'sync' | 'auto'
-  class?: string
-  caption?: string
-  priority?: boolean
-}
-
 // FormattedDate component props interface
 export interface FormattedDateProps {
   date: Date

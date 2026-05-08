@@ -1,5 +1,5 @@
 ---
-title: "Transform Data dengan Amazon S3 Object Lambda"
+title: "Transform Data dengan Amazon S3 Object Lambda (Indonesian)"
 pubDate: '2022-10-02'
 description: 'Cara menggunakan S3 Object Lambda untuk transformasi data on-the-fly tanpa menyimpan duplikat. Contoh konversi CSV ke JSON menggunakan Lambda function.'
 tags: ['aws', 's3', 'lambda', 'serverless']

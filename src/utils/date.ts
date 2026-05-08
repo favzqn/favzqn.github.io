@@ -1,5 +1,4 @@
 import { themeConfig } from '@/config'
-import type { DateFormat } from '@/types'
 
 const MONTHS_EN = [
   'Jan',
@@ -56,11 +55,3 @@ export function formatDate(date: Date, format?: string): string {
       return `${year}${separator}${pad(month)}${separator}${pad(day)}`
   }
 }
-
-export const SUPPORTED_DATE_FORMATS: readonly DateFormat[] = [
-  'YYYY-MM-DD',
-  'MM-DD-YYYY',
-  'DD-MM-YYYY',
-  'MONTH DAY YYYY',
-  'DAY MONTH YYYY'
-] as const

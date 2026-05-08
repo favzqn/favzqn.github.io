@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import playformInline from '@playform/inline'
 import remarkMath from 'remark-math'
 import remarkDirective from 'remark-directive'
 import rehypeKatex from 'rehype-katex'
@@ -34,10 +33,6 @@ export default defineConfig({
     rehypePlugins: [rehypeKatex, rehypeCleanup, rehypeImageProcessor, rehypeCopyCode]
   },
   integrations: [
-    // playformInline disabled for better mobile performance - CSS inlining increases HTML payload
-    // playformInline({
-    //   Exclude: [(file) => file.toLowerCase().includes('katex')]
-    // }),
     mdx(),
     sitemap()
   ],

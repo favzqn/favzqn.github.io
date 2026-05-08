@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { formatDate, SUPPORTED_DATE_FORMATS } from './date'
+import { formatDate } from './date'
 
 vi.mock('@/config', () => ({
   themeConfig: {
@@ -48,19 +48,5 @@ describe('formatDate', () => {
   it('pads single-digit month and day', () => {
     const d = new Date(2024, 0, 7) // Jan 7
     expect(formatDate(d, 'YYYY-MM-DD')).toBe('2024.01.07')
-  })
-})
-
-describe('SUPPORTED_DATE_FORMATS', () => {
-  it('contains all 5 formats', () => {
-    expect(SUPPORTED_DATE_FORMATS).toHaveLength(5)
-  })
-
-  it('contains expected formats', () => {
-    expect(SUPPORTED_DATE_FORMATS).toContain('YYYY-MM-DD')
-    expect(SUPPORTED_DATE_FORMATS).toContain('MM-DD-YYYY')
-    expect(SUPPORTED_DATE_FORMATS).toContain('DD-MM-YYYY')
-    expect(SUPPORTED_DATE_FORMATS).toContain('MONTH DAY YYYY')
-    expect(SUPPORTED_DATE_FORMATS).toContain('DAY MONTH YYYY')
   })
 })

@@ -1,5 +1,5 @@
 ---
-title: 'Serve Files Lebih Cepat dengan CloudFront CDN'
+title: 'Serve Files Lebih Cepat dengan CloudFront CDN (Indonesian)'
 pubDate: '2022-10-17'
 description: 'Cara menggunakan Amazon CloudFront sebagai CDN untuk mempercepat pengiriman file dari S3 ke pengguna di seluruh dunia menggunakan edge locations.'
 tags: ['aws', 'cloudfront', 'cdn', 's3']

@@ -1,5 +1,5 @@
 ---
-title: 'Movie Review: Rear Window (10/10)'
+title: 'Movie Review: Rear Window (10/10) (Indonesian)'
 pubDate: '2023-09-18'
 description: "Hitchcock's 1954 masterpiece is a perfect film. A review of Rear Window's themes of voyeurism, moral complexity, isolation, and suspense."
 tags: ['review', 'film', 'hitchcock']
