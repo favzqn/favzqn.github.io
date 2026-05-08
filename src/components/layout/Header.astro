@@ -1,5 +1,6 @@
 ---
 import { themeConfig } from '@/config'
+import ThemeToggle from '@/components/ui/ThemeToggle.astro'
 ---
 
 <header>
@@ -7,10 +8,8 @@ import { themeConfig } from '@/config'
     <a href="/" class="title">{themeConfig.site.title}</a>
     <div class="nav-links">
       <a href="/experience">Experience</a>
-      <a href="/projects">Projects</a>
-      <a href="/testimonials">Testimonials</a>
       <a href="/blog">Blog</a>
-      <a href="/uses">Uses</a>
+      <ThemeToggle />
     </div>
   </nav>
 </header>

@@ -31,21 +31,9 @@ const experience = defineCollection({
   schema: z.object({})
 })
 
-const projects = defineCollection({
-  // Load Markdown files in the `src/content/projects/` directory.
-  loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
-  // Type-check frontmatter using a schema
-  schema: z.object({})
-})
-
-const testimonials = defineCollection({
-  loader: glob({ base: './src/content/testimonials', pattern: '**/*.md' }),
-  schema: z.object({})
-})
-
 const uses = defineCollection({
   loader: glob({ base: './src/content/uses', pattern: '**/*.md' }),
   schema: z.object({})
 })
 
-export const collections = { posts, about, experience, projects, testimonials, uses }
+export const collections = { posts, about, experience }

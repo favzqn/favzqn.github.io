@@ -26,7 +26,7 @@ import { themeConfig } from '@/config'
     // Store current page in sessionStorage when navigating
     function storeCurrentPage() {
       const pathname = window.location.pathname
-      if (pathname.includes('/blog') || pathname.includes('/projects')) {
+      if (pathname.includes('/blog')) {
         sessionStorage.setItem('lastPage', pathname)
       }
     }
@@ -41,14 +41,12 @@ import { themeConfig } from '@/config'
       const referrer = document.referrer
 
       // First try sessionStorage
-      if (lastPage && (lastPage.includes('/blog') || lastPage.includes('/projects'))) {
-        backHref = lastPage.split('/').slice(0, 4).join('/') // Get /blog or /projects
+      if (lastPage && lastPage.includes('/blog')) {
+        backHref = lastPage.split('/').slice(0, 4).join('/') // Get /blog
       }
       // Fallback to referrer
       else if (referrer.includes('/blog')) {
         backHref = '/blog'
-      } else if (referrer.includes('/projects')) {
-        backHref = '/projects'
       }
 
       button.href = backHref

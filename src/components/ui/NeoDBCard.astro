@@ -138,14 +138,7 @@
               <span class="allstargray"></span>
             </div>`
             }
-            ${fieldInfo
-              .map((info) => {
-                if (info.startsWith('<div class="neodb-desc">')) {
-                  return info
-                }
-                return `<div class="neodb-field">${info}</div>`
-              })
-              .join('')}
+            ${fieldInfo.map((info) => `<div class="neodb-field">${info}</div>`).join('')}
           </div>
         </a>
       `
@@ -271,18 +264,6 @@
     text-overflow: ellipsis;
   }
 
-  .prose .neodb-artist {
-    font-size: var(--font-size-s);
-    color: var(--text-primary);
-  }
-
-  .prose .no-rating {
-    font-size: var(--font-size-s);
-    color: var(--text-primary);
-    line-height: 1;
-    margin: 0 0 0.25rem 0;
-  }
-
   .prose .neodb-title {
     color: var(--text-primary);
     font-weight: var(--font-weight-bold);
@@ -292,19 +273,6 @@
 
   .prose .neodb-title a {
     text-decoration: none !important;
-  }
-
-  .prose .neodb-desc {
-    font-size: var(--font-size-s);
-    color: var(--text-primary);
-    margin-top: 0.25rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    word-wrap: break-word;
-    max-width: 100%;
   }
 
   .prose .rating {

@@ -17,7 +17,6 @@ import XPOST from '@/components/ui/XPOST.astro'
 import CopyCode from '@/components/ui/CopyCode.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import StructuredData from '@/components/seo/StructuredData.astro'
-import NewsletterSignup from '@/components/widgets/NewsletterSignup.astro'
 
 import { themeConfig } from '@/config'
 
@@ -81,7 +80,6 @@ const ogImage = `/open-graph/${postSlug}.png`
     <NeoDBCard />
     {themeConfig.post.imageViewer && <ImageViewer />}
     {themeConfig.post.linkCard && <LinkCard />}
-    <NewsletterSignup variant="inline" title="Enjoyed this post?" description="Get notified when I publish new posts on engineering, automation, and technical leadership." />
     {themeConfig.general.footer && <Footer />}
   </div>
 </BaseLayout>
