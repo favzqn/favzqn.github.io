@@ -1,9 +1,9 @@
 ---
-title: ‘Navigating Japan’s Railway’
-pubDate: ‘2025-03-29’
-description: ‘A practical guide to navigating Japan’s railway system — IC cards, Google Maps, ticket machines, and station etiquette for first-time visitors.’
-tags: [‘japan’, ‘travel’, ‘guide’]
-category: ‘personal’
+title: "Navigating Japan's Railway"
+pubDate: "2025-03-29"
+description: "A practical guide to navigating Japan's railway system — IC cards, Google Maps, ticket machines, and station etiquette for first-time visitors."
+tags: ["japan", "travel", "guide"]
+category: "personal"
 ---
 
 Japan’s railway system is known for its efficiency and extensive coverage, making it the ideal mode of transportation for travelers exploring the nation. In this guide, we’ll cover everything you need to know, from getting an IC card to using Google Maps to navigate from one station to another.

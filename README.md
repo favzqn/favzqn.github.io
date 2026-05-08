@@ -13,8 +13,7 @@ This site showcases my work in software engineering, test automation, and techni
 - **Blog**: Technical articles on AWS, automation, AI, and engineering practices
 - **Experience**: Professional journey and impact metrics
 - **Projects**: Open-source contributions and side projects
-- **Playground**: Interactive developer tools (JSON formatter, regex tester, etc.)
-- **Resources**: Curated lists of books, podcasts, and learning materials
+
 
 ## Tech Stack
 
