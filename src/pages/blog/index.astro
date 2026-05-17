@@ -4,11 +4,35 @@ import { themeConfig } from '@/config'
 import PostList from '@/components/widgets/PostList.astro'
 import { getSortedFilteredPosts } from '@/utils/draft'
 
-const posts = await getSortedFilteredPosts()
+const allPosts = await getSortedFilteredPosts()
+const englishPosts = allPosts.filter(post => !post.data.lang || post.data.lang === 'en')
+const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
 ---
 
 <IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
   <div style="padding-top: 3rem;">
-    <PostList posts={posts} />
+    <PostList posts={englishPosts} />
+    {indonesianPosts.length > 0 && (
+      <div class="language-section">
+        <h2 class="language-heading">Bahasa Indonesia</h2>
+        <PostList posts={indonesianPosts} />
+      </div>
+    )}
   </div>
 </IndexLayout>
+
+<style>
+  .language-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .language-heading {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+</style>
