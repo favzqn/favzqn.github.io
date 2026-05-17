@@ -1,5 +1,5 @@
 ---
-title: 'Automate Code Review dengan Amazon CodeGuru (Indonesian)'
+title: 'Automate Code Review dengan Amazon CodeGuru'
 pubDate: '2022-11-12'
 description: 'Panduan menggunakan Amazon CodeGuru untuk otomatisasi code review berbasis machine learning dan integrasi dengan AWS CodeCommit.'
 tags: ['aws', 'codeguru', 'code-review', 'devops']
