@@ -2,7 +2,6 @@
 import '@/styles/global.css'
 import BaseHead from '@/components/layout/BaseHead.astro'
 import Footer from '@/components/layout/Footer.astro'
-import BackButton from '@/components/ui/BackButton.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { themeConfig } from '@/config'
 
@@ -13,7 +12,7 @@ const { title, description, image, tech, live, github } = Astro.props
   <BaseHead title={`${title} · ${themeConfig.site.title}`} description={description} slot="head" />
   <div class="project-container">
     <main>
-      <BackButton href="/projects" label="All Projects" />
+      <a href="/projects" class="back-link">← Projects</a>
       
       <article class="project-detail">
         {image && (
@@ -63,6 +62,21 @@ const { title, description, image, tech, live, github } = Astro.props
     max-width: 48rem;
     margin: 0 auto;
     padding: 0 1.5rem;
+  }
+  
+  .back-link {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: var(--font-size-m);
+    font-style: italic;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s ease;
+  }
+  
+  .back-link:hover {
+    color: var(--text-primary);
   }
   
   .project-detail {
