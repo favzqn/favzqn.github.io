@@ -8,12 +8,27 @@ github: ""
 featured: true
 ---
 
-Built a full-stack Web3 fantasy sports platform from scratch. Users import their existing ESPN or Yahoo fantasy teams, earn and equip NFT gear to boost player stats, and compete in head-to-head matches.
+## The Problem
 
-**What I built:**
-- Team import system pulling live data from ESPN and Yahoo APIs
-- NFT gear marketplace with blockchain integration for minting and trading
-- Matchmaking engine with real-time scoring and leaderboard
-- Subscription system and user dashboard
+Fantasy sports players invest hours managing teams across ESPN and Yahoo, but there's no way to use those teams in competitive, skill-based matchups with real stakes. Traditional fantasy is passive — you set your lineup and wait. Players wanted something more engaging.
 
-**Stack:** TypeScript, React, Node.js, PostgreSQL, blockchain APIs, sports data APIs
+## What I Built
+
+A full-stack Web3 platform that imports existing fantasy teams and turns them into competitive assets.
+
+**Core features:**
+- **Team Import** — Pull live data from ESPN and Yahoo APIs. No need to rebuild teams from scratch.
+- **NFT Gear System** — Earn and equip gear that boosts specific player stats (passing, rushing, receiving). Built on blockchain for true ownership and marketplace trading.
+- **Matchmaking Engine** — Real-time head-to-head competitions with live scoring and dynamic leaderboards.
+- **Subscription System** — Tiered access with payment processing and user dashboard.
+
+## Technical Decisions
+
+- **TypeScript throughout** — End-to-end type safety across frontend and backend
+- **PostgreSQL** — Complex queries for leaderboard rankings and match history
+- **Blockchain integration** — NFT minting and trading via smart contracts
+- **Sports APIs** — Real-time player stats for dynamic scoring
+
+## Result
+
+A working platform that combines fantasy sports with Web3 mechanics. Users import teams, earn gear, and compete — all without managing another fantasy roster.
