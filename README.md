@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/feyzan/deploys)
 
-Personal website and blog of Fauzan Fathurrahman - Full-stack engineer, technical leader, and builder of scalable products.
+Personal website and blog of Fauzan Fathurrahman — full-stack engineer & SDET building scalable products, chatbots, and test automation systems.
 
 🌐 **Live Site**: [https://feyzan.netlify.app/](https://feyzan.netlify.app/)
 
@@ -10,10 +10,9 @@ Personal website and blog of Fauzan Fathurrahman - Full-stack engineer, technica
 
 This site showcases my work in software engineering, test automation, and technical leadership. It includes:
 
-- **Blog**: Technical articles on AWS, automation, AI, and engineering practices
-- **Experience**: Professional journey and impact metrics
+- **Blog**: Technical articles on AI, automation, AWS, and engineering practices
+- **Experience**: Professional journey across startups and scale-ups
 - **Projects**: Open-source contributions and side projects
-
 
 ## Tech Stack
 
@@ -71,29 +70,13 @@ pnpm preview
 │   ├── content/        # Blog posts, projects, experience
 │   ├── layouts/        # Page layouts
 │   ├── pages/          # Route pages
-│   ├── plugins/        # Custom remark/rehype plugins
+│   ├── plugins/        # Remark/rehype plugins
 │   ├── styles/         # Global styles
 │   ├── types/          # TypeScript types
 │   └── utils/          # Utility functions
 ├── public/             # Static assets
-└── scripts/            # Build and utility scripts
+└── scripts/            # Build scripts
 ```
-
-## Content Management
-
-- Blog posts: `src/content/posts/`
-- Drafts: Prefix filename with `_` (e.g., `_draft-post.md`)
-- Images: Store in `src/content/posts/_assets/`
-- Configuration: `src/config.ts`
-
-## Performance Optimizations
-
-- CSS inlining disabled for faster mobile load
-- Fade animations disabled for instant navigation
-- Image quality optimized (80 vs 85)
-- HTTP/2 font preloading
-- Aggressive caching headers
-- Brotli compression enabled
 
 ## License
 

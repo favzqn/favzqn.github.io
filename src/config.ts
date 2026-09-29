@@ -6,7 +6,7 @@ export const themeConfig: ThemeConfig = {
     website: 'https://feyzan.netlify.app/', // Site domain
     title: 'Fauzan Fathurrahman', // Site title
     author: 'Fauzan Fathurrahman', // Author name
-    description: 'Full-stack engineer & technical leader. Building scalable products, automating pipelines, and creating impact through code.', // Site description
+    description: 'Full-stack engineer & automation specialist. Building scalable products and the systems that test them.', // Site description
     language: 'en-US' // Default language
   },
 

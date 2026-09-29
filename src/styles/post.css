@@ -19,35 +19,34 @@
   margin: 0 0 0.375rem 0;
 }
 
-/* Headings (h1-h5)
- Adjust size or spacing below if needed. */
+/* Headings (h1-h5) */
 .prose h1 {
   font-size: 2em;
   font-weight: var(--font-weight-bold);
-  line-height: 1.75;
-  margin: 3.75em 0 1.75em 0;
+  line-height: 1.5;
+  margin: 2em 0 0.75em 0;
 }
 
 .prose h2 {
   font-size: 1.5em;
   font-weight: var(--font-weight-bold);
-  line-height: 1.75;
-  margin: 3.75em 0 1.75em 0;
+  line-height: 1.5;
+  margin: 2em 0 0.75em 0;
 }
 
 .prose h3 {
   font-size: 1.25em;
   font-weight: var(--font-weight-bold);
-  line-height: 1.75;
-  margin: 3.75em 0 1.75em 0;
+  line-height: 1.5;
+  margin: 1.75em 0 0.5em 0;
 }
 
 .prose h4,
 .prose h5 {
   font-size: 1.1em;
   font-weight: var(--font-weight-bold);
-  line-height: 1.75;
-  margin: 3.75em 0 1.75em 0;
+  line-height: 1.5;
+  margin: 1.5em 0 0.5em 0;
 }
 
 /* Bold text */
@@ -84,7 +83,7 @@
 /* Paragraphs */
 .prose p {
   line-height: 1.75;
-  margin: 1.75em 0;
+  margin: 1em 0;
 }
 
 /* Tables */
@@ -93,7 +92,7 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 1.75em 0;
+  margin: 1.5em 0;
   font-size: var(--font-size-m);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -129,7 +128,7 @@
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 2em 0;
+  margin: 1.5em 0;
 }
 
 .img-placeholder {
@@ -153,12 +152,12 @@
 }
 
 .prose figure {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   text-align: center;
 }
 
 .prose figure img {
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
 }
 
 .prose figure figcaption {
@@ -169,7 +168,7 @@
 
 .prose p > img {
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 .prose p > img::after {
@@ -181,7 +180,7 @@
   text-align: center;
   color: var(--text-secondary);
   font-size: var(--font-size-s);
-  margin-top: 0.75em;
+  margin-top: 0.5em;
 }
 
 .prose .img-caption {
@@ -189,7 +188,7 @@
   text-align: center;
   color: var(--text-secondary);
   font-size: var(--font-size-s);
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 /* Inline code */
@@ -211,7 +210,7 @@
 /* Blockquotes */
 .prose blockquote {
   border-left: 2px solid var(--border);
-  margin: 0 0 1.75em 0.125em;
+  margin: 0 0 1.5em 0.125em;
   padding: 0 0 0 1.375em;
   text-align: left;
 }
@@ -230,7 +229,7 @@
   list-style-type: none;
   padding-left: 0;
   margin-left: 1rem;
-  margin-bottom: 1.75em;
+  margin-bottom: 1.5em;
   line-height: 1.75;
 }
 
@@ -243,7 +242,7 @@
 .prose ul li {
   position: relative;
   padding-left: 0.5rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.35em;
 }
 
 .prose ul li:last-child {
@@ -270,7 +269,7 @@
   list-style-position: outside;
   padding-left: 0;
   margin-left: 1.25rem;
-  margin-bottom: 1.75em;
+  margin-bottom: 1.5em;
   counter-reset: item;
 }
 
@@ -278,7 +277,7 @@
   display: block;
   position: relative;
   padding-left: 0.25rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.35em;
 }
 
 .prose ol li:last-child {
@@ -368,10 +367,6 @@
   white-space: nowrap;
 }
 
-/* .prose ul.contains-task-list li.task-list-item:has(input[type='checkbox']:checked) {
-  text-decoration: line-through;
-} */
-
 /* Subscript and superscript */
 .prose sup,
 .prose sub,
@@ -383,7 +378,7 @@
 
 /* Horizontal rule */
 .prose hr {
-  margin: 3.75em 0;
+  margin: 2.5em 0;
   height: auto;
   border: none;
   background: none;
@@ -409,7 +404,6 @@
   min-width: 1.75em;
   display: inline-block;
   text-align: center;
-  /* box-shadow: inset 0 -2.5px 0 var(--border); */
 }
 
 /* Highlighted text */
@@ -421,8 +415,8 @@
 
 /* Footnotes */
 .prose .footnotes {
-  margin-top: 4rem;
-  padding-top: 1.75rem;
+  margin-top: 3rem;
+  padding-top: 1.5em;
   position: relative;
 }
 
@@ -481,7 +475,7 @@
   background-color: var(--astro-code-background);
   border-radius: 8px;
   padding: 1.25em 1.5em;
-  margin: 2em 0;
+  margin: 1.5em 0;
   overflow-x: auto;
 }
 
@@ -522,7 +516,7 @@
 /* Ensure display math is centered */
 .katex-display {
   text-align: center;
-  margin: 1.75em 0;
+  margin: 1.5em 0;
 }
 
 /* Reset any conflicting styles that might interfere with KaTeX */
