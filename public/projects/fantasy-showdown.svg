@@ -1,0 +1,5 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1a1a2e"/>
+  <text x="50%" y="45%" font-family="system-ui, sans-serif" font-size="32" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Fantasy Showdown</text>
+  <text x="50%" y="55%" font-family="system-ui, sans-serif" font-size="16" fill="#888888" text-anchor="middle" dominant-baseline="middle">Web3 Fantasy Sports Platform</text>
+</svg>
