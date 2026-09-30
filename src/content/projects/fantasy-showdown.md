@@ -1,7 +1,7 @@
 ---
 title: "Fantasy Showdown"
 description: "Web3 fantasy sports platform combining ESPN/Yahoo imports with NFT gear and competitive matches"
-image: "fantasy-showdown.svg"
+image: "fantasy-showdown.png"
 tech: ["TypeScript", "React", "Node.js", "Blockchain", "Sports APIs"]
 live: "https://fantasyshowdowndev.com"
 github: ""
