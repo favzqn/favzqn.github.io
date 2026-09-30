@@ -6,10 +6,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { themeConfig } from '@/config'
 
 const { title, description, image, tech, live, github } = Astro.props
+const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boolean).pop()}.png`
 ---
 
 <BaseLayout title={`${title} · ${themeConfig.site.title}`} description={description}>
-  <BaseHead title={`${title} · ${themeConfig.site.title}`} description={description} slot="head" />
+  <BaseHead 
+    title={`${title} · ${themeConfig.site.title}`} 
+    description={description} 
+    ogImage={ogImage}
+    slot="head" 
+  />
   <div class="project-container">
     <main>
       <a href="/projects" class="back-link">← Projects</a>
