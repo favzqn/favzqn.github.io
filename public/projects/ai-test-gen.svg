@@ -1,5 +1,0 @@
-<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#23272f"/>
-  <text x="50%" y="45%" font-family="system-ui, sans-serif" font-size="32" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">AI Test Case Generator</text>
-  <text x="50%" y="55%" font-family="system-ui, sans-serif" font-size="16" fill="#888888" text-anchor="middle" dominant-baseline="middle">AWS Bedrock · GitHub Actions · Jira</text>
-</svg>
