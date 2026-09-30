@@ -24,11 +24,9 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 - **Dark mode** with system preference detection
 - **Offline support** via service worker
 
-### Demo
-
-![Senara demo](/projects/senara-demo.gif)
-
 ### Screenshots
+
+![Homepage](/projects/senara-home.png)
 
 ![Stories collection](/projects/senara-stories.png)
 
