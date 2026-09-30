@@ -20,15 +20,15 @@ A free, offline-first progressive web app that works on low-end Android devices 
 - **8 lessons, 64 phrases** with Indonesian translations
 - **Listen and repeat** workflow: tap to hear, record yourself, get instant feedback
 - **Word-level diff** showing exactly which words you got right and wrong
-- **Offline support** via service worker -- works without internet after first load
-- **No account, no backend, no cost** -- everything runs in the browser
+- **Offline support** via service worker (works without internet after first load)
+- **No account, no backend, no cost** (everything runs in the browser)
 
 ## Technical Decisions
 
-- **Pure JavaScript, no framework** -- keeps the bundle tiny for low-end devices
-- **Web Speech API** -- browser-native speech recognition, no cloud dependency
-- **Service Worker** -- full offline support with cache-first strategy
-- **Cloudflare Workers** -- free hosting, global CDN, zero maintenance
+- **Pure JavaScript, no framework**: keeps the bundle tiny for low-end devices
+- **Web Speech API**: browser-native speech recognition, no cloud dependency
+- **Service Worker**: full offline support with cache-first strategy
+- **Cloudflare Workers**: free hosting, global CDN, zero maintenance
 
 ## Result
 

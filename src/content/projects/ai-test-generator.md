@@ -1,6 +1,6 @@
 ---
 title: "AI Test Case Generator"
-description: "AWS Bedrock-powered tool that generates test cases from Jira tickets in 30 seconds"
+description: "Tool that generates test cases from Jira tickets in 30 seconds using AI"
 image: "ai-test-gen.svg"
 tech: ["Python", "AWS Bedrock", "GitHub Actions", "Jira API"]
 live: ""
@@ -17,21 +17,21 @@ Our QA team spent 8-12 hours per week writing test cases manually. Every feature
 An AI-powered test case generator that creates comprehensive test cases from Jira tickets automatically.
 
 **How it works:**
-1. **Trigger** — Jira automation button or GitHub Action
-2. **Fetch** — Pulls ticket data (requirements, acceptance criteria, context)
-3. **Generate** — AWS Bedrock analyzes the ticket and generates test cases
-4. **Create** — Automatically creates linked Jira issues with proper formatting
+1. **Trigger**: Jira automation button or GitHub Action
+2. **Fetch**: Pulls ticket data (requirements, acceptance criteria, context)
+3. **Generate**: AI analyzes the ticket and generates test cases
+4. **Create**: Automatically creates linked Jira issues with proper formatting
 
 ## Technical Decisions
 
-- **AWS Bedrock** — Claude model for nuanced test case generation
-- **GitHub Actions** — CI/CD integration, no infrastructure to manage
-- **Prompt Engineering** — Iterated on prompts to get consistent, high-quality output across different ticket types
-- **Jira API** — Deep integration with existing workflow
+- **AWS Bedrock**: Claude model for nuanced test case generation
+- **GitHub Actions**: CI/CD integration, no infrastructure to manage
+- **Prompt Engineering**: Iterated on prompts to get consistent, high-quality output across different ticket types
+- **Jira API**: Deep integration with existing workflow
 
 ## Result
 
-- **15 minutes → 30 seconds** per test case
+- **15 minutes to 30 seconds** per test case
 - **15-25 hours saved** per sprint
 - **80% reduction** in regression time
 - **Consistent coverage** across all features

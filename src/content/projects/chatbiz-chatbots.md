@@ -17,17 +17,17 @@ Brands in Indonesia wanted to automate customer interactions across WhatsApp and
 A multi-tenant chatbot platform at a YC W21 company, building and scaling 30+ chatbots for major brands.
 
 **Core features:**
-- **Multi-channel Engine** — WhatsApp, Instagram, and web chat from a single platform
-- **NLP Pipeline** — Intent recognition and entity extraction tuned for Bahasa Indonesia
-- **Real-time Dashboard** — Bot performance analytics, conversation logs, and conversion tracking
-- **Webhook System** — Easy integration with client CRMs and external services
+- **Multi-channel Engine**: WhatsApp, Instagram, and web chat from a single platform
+- **NLP Pipeline**: Intent recognition and entity extraction tuned for Bahasa Indonesia
+- **Real-time Dashboard**: Bot performance analytics, conversation logs, and conversion tracking
+- **Webhook System**: Easy integration with client CRMs and external services
 
 ## Technical Decisions
 
-- **Node.js + TypeScript** — Fast iteration, shared types across the stack
-- **Redis caching** — Sub-second response times even at 100k+ messages/day
-- **Microservices architecture** — Independent scaling for NLP, message routing, and analytics
-- **Infrastructure optimization** — Reduced costs by 40% through caching and resource right-sizing
+- **Node.js + TypeScript**: Fast iteration, shared types across the stack
+- **Redis caching**: Sub-second response times even at 100k+ messages/day
+- **Microservices architecture**: Independent scaling for NLP, message routing, and analytics
+- **Infrastructure optimization**: Reduced costs by 40% through caching and resource right-sizing
 
 ## Result
 
