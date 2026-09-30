@@ -1,7 +1,7 @@
 ---
 title: "Chatbiz Chatbot Platform"
 description: "30+ chatbots handling 100k+ messages/day for brands across Indonesia"
-image: "chatbiz.svg"
+image: "chatbiz-portfolio.png"
 tech: ["TypeScript", "Node.js", "NLP", "Webhooks", "Redis"]
 live: "https://chatbiz.id"
 github: ""
@@ -21,6 +21,12 @@ A multi-tenant chatbot platform at a YC W21 company, building and scaling 30+ ch
 - **NLP Pipeline**: Intent recognition and entity extraction tuned for Bahasa Indonesia
 - **Real-time Dashboard**: Bot performance analytics, conversation logs, and conversion tracking
 - **Webhook System**: Easy integration with client CRMs and external services
+
+### Client implementations
+
+![Chatbiz portfolio](/projects/chatbiz-portfolio.png)
+
+![Case study: Courtina](/projects/chatbiz-case.png)
 
 ## Technical Decisions
 
