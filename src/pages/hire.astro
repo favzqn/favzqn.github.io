@@ -1,0 +1,246 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { themeConfig } from '@/config'
+---
+
+<IndexLayout title={`Work With Me · ${themeConfig.site.title}`} description={themeConfig.site.description}>
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Work With Me</h1>
+    <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
+      Full-stack engineering and test automation. Available for freelance, contract, and consulting.
+    </p>
+
+    <section class="services">
+      <h2>What I Do</h2>
+      <div class="service-grid">
+        <div class="service">
+          <h3>Full-Stack Development</h3>
+          <p>End-to-end product development with TypeScript, React, Node.js, and Supabase. From MVP to production.</p>
+          <div class="service-tags">
+            <span>TypeScript</span>
+            <span>React</span>
+            <span>Node.js</span>
+            <span>Supabase</span>
+          </div>
+        </div>
+        <div class="service">
+          <h3>Test Automation</h3>
+          <p>QA frameworks, CI/CD pipelines, and test strategies that actually work. Playwright, Selenium, and custom solutions.</p>
+          <div class="service-tags">
+            <span>Playwright</span>
+            <span>Selenium</span>
+            <span>CI/CD</span>
+            <span>GitHub Actions</span>
+          </div>
+        </div>
+        <div class="service">
+          <h3>AI Integration</h3>
+          <p>Building AI-powered features into your existing products. Chatbots, content generation, data processing.</p>
+          <div class="service-tags">
+            <span>LLMs</span>
+            <span>NLP</span>
+            <span>AWS Bedrock</span>
+            <span>APIs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <h2>How It Works</h2>
+      <ol>
+        <li><strong>Message me</strong> about your project. I'll respond within 24 hours.</li>
+        <li><strong>We talk</strong> about what you need, timeline, and budget.</li>
+        <li><strong>I propose</strong> a clear scope with milestones.</li>
+        <li><strong>We build</strong> it together with regular check-ins.</li>
+      </ol>
+    </section>
+
+    <section class="availability">
+      <h2>Availability</h2>
+      <div class="avail-grid">
+        <div class="avail-item">
+          <span class="avail-label">Status</span>
+          <span class="avail-value available">Available for new projects</span>
+        </div>
+        <div class="avail-item">
+          <span class="avail-label">Response time</span>
+          <span class="avail-value">Within 24 hours</span>
+        </div>
+        <div class="avail-item">
+          <span class="avail-label">Preferred</span>
+          <span class="avail-value">Fixed-price or monthly retainer</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Let's Talk</h2>
+      <p>Have a project in mind? Send me a message and let's see if we're a good fit.</p>
+      <div class="cta-buttons">
+        <a href="mailto:fauzan08fauzan@gmail.com" class="cta-button primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/fauzan-fathurrahman/" class="cta-button" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </div>
+</IndexLayout>
+
+<style>
+  .services {
+    margin-bottom: 3rem;
+  }
+  
+  .services h2,
+  .process h2,
+  .availability h2,
+  .cta h2 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .service {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  
+  .service h3 {
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .service p {
+    font-size: var(--font-size-m);
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.6;
+  }
+  
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+  
+  .service-tags span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-family: var(--mono);
+  }
+  
+  .process {
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .process ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+  
+  .process li {
+    font-size: var(--font-size-m);
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  
+  .process li strong {
+    color: var(--text-primary);
+  }
+  
+  .availability {
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .avail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .avail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-m);
+  }
+  
+  .avail-label {
+    color: var(--text-secondary);
+  }
+  
+  .avail-value {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+  }
+  
+  .available {
+    color: #16a34a;
+  }
+  
+  .cta {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .cta p {
+    font-size: var(--font-size-m);
+    color: var(--text-secondary);
+    margin: 0 0 1.25rem 0;
+    line-height: 1.6;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .cta-button {
+    font-size: var(--font-size-m);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--mono);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+  
+  .cta-button.primary {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+  }
+  
+  .cta-button.primary:hover {
+    opacity: 0.9;
+  }
+</style>
