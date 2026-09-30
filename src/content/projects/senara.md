@@ -26,10 +26,7 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ### Demo
 
-<video controls width="100%" style="border-radius: 6px; margin: 1.5em 0;">
-  <source src="/projects/senara-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://litter.catbox.moe/iw68xy.mp4
 
 ### Screenshots
 
