@@ -1,4 +1,3 @@
----
 import { getCollection } from 'astro:content'
 import { OGImageRoute } from 'astro-og-canvas'
 import { themeConfig } from '../../config'
