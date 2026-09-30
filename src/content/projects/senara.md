@@ -26,7 +26,7 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ### Demo
 
-https://litter.catbox.moe/iw68xy.mp4
+![Senara demo](/projects/senara-demo.gif)
 
 ### Screenshots
 
