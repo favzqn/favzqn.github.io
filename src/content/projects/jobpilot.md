@@ -4,7 +4,7 @@ description: "Chrome extension that automates job applications with AI resume ta
 image: "jobpilot-popup.png"
 tech: ["TypeScript", "React", "Manifest V3", "Vite", "Vitest", "GitHub Actions"]
 live: ""
-github: "https://github.com/favzqn/jobpilot"
+github: ""
 featured: true
 ---
 
