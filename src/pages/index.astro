@@ -8,7 +8,7 @@ const projects = await getCollection('projects')
 const featured = projects
   .filter(p => p.data.featured)
   .sort((a, b) => (a.data.title > b.data.title ? 1 : -1))
-  .slice(0, 3)
+  .slice(0, 4)
 ---
 
 <IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
