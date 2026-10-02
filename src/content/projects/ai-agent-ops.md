@@ -6,6 +6,7 @@ tech: ["TypeScript", "Bun", "Hermes Agent", "Supabase", "Baileys", "Cron"]
 live: ""
 github: ""
 featured: true
+priority: 3
 ---
 
 ## The Problem

@@ -6,6 +6,7 @@ tech: ["TypeScript", "React", "Manifest V3", "Vite", "Vitest", "GitHub Actions"]
 live: ""
 github: ""
 featured: true
+priority: 2
 ---
 
 ## The Problem

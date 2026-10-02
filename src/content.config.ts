@@ -38,7 +38,8 @@ const projects = defineCollection({
     tech: z.array(z.string()).optional(),
     live: z.string().optional(),
     github: z.string().optional(),
-    featured: z.boolean().optional()
+    featured: z.boolean().optional(),
+    priority: z.number().optional()
   })
 })
 

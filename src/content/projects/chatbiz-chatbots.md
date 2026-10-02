@@ -6,6 +6,7 @@ tech: ["TypeScript", "Node.js", "NLP", "Webhooks", "Redis"]
 live: "https://chatbiz.id"
 github: ""
 featured: true
+priority: 4
 ---
 
 ## The Problem

@@ -6,6 +6,7 @@ tech: ["Python", "AWS Bedrock", "GitHub Actions", "Jira API"]
 live: ""
 github: ""
 featured: true
+priority: 5
 ---
 
 ## The Problem

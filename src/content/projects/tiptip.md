@@ -6,6 +6,7 @@ tech: ["TypeScript", "Node.js", "Playwright", "Selenium", "CI/CD"]
 live: "https://www.tiptip.id"
 github: ""
 featured: true
+priority: 6
 ---
 
 ## The Problem

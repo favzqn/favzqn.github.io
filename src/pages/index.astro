@@ -7,8 +7,13 @@ import { themeConfig } from '@/config'
 const projects = await getCollection('projects')
 const featured = projects
   .filter(p => p.data.featured)
-  .sort((a, b) => (a.data.title > b.data.title ? 1 : -1))
-  .slice(0, 4)
+  .sort((a, b) => {
+    const pa = a.data.priority ?? 99;
+    const pb = b.data.priority ?? 99;
+    if (pa !== pb) return pa - pb;
+    return a.data.title > b.data.title ? 1 : -1;
+  })
+  .slice(0, 6)
 ---
 
 <IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
