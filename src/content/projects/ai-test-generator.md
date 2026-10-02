@@ -25,6 +25,14 @@ An AI-powered test case generator that creates comprehensive test cases from Jir
 
 ## Technical Decisions
 
+![Jira automation button triggering test case generation](/projects/tcgen-jira.jpg)
+
+![GitHub Action run generating test cases](/projects/tcgen-gh-run.jpg)
+
+![Generated tickets created and linked back to the ticket](/projects/tcgen-gh-link.jpg)
+
+
+
 - **AWS Bedrock**: Claude model for nuanced test case generation
 - **GitHub Actions**: CI/CD integration, no infrastructure to manage
 - **Prompt Engineering**: Iterated on prompts to get consistent, high-quality output across different ticket types

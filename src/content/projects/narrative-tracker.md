@@ -27,6 +27,10 @@ A narrative analysis dashboard that treats a topic as something with a history, 
 
 ## Technical Decisions
 
+![Issues list with filters and tracked topics](/projects/narrative-issues.jpg)
+
+
+
 - **D3.js for both charts**: the timeline and the network graph are hand-rolled D3 rather than a charting library, because the views are custom (time granularity on one, force layout on the other) and generic libraries fought the data model
 - **Playwright and Patchright scrapers**: collection runs through a real browser so it works on sites that block plain HTTP clients, with rate limits and robots.txt respected
 - **Static frontend, API backend split**: the dashboard is plain HTML, CSS, and JavaScript served statically, talking to a Node.js API, so the visual layer is easy to redeploy anywhere

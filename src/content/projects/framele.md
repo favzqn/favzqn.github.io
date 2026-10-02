@@ -27,6 +27,12 @@ A Wordle-style guessing game for anime fans. One puzzle, six rounds, clues revea
 
 ## Technical Decisions
 
+![Framele daily puzzle home screen](/projects/framele-home.png)
+
+![Framele round-by-round guess feedback](/projects/framele-feedback.png)
+
+
+
 - **AniList GraphQL as the data source**: free, no auth, and deep enough to pull characters and cover art for the top 100 popular anime, so the puzzle pool stays fresh without me maintaining a dataset
 - **Static build, client-side state**: the whole game runs in the browser, stats live in localStorage, and the deploy is a folder of files. Zero backend means zero hosting bill and nothing to break
 - **Astro with a single hydrated React island**: pages render statically for fast first paint, and only the game component ships JavaScript

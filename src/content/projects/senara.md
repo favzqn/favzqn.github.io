@@ -34,6 +34,10 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ## Technical Decisions
 
+![Story collection with filters and search](/projects/senara-collection.jpg)
+
+
+
 - **Astro** (static output, fast loads, no server needed)
 - **Custom i18n system** (data-attribute approach for 3 languages without runtime overhead)
 - **Tailwind CSS** (rapid styling with consistent design tokens)

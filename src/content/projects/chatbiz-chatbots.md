@@ -31,6 +31,10 @@ A multi-tenant chatbot platform at a YC W21 company, building and scaling 30+ ch
 
 ## Technical Decisions
 
+![Chatbiz platform features](/projects/chatbiz-features.jpg)
+
+
+
 - **Node.js + TypeScript**: Fast iteration, shared types across the stack
 - **Redis caching**: Sub-second response times even at 100k+ messages/day
 - **Microservices architecture**: Independent scaling for NLP, message routing, and analytics

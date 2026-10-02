@@ -27,6 +27,14 @@ A virtual math laboratory where abstract concepts become interactive experiences
 
 ## Technical Decisions
 
+![Set theory module with interactive Venn diagram](/projects/axiomara-sets.png)
+
+![Logic module with truth table evaluation](/projects/axiomara-logic.png)
+
+![Graph algorithms module](/projects/axiomara-graph.png)
+
+
+
 - **D3.js**: Interactive visualizations that update in real-time
 - **KaTeX**: Fast math rendering for notation
 - **TypeScript**: Type safety for complex mathematical operations

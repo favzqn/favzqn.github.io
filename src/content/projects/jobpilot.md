@@ -26,6 +26,12 @@ JobPilot is a Manifest V3 Chrome extension that turns job applications into a on
 
 ## Technical Decisions
 
+![JobPilot side panel dashboard with application stats](/projects/jobpilot-dashboard.png)
+
+![Application history with status tracking](/projects/jobpilot-history.png)
+
+
+
 - **Manifest V3**: service worker background script, side panel dashboard, minimal permissions (storage, activeTab, scripting)
 - **TypeScript + React**: popup and side panel UI with Zustand state, persisted through the Chrome Storage API
 - **Privacy by design**: resume data never leaves the browser, AI calls go direct to the API, no middleman server

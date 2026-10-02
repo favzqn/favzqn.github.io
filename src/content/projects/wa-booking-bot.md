@@ -23,6 +23,12 @@ Type to the bot on the left and watch the booking appear in the sheet on the rig
 
 ## Technical Decisions
 
+![Bot collecting booking details conversationally](/projects/wa-chat-collect.jpg)
+
+![Booking written to the sheet after confirmation](/projects/wa-chat-sheet.jpg)
+
+
+
 - **LLM for the voice, state machine for the data.** This is the core design decision. A pure LLM flow loses or mangles details under pressure, and a pure template flow sounds robotic and cannot answer an unexpected question. So the language model writes every reply and interprets free text, while a deterministic state machine owns the booking record. Slots are extracted with explicit rules and validated before anything reaches the sheet, so a phone number can never be dropped because the model was chatty
 - **Confirm before commit.** The row is written only after the assistant has actually confirmed with the guest in conversation. Collecting five fields is not the same as a confirmed booking, and the system respects the difference
 - **Graceful degradation.** If the model call fails or times out, the state machine takes over the voice, finishes the booking, and the guest never sees an error

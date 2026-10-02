@@ -34,6 +34,10 @@ A multi-agent operations platform where five specialized AI agents share one run
 
 ## Technical Decisions
 
+![Hermes Agent dashboard showing the five agents and their sessions](/projects/agentops-dashboard.png)
+
+
+
 - **Hermes Agent multi-profile runtime**: each agent gets an isolated directory for skills, plugins, scheduled jobs, and memories. Agents cannot contaminate each other's context, and any of them can be upgraded or paused independently
 - **TypeScript + Bun** for the bridges and tooling, with Supabase for structured state
 - **Trigger-based replies, not templates**: every WhatsApp response is generated from the message and its context, with rules deciding when to reply at all

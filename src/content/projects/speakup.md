@@ -25,6 +25,12 @@ A free, offline-first progressive web app that works on low-end Android devices 
 
 ## Technical Decisions
 
+![SpeakUp lesson list on a low-end device layout](/projects/speakup-lessons.png)
+
+![Practice screen with phrase, phonetics, and record control](/projects/speakup-practice.png)
+
+
+
 - **Pure JavaScript, no framework**: keeps the bundle tiny for low-end devices
 - **Web Speech API**: browser-native speech recognition, no cloud dependency
 - **Service Worker**: full offline support with cache-first strategy

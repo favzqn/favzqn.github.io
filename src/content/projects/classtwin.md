@@ -39,6 +39,12 @@ A digital twin of a university classroom. An agent-based simulation where 30 vir
 
 ## Technical Decisions
 
+![ClassTwin configuration dashboard with simulation parameters](/projects/classtwin-config.png)
+
+![Simulation results with GPA distribution and policy impact charts](/projects/classtwin-results.jpg)
+
+
+
 - **Python + Streamlit**: Fast dashboard development, easy deployment
 - **Agent-based modeling**: Each student is an autonomous agent with individual behaviors
 - **40 tests**: Comprehensive test coverage for simulation logic

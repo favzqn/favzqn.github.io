@@ -24,6 +24,12 @@ A full-stack platform that imports existing fantasy teams and turns them into co
 
 ## Technical Decisions
 
+![Fantasy Showdown landing page](/projects/fantasy-home.jpg)
+
+![Platform features and matchup flow](/projects/fantasy-features.jpg)
+
+
+
 - **TypeScript throughout**: End-to-end type safety across frontend and backend
 - **PostgreSQL**: Complex queries for leaderboard rankings and match history
 - **Blockchain integration**: NFT minting and trading via smart contracts
