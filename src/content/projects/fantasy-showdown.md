@@ -5,7 +5,7 @@ image: "fantasy-showdown.png"
 tech: ["TypeScript", "React", "Node.js", "Blockchain", "Sports APIs"]
 live: "https://fantasyshowdowndev.com"
 github: ""
-featured: true
+featured: false
 ---
 
 ## The Problem
