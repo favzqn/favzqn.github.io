@@ -10,4 +10,4 @@ What I care about: building products that actually ship, code that doesn't break
 
 I also run <mark>Kokuhaku Hobby</mark>, a hobby shop for collectibles and games (<a href="https://www.tokopedia.com/kokuhakuhobby" target="_blank" rel="noopener noreferrer">Tokopedia</a> · <a href="https://shopee.co.id/kokuhakuhobbystore" target="_blank" rel="noopener noreferrer">Shopee</a>), and I founded a <mark>500+ member</mark> gaming community.
 
-Find me on <a href="https://www.linkedin.com/in/fauzan-fathurrahman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a href="https://github.com/favzqn" target="_blank" rel="noopener noreferrer">GitHub</a>, or <a href="mailto:fauzan08fauzan@gmail.com">email</a>. See my [experience](/experience), [projects](/projects), or [hire me](/hire).
+Find me on <a href="https://www.linkedin.com/in/fauzan-fathurrahman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, <a href="https://github.com/favzqn" target="_blank" rel="noopener noreferrer">GitHub</a>, or <a href="mailto:hi@senara.id">email</a>. See my [experience](/experience), [projects](/projects), or [hire me](/hire).
