@@ -126,9 +126,34 @@
 /* Images */
 .prose img {
   max-width: 100%;
+  max-height: 620px;
+  width: auto;
   height: auto;
   display: block;
+  margin: 1.5em auto;
+}
+
+/* Side-by-side screenshot rows for tall phone captures */
+.prose .shot-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
   margin: 1.5em 0;
+}
+
+.prose .shot-row a {
+  flex: 0 1 300px;
+  display: block;
+}
+
+.prose .shot-row img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  object-position: top;
+  margin: 0;
 }
 
 .img-placeholder {
