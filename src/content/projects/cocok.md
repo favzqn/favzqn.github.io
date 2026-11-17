@@ -4,7 +4,7 @@ description: "Multi-tenant financial reconciliation platform: bank and gateway s
 image: "cocok-reports.png"
 tech: ["Go", "Next.js", "TypeScript", "PostgreSQL", "Docker"]
 live: ""
-github: ""
+github: "https://github.com/favzqn/cocok"
 featured: true
 priority: 2
 ---
