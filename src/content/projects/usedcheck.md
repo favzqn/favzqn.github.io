@@ -21,7 +21,7 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
 
 **How it works:**
 
-1. **Create**: pick Windows laptop or MacBook, then Quick mode (14 essential checks, 5 to 10 min) or Comprehensive (42 checks, 20 to 40 min). One-tap presets fill specs for popular models, and the price field groups digits as you type: `5000000` reads `5.000.000`
+1. **Create**: pick Windows laptop or MacBook, then Quick mode (14 essential checks, 5 to 10 min) or Comprehensive (42 checks, 20 to 40 min). One-tap presets fill specs for popular models.
 2. **Inspect**: every check explains why it matters, how to do it, what good looks like, and what a concerning result looks like. You mark Pass / Warning / Fail with severity, notes, and photo evidence attached
 3. **Measure**: battery health calculates live from design vs full-charge capacity, with a guard that refuses to display impossible values
 4. **Decide**: scoring reports coverage next to the score instead of hiding it, critical failures always surface, repair estimates roll into a true potential total, and you can compare up to three laptops side by side. The output is a shareable PDF report in English or Bahasa Indonesia
@@ -41,14 +41,11 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
 
 ## Technical Decisions
 
-- **Local-first architecture**: Expo SQLite + Drizzle behind repository interfaces, so no SQL lives outside the data layer. No network calls appear anywhere in app code; a static test in the suite fails the build if `fetch`, XHR, or WebSocket ever shows up
-- **Data-driven inspection templates**: checklists are zod-validated TypeScript data with `{ en, id }` strings on every field, snapshotted into each inspection at creation, so template v2 can never rewrite what a past inspection recorded
-- **Scoring that cannot flatter you**: weighted score (Pass 1.0, Warning 0.5, Fail 0; severity weights 5/3/2/1) always renders next to coverage. The score hides below 40% coverage, Not Tested never counts as Pass, and any critical failure forces the summary to say so regardless of the average
-- **Sync reads over async plumbing**: repositories read synchronously and emit a change event on write, so a checklist tap persists and re-renders instantly without an async data framework
-- **On-device PDF reports**: HTML renders through Expo Print with evidence photos embedded as base64 thumbnails, a financial summary, and a plain-language disclaimer. No server involvement
-- **Portable backups**: fflate ZIP with a versioned manifest, merge or destructive-replace restore inside one transaction, duplicate-ID detection, and path-traversal rejection
-- **Money handling**: integer minor units in SQLite, locale-aware IDR/USD display formatting, and live digit grouping in every price input
-- **Type-enforced i18n**: `t()` keys are checked by the compiler, and a type-level constraint keeps Bahasa Indonesia a complete superset of English, so a missing translation fails `tsc` instead of a user's screen
+- **Offline by design**: no backend, no account, no analytics. Inspection records, photos, and reports live on the phone and never leave it
+- **Scoring that cannot flatter you**: the score always renders next to coverage, the app refuses to show a score below 40% coverage, and a failed critical check surfaces even when the average looks fine
+- **Reports generated on the device**: the PDF includes photos, a financial summary, and a plain-language disclaimer, and it works without internet
+- **Backups you control**: export everything as one file, then restore by merging with existing data or replacing it after an explicit confirmation
+- **Checklists are versioned content**: every inspection keeps the exact checklist it started with, so a future template update never rewrites an old record
 
 <div class="shot-row">
   <a href="/projects/usedcheck-checklist.png" target="_blank" rel="noopener">
@@ -77,7 +74,6 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
 - **The full loop runs offline on a device**: onboarding, guided inspection, status writes, force-stop, relaunch with data intact, and a valid PDF generated on disk
 - **42 checks across two platforms** (Windows + MacBook), a 14-check quick mode, and 100% bilingual content (en/id) with platform-specific guidance: `powercfg` on Windows, Activation Lock on macOS
 - **74 automated tests** (domain math, repositories against real in-memory SQLite, backup roundtrip, report HTML, component tests) plus strict TypeScript and ESLint, all green in CI
-- **GitHub Actions builds a signed APK on every push.** The debug keystore is a fixed Expo asset, so installs update in place whether they came from CI or a local build
 - **Zero backend, zero accounts, zero analytics.** The privacy screen says exactly what the code does, and the code backs it up
 
 <div class="shot-row">
