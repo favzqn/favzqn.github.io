@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css'
 import BaseHead from '@/components/layout/BaseHead.astro'
+import Header from '@/components/layout/Header.astro'
 import Footer from '@/components/layout/Footer.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { themeConfig } from '@/config'
@@ -17,6 +18,7 @@ const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boo
     slot="head" 
   />
   <div class="project-container">
+    <Header />
     <main>
       <a href="/projects" class="back-link">← Projects</a>
       
