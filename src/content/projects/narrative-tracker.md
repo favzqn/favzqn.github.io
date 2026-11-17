@@ -3,7 +3,6 @@ title: "Narrative Tracker"
 description: "Dashboard that tracks how controversies and narratives evolve across social media, with timelines, sentiment, and actor networks"
 image: "narrative-dashboard.png"
 tech: ["JavaScript", "D3.js", "Playwright", "Node.js"]
-live: "http://43.157.225.142:8094"
 github: ""
 featured: false
 ---
