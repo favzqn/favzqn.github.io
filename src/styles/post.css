@@ -62,6 +62,15 @@
   letter-spacing: 0;
 }
 
+/* Anchors inside headings inherit heading size (.prose * forces 15px) */
+.prose h1 a,
+.prose h2 a,
+.prose h3 a,
+.prose h4 a,
+.prose h5 a {
+  font-size: inherit;
+}
+
 /* Links */
 .prose a {
   color: var(--primary);

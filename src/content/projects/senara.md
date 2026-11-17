@@ -3,7 +3,7 @@ title: "Senara"
 description: "Free interactive story platform teaching life skills through visual novels"
 image: "senara-home.png"
 tech: ["Astro", "TypeScript", "Tailwind CSS", "i18n"]
-live: "https://senara.id"
+live: "https://senara.wasmer.app"
 github: "https://github.com/favzqn/senara"
 featured: true
 ---
@@ -45,4 +45,4 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ## Result
 
-Live at senara.id with 6 stories, 3 languages, and growing. Open source with contribution guidelines for educators and translators to add new stories.
+Live at senara.wasmer.app with 6 stories, 3 languages, and growing. Open source with contribution guidelines for educators and translators to add new stories.

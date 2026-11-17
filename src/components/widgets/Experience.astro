@@ -66,9 +66,17 @@ const { Content } = hasContent && experienceEntry ? await render(experienceEntry
     text-decoration-color: currentColor;
   }
   
+  .experience :global(em) {
+    font-family: inherit;
+    font-style: normal;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary);
+    letter-spacing: var(--spacing-s);
+  }
+
   .experience :global(hr) {
-    margin: 3rem 0;
+    margin: 2rem 0;
     border: none;
-    border-top: 1px solid var(--border-color, #e5e7eb);
+    border-top: 1px solid var(--border);
   }
 </style>

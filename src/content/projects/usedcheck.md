@@ -4,7 +4,6 @@ description: "Offline-first Android app that guides buyers through inspecting se
 image: "usedcheck-home.png"
 tech: ["React Native", "Expo", "TypeScript", "SQLite", "Drizzle ORM", "Jest", "GitHub Actions"]
 live: ""
-github: "https://github.com/favzqn/usedcheck"
 featured: true
 priority: 1
 ---

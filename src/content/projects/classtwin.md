@@ -1,7 +1,7 @@
 ---
 title: "ClassTwin"
 description: "Agent-based simulation for policy analysis in higher education"
-image: "classtwin.png"
+image: "classtwin-config.png"
 tech: ["Python", "Streamlit", "Agent-Based Modeling", "Data Visualization"]
 live: "https://classtwin-simulation.streamlit.app"
 github: "https://github.com/favzqn/classtwin-simulation"

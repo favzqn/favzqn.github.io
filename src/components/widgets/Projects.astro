@@ -5,35 +5,50 @@ const projects = await getCollection('projects')
 const sortedProjects = projects.sort((a, b) => {
   if (a.data.featured && !b.data.featured) return -1
   if (!a.data.featured && b.data.featured) return 1
-  return 0
+  const pa = a.data.priority ?? 99
+  const pb = b.data.priority ?? 99
+  if (pa !== pb) return pa - pb
+  return a.data.title > b.data.title ? 1 : -1
 })
 ---
 
 <div class="projects-grid">
   {sortedProjects.map((project) => (
-    <a href={`/projects/${project.id}`} class="project-card">
-      {project.data.image && (
-        <div class="project-image">
-          <img 
-            src={`/projects/${project.data.image}`} 
-            alt={project.data.title}
-            loading="lazy"
-          />
-        </div>
-      )}
-      <div class="project-content">
-        <h3 class="project-title">{project.data.title}</h3>
-        <p class="project-description">{project.data.description}</p>
-        {project.data.tech && project.data.tech.length > 0 && (
-          <div class="project-tech">
-            {project.data.tech.slice(0, 3).map((t: string) => (
-              <span class="tech-chip">{t}</span>
-            ))}
+    <div class="project-card">
+      <a href={`/projects/${project.id}`} class="project-main">
+        {project.data.image && (
+          <div class="project-image">
+            <img 
+              src={`/projects/${project.data.image}`} 
+              alt={project.data.title}
+              loading="lazy"
+            />
           </div>
         )}
-        <span class="project-cta">Read case study →</span>
-      </div>
-    </a>
+        <div class="project-content">
+          <h3 class="project-title">{project.data.title}</h3>
+          <p class="project-description">{project.data.description}</p>
+          {project.data.tech && project.data.tech.length > 0 && (
+            <div class="project-tech">
+              {project.data.tech.slice(0, 3).map((t: string) => (
+                <span class="tech-chip">{t}</span>
+              ))}
+            </div>
+          )}
+          <span class="project-cta">Read case study →</span>
+        </div>
+      </a>
+      {(project.data.live || project.data.github) && (
+        <div class="project-links">
+          {project.data.live && (
+            <a href={project.data.live} target="_blank" rel="noopener noreferrer">Live ↗</a>
+          )}
+          {project.data.github && (
+            <a href={project.data.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          )}
+        </div>
+      )}
+    </div>
   ))}
 </div>
 
@@ -55,13 +70,19 @@ const sortedProjects = projects.sort((a, b) => {
   .project-card {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: inherit;
     transition: opacity 0.2s ease;
   }
 
   .project-card:hover {
     opacity: 0.8;
+  }
+
+  .project-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
   }
 
   .project-image {
@@ -126,5 +147,24 @@ const sortedProjects = projects.sort((a, b) => {
     color: var(--text-primary);
     font-family: var(--mono);
     margin-top: auto;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.625rem;
+  }
+
+  .project-links a {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary);
+    font-family: var(--mono);
+    text-decoration: none;
+  }
+
+  .project-links a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
   }
 </style>

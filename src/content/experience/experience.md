@@ -2,51 +2,68 @@
 title: 'Experience'
 ---
 
-### <a href="https://www.frankieone.com" target="_blank" rel="noopener noreferrer">FrankieOne</a> — Senior Software Engineer in Test
-*Melbourne · Sep 2024 – Present*
+### <a href="https://www.frankieone.com" target="_blank" rel="noopener noreferrer">FrankieOne</a> · Senior Software Engineer in Test
+*Melbourne (Remote) · Sep 2024 – Nov 2026*
 
-Building AI-powered test automation for a fintech identity verification platform. Cut regression time by <mark>80%</mark>, built an AI test-case generator with AWS Bedrock, automated OneSDK flows end-to-end.
+KYC platform. Merged <mark>900+ pull requests</mark> across backend, frontend, and test code in Go and TypeScript. Shipped localized OCR-comparison views for <mark>15+ countries</mark> with Playwright e2e coverage, automated OneSDK flows (biometrics, liveness, OCR) cutting regression time <mark>~80%</mark>, and built an AI test-case generator from Jira acceptance criteria (<mark>~50% less</mark> manual test design) plus a 15-minute production synthetic monitor.
 
-### <a href="https://www.tiptip.id" target="_blank" rel="noopener noreferrer">TipTip</a> — Lead Software Engineer in Test
-*Indonesia · Jul 2022 – Sep 2024*
+Stack: Go, TypeScript, React, Playwright, K6, Grafana, AWS
 
-(<mark>$13M Series A</mark>) Led test automation for an edtech platform. Built frameworks from scratch, pushed automation coverage to <mark>90%</mark>, reduced regression effort by <mark>85%</mark>, optimized API performance by <mark>30%</mark>.
+---
 
-### <a href="https://www.chatbiz.id" target="_blank" rel="noopener noreferrer">Chatbiz</a> — Lead Software Engineer
-*Indonesia · Apr 2021 – Jan 2024*
+### Freelance Full-Stack Engineer · US Fantasy Sports Platform
+*Remote · 2025*
 
-(<mark>YC W21</mark>) This is where I went full-stack. Built <mark>30+ chatbots</mark> for brands across Indonesia — handling <mark>100k+ messages/day</mark>. Worked across NLP pipelines, webhook integrations, dashboards, and infra. Cut infrastructure costs by <mark>40%</mark>, grew gross transaction value <mark>15% week-over-week</mark>.
+Built features across a React frontend and API: live game data, player locks, gear marketplace, leaderboards. Optimized live-data handling and fixed edge cases such as field-goal detection with abbreviated player names.
 
-### <a href="https://www.mekari.com" target="_blank" rel="noopener noreferrer">Mekari</a> — Lead Software Engineer in Test
-*Indonesia · 2021 – 2022*
+Stack: React, TypeScript, Node.js
 
-Built test automation infrastructure from zero to <mark>90% coverage</mark>. Set up 20+ Jenkins pipelines, 50+ daily automated tests, integrated TestRail with Slack for real-time reporting.
+---
 
-### <a href="https://radyalabs.com" target="_blank" rel="noopener noreferrer">Radya Labs</a> — Quality & Software Engineer
-*Indonesia · 2019 – 2021*
+### <a href="https://www.tiptip.id" target="_blank" rel="noopener noreferrer">TipTip</a> · Software Engineer in Test
+*Jakarta · Jul 2022 – Sep 2024*
 
-Built <mark>5+ chatbots</mark> for multinational clients. Developed a university grants platform that reduced processing time by <mark>75%</mark>. This is where I learned to ship fast without breaking things.
+(<mark>$13M Series A</mark>) Improved API latency <mark>~30%</mark> for live sessions with thousands of concurrent users via K6 load tests, query tuning, gRPC, and caching. Drove <mark>90%+</mark> automation coverage across API, web, and mobile, cutting regression effort <mark>~85%</mark>; owned 10+ Jenkins jobs running 30+ suites daily. Built a PRD-to-test converter that cut bugs and dev time <mark>~30%</mark>; earned the 2023 Engineering Unsung Hero Award.
 
-### <a href="https://www.active8me.com" target="_blank" rel="noopener noreferrer">Active8Me</a> — QA Lead
-*Singapore*
+Stack: Playwright, TypeScript, Cucumber, Jenkins, K6, Grafana
 
-Led QA for a fitness app with <mark>20k+ users</mark>. Built comprehensive test processes and improved app reliability across the board.
+---
 
-### <a href="https://fantasyshowdown.com" target="_blank" rel="noopener noreferrer">Fantasy Showdown</a> — Full-Stack Engineer
-*United States*
+### <a href="https://www.chatbiz.id" target="_blank" rel="noopener noreferrer">Chatbiz</a> · Lead Software Engineer (Part-time)
+*Bandung · Apr 2021 – Jan 2024*
 
-Built a Web3 fantasy-sports platform from scratch. Blockchain integrations, sports APIs, real-time scoring — the full stack.
+(<mark>YC W21</mark>) Delivered <mark>30+ chatbots</mark> across WhatsApp, LINE, Instagram, Facebook, and web, handling <mark>100k+ messages/day</mark> and contributing to <mark>~15% week-over-week</mark> GTV growth. Migrated to serverless (Lambda, Step Functions, DynamoDB), cutting infrastructure cost <mark>~40%</mark>; integrated NLP (Wit.ai, Dialogflow, Rasa).
+
+Stack: Node.js, Serverless, AWS
+
+---
+
+### <a href="https://www.mekari.com" target="_blank" rel="noopener noreferrer">Mekari</a> · Software Engineer in Test
+*Jakarta · Aug 2021 – Jul 2022*
+
+Reached <mark>90%+ API/web automation</mark> across 20+ Jenkins jobs running 50+ tests daily, with TestRail and Slack dashboards for live pass/fail.
+
+Stack: Ruby, Selenium, Cucumber, Appium, TestRail, Jenkins, Docker, JMeter
+
+---
+
+### <a href="https://radyalabs.com" target="_blank" rel="noopener noreferrer">Radya Labs</a> · Quality and Software Engineer
+*Bandung · Jan 2019 – Mar 2021*
+
+Built a university research-grants platform (Angular) that cut processing time <mark>~75%</mark>, shipped <mark>5+ chatbots</mark> for multinational and government clients, and led QA including security testing.
+
+Stack: Angular, Chatbots, QA
 
 ---
 
 **Education & Certifications**
 
-AWS Certified Developer, Associate · JLPT N5 · B.Sc. Computer Science, Widyatama University
+AWS Certified Developer – Associate · AWS Community Builder (2022 – 2023) · S.Kom. Computer Science, Widyatama University
 
 **What I work with**
 
-TypeScript, React, Next.js, Node.js, Bun, Supabase, PostgreSQL, Playwright, Selenium, AWS, Docker, CI/CD
+Go, TypeScript, JavaScript, Ruby, Python, React, Angular, Node.js, gRPC, AWS, Playwright, Selenium, Appium, Cucumber, K6, JMeter, Jenkins, Docker, Grafana
 
 **Outside work**
 
-<mark>Mentored 180+ engineers</mark> (88% job placement) · <mark>26k+ LinkedIn</mark> · AWS Community Builder · Run <mark>Kokuhaku Hobby</mark> · Lead a 500+ member gaming community
+<mark>Mentored 180+ engineers</mark> (4.9/5 rating) · <mark>26k+ LinkedIn</mark> · Run <mark>Kokuhaku Hobby</mark> · Lead a <mark>500+ member</mark> gaming community · Senara open-source visual novels

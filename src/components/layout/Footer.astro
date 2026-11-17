@@ -34,13 +34,20 @@ const today = new Date()
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
     width: 100%;
   }
 
   .copyright,
   .powered-by {
     white-space: nowrap;
+  }
+
+  @media (max-width: 360px) {
+    .footer-content {
+      justify-content: flex-start;
+    }
   }
 
   .copyright .date {
