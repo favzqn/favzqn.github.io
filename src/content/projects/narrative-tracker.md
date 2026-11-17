@@ -2,7 +2,7 @@
 title: "Narrative Tracker"
 description: "Dashboard that tracks how controversies and narratives evolve across social media, with timelines, sentiment, and actor networks"
 image: "narrative-dashboard.png"
-tech: ["JavaScript", "D3.js", "Playwright", "Supabase", "Node.js"]
+tech: ["JavaScript", "D3.js", "Playwright", "Node.js"]
 live: "http://43.157.225.142:8094"
 github: ""
 featured: false
@@ -35,8 +35,6 @@ A narrative analysis dashboard that treats a topic as something with a history, 
 - **Playwright and Patchright scrapers**: collection runs through a real browser so it works on sites that block plain HTTP clients, with rate limits and robots.txt respected
 - **Static frontend, API backend split**: the dashboard is plain HTML, CSS, and JavaScript served statically, talking to a Node.js API, so the visual layer is easy to redeploy anywhere
 - **Rich seeded data**: eight realistic issues with full event histories, so every view demonstrates itself instead of showing empty states to a first-time viewer
-
-![Narrative Tracker actor network graph](/projects/narrative-network.png)
 
 ## Result
 
