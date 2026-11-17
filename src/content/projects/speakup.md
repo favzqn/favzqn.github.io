@@ -6,6 +6,7 @@ tech: ["JavaScript", "PWA", "Web Speech API", "Service Worker"]
 live: "https://speakup.fauzan08fauzan.workers.dev"
 github: "https://github.com/favzqn/speakup"
 featured: true
+priority: 3
 ---
 
 ## The Problem

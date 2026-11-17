@@ -6,6 +6,7 @@ tech: ["Astro", "TypeScript", "Tailwind CSS", "i18n"]
 live: "https://senara.wasmer.app"
 github: "https://github.com/favzqn/senara"
 featured: true
+priority: 3
 ---
 
 ## The Problem
