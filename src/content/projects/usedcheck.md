@@ -86,3 +86,4 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
   </a>
 </div>
 
+**Shows:** React Native and Expo, offline-first SQLite data, native device APIs, mobile CI

@@ -40,3 +40,5 @@ A free, offline-first progressive web app that works on low-end Android devices 
 ## Result
 
 A working PWA that runs on $50 Android phones in areas with poor connectivity. No servers to maintain, no costs to scale.
+
+**Shows:** offline-first PWA engineering, Service Worker caching, Web Speech API, performance on low-end devices

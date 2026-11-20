@@ -51,3 +51,5 @@ COCOK is a B2B reconciliation platform that ingests financial data from any chan
 - **Integration test suite** against real Postgres covering tenant isolation, authentication, and RBAC, run in CI on every push
 - **Real matching end to end**: imported a bank statement and a gateway settlement file, and the engine proposed a scored 1:1 match with the remaining 8 transactions queued as exceptions
 - **Full audit trail**: every import, match run, and account change recorded as an append-only event with request payloads
+
+**Shows:** multi-tenant Go APIs, SQL data modeling, deterministic matching, Next.js dashboards, auth/RBAC/audit hardening

@@ -67,3 +67,18 @@ Go, TypeScript, JavaScript, Ruby, Python, React, Angular, Node.js, gRPC, AWS, Pl
 **Outside work**
 
 <mark>Mentored 180+ engineers</mark> (4.9/5 rating) · <mark>26k+ LinkedIn</mark> · Run <mark>Kokuhaku Hobby</mark> · Lead a <mark>500+ member</mark> gaming community · Senara open-source visual novels
+
+---
+
+**Skills, with proof**
+
+| Skill | Proof |
+| --- | --- |
+| Go, multi-tenant APIs, SQL | [COCOK](/projects/cocok) |
+| Test automation, AI tooling | [AI Test Case Generator](/projects/ai-test-generator), [UsedCheck](/projects/usedcheck) |
+| React, browser extensions | [JobPilot](/projects/jobpilot) |
+| React, i18n, static sites | [Senara](/projects/senara) |
+| Node.js at scale, NLP | [Chatbiz Chatbot Platform](/projects/chatbiz-chatbots) |
+| Scraping, D3, time-series viz | [Narrative Tracker](/projects/narrative-tracker) |
+| React Native, offline-first mobile | [UsedCheck](/projects/usedcheck), [SpeakUp](/projects/speakup) |
+| D3, interactive education | [Axiomara](/projects/axiomara) |

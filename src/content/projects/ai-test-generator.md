@@ -44,3 +44,5 @@ An AI-powered test case generator that creates comprehensive test cases from Jir
 - **15-25 hours saved** per sprint
 - **80% reduction** in regression time
 - **Consistent coverage** across all features
+
+**Shows:** Python tooling, AWS Bedrock integration, CI/CD automation, Jira API workflows

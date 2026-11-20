@@ -43,3 +43,5 @@ JobPilot is a Manifest V3 Chrome extension that turns job applications into a on
 - **One-click applications** across four major job boards
 - **10 unit tests** covering board parsing, skill tag extraction, and form auto-fill, enforced in CI on every push
 - **Fully client-side** architecture with zero backend infrastructure
+
+**Shows:** Chrome extension development (Manifest V3), DOM parsing across sites, client-side AI integration, unit-tested CI

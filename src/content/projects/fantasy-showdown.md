@@ -38,3 +38,5 @@ A full-stack platform that imports existing fantasy teams and turns them into co
 ## Result
 
 A working platform that combines fantasy sports with Web3 mechanics. Users import teams, earn gear, and compete, all without managing another fantasy roster.
+
+**Shows:** full-stack React and Node.js, real-time scoring, third-party sports APIs, PostgreSQL schema design

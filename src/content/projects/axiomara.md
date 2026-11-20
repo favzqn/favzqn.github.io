@@ -43,3 +43,5 @@ A virtual math laboratory where abstract concepts become interactive experiences
 ## Result
 
 Live at favzqn.github.io/axiomara. Used by students to explore discrete math concepts interactively.
+
+**Shows:** D3.js visualizations, KaTeX rendering, interactive education UI, zero-backend TypeScript
