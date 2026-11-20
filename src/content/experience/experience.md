@@ -75,6 +75,7 @@ Go, TypeScript, JavaScript, Ruby, Python, React, Angular, Node.js, gRPC, AWS, Pl
 | Skill | Proof |
 | --- | --- |
 | Go, multi-tenant APIs, SQL | [COCOK](/projects/cocok) |
+| Python, ETL, data pipelines | [IncidentScope](/projects/incidentscope) |
 | Test automation, AI tooling | [AI Test Case Generator](/projects/ai-test-generator), [UsedCheck](/projects/usedcheck) |
 | React, browser extensions | [JobPilot](/projects/jobpilot) |
 | React, i18n, static sites | [Senara](/projects/senara) |

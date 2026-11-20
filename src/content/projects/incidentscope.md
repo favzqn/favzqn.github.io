@@ -96,3 +96,5 @@ An end-to-end pipeline and dashboard, from public API to production-style analyt
 - Statuspage-only in v1; other providers need their own adapters and data-access review
 - "Degraded observations" counts collected snapshots, not downtime: a component observed degraded at every run accumulates observations proportionally to the schedule
 - Volume-anomaly checks need at least two prior runs before they can compare anything
+
+**Shows:** Python data pipelines, scheduled collection, Postgres normalization, Recharts analytics dashboards, pipeline observability
