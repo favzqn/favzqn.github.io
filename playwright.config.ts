@@ -12,9 +12,11 @@ export default defineConfig({
     ...(executablePath ? { launchOptions: { executablePath } } : {})
   },
   webServer: {
-    command: 'pnpm preview',
+    // `astro preview` is unsupported with @astrojs/netlify — smoke tests run
+    // against the dev server (source-level checks; artifact verified via Deploy Preview)
+    command: 'pnpm dev',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
-    timeout: 30000
+    timeout: 60000
   }
 })

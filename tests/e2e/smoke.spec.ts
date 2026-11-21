@@ -1,12 +1,14 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('site smoke', () => {
-  test('homepage: hero, quick links, 7 recommendations', async ({ page }) => {
+  test('homepage: hero, quick links, stats, 9 recommendations', async ({ page }) => {
     await page.goto('/')
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Fauzan')
-    await expect(page.locator('.chips a')).toHaveCount(4)
-    await expect(page.locator('blockquote')).toHaveCount(7)
-    await expect(page.locator('.rec-author a')).toHaveCount(7)
+    await expect(page.locator('.status-pill')).toBeVisible()
+    await expect(page.locator('.home-stats .stat')).toHaveCount(4)
+    await expect(page.locator('.chips a')).toHaveCount(5)
+    await expect(page.locator('blockquote')).toHaveCount(9)
+    await expect(page.locator('.rec-author a')).toHaveCount(9)
   })
 
   test('case study: meta, metrics, section nav, CTA', async ({ page }) => {
@@ -48,6 +50,36 @@ test.describe('site smoke', () => {
       const res = await request.get(href)
       expect(res.status(), `${href} -> ${res.status()}`).toBeLessThan(400)
     }
+  })
+
+  test('command palette opens with shortcut and closes with Escape', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.locator('.cp-trigger')).toBeVisible()
+    await page.keyboard.press('ControlOrMeta+k')
+    await expect(page.locator('#cp-backdrop')).toBeVisible()
+    await expect(page.locator('#cp-results li')).not.toHaveCount(0)
+    await page.fill('#cp-input', 'NAS')
+    await expect(page.locator('#cp-results a[href="/nas-stb/"]')).toBeVisible()
+    await page.keyboard.press('Escape')
+    await expect(page.locator('#cp-backdrop')).toBeHidden()
+  })
+
+  test('blog category filter narrows the list', async ({ page }) => {
+    await page.goto('/blog/')
+    const total = await page.locator('li[data-category]').count()
+    await page.locator('button[data-category="engineering"]').click()
+    const visible = await page.locator('li[data-category]:not([style*="display: none"])').count()
+    expect(visible).toBeGreaterThan(0)
+    expect(visible).toBeLessThan(total)
+    await page.locator('button[data-category="all"]').click()
+    await expect(page.locator('li[data-category]:not([style*="display: none"])')).toHaveCount(total)
+  })
+
+  test('experience page renders timeline entries and certification', async ({ page }) => {
+    await page.goto('/experience/')
+    expect(await page.locator('.experience h2').count()).toBeGreaterThanOrEqual(6)
+    await expect(page.locator('.certifications h2')).toHaveText('Certifications')
+    await expect(page.locator('.cert-card')).toBeVisible()
   })
 
   test('unknown URL returns 404 with navigation', async ({ page }) => {

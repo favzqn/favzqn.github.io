@@ -2,6 +2,13 @@
   publish = "dist"
   command = "pnpm run build"
 
+# Custom domain: permanent redirect from old Netlify host (place before other rules)
+[[redirects]]
+  from = "https://feyzan.netlify.app/*"
+  to = "https://fau.ai.id/:splat"
+  status = 301
+  force = true
+
 # Redirects for Astro static assets
 [[redirects]]
   from = "/_astro/*"

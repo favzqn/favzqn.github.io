@@ -6,7 +6,7 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://feyzan.netlify.app/sitemap-index.xml
+Sitemap: https://fau.ai.id/sitemap-index.xml
 
 # Crawl delay (optional, helps with server load)
 Crawl-delay: 1

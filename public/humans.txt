@@ -1,6 +1,6 @@
 /* TEAM */
 Developer: Fauzan Fathurrahman
-Site: https://feyzan.netlify.app
+Site: https://fau.ai.id
 LinkedIn: https://www.linkedin.com/in/fauzan-fathurrahman/
 GitHub: https://github.com/favzqn
 Location: Indonesia

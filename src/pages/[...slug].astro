@@ -35,7 +35,7 @@ const related = (await getSortedFilteredPosts())
   .slice(0, 2)
   .map(({ entry }) => ({
     title: entry.data.title,
-    href: '/' + entry.id.replace(/\.(md|mdx)$/, ''),
+    href: '/' + entry.id.replace(/\.(md|mdx)$/, '') + '/',
     description: entry.data.description || ''
   }))
 ---

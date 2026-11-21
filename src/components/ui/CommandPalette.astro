@@ -1,0 +1,273 @@
+---
+// Site-wide command palette (Ctrl/Cmd+K): static page nav + lazy Pagefind search
+import { getSortedFilteredPosts } from '@/utils/draft'
+
+// Post titles/descs embedded at build time so search works even where the
+// Pagefind index is unavailable (astro dev, JS-blocked partial loads)
+const posts = (await getSortedFilteredPosts()).map((p) => ({
+  title: p.data.title,
+  url: '/' + p.id.replace(/\.(md|mdx)$/, '') + '/',
+  desc: p.data.description || ''
+}))
+---
+
+<div class="cp-backdrop" id="cp-backdrop" hidden>
+  <div class="cp-panel" role="dialog" aria-modal="true" aria-label="Search site">
+    <input
+      id="cp-input"
+      type="text"
+      placeholder="Search pages and posts…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="Search pages and posts"
+    />
+    <ul id="cp-results" role="listbox" aria-label="Search results"></ul>
+    <p class="cp-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close</p>
+  </div>
+</div>
+
+<script is:inline define:vars={{ posts }}>
+  ;(function () {
+    const backdrop = document.getElementById('cp-backdrop')
+    const input = document.getElementById('cp-input')
+    const list = document.getElementById('cp-results')
+    if (!backdrop || !input || !list) return
+
+    const PAGES = [
+      { title: 'Home', url: '/', desc: 'Bio and recommendations' },
+      { title: 'Projects', url: '/projects/', desc: 'All case studies' },
+      { title: 'Blog', url: '/blog/', desc: 'Technical articles' },
+      { title: 'Experience', url: '/experience/', desc: 'Work history' },
+      { title: 'Hire me', url: '/hire/', desc: 'Services, availability, contact' }
+    ]
+    const ALL = PAGES.concat(posts)
+
+    let pagefind = null
+    let open = false
+    let active = 0
+    let timer = null
+    let lastFocus = null
+
+    function loadPagefind() {
+      if (!pagefind) pagefind = import('/pagefind/pagefind.js').catch(() => null)
+      return pagefind
+    }
+
+    function render(items) {
+      active = 0
+      list.innerHTML = items.length
+        ? items
+            .map(
+              (it, i) =>
+                '<li role="option" class="' + (i === 0 ? 'active' : '') +
+                '"><a href="' + it.url + '"><span class="cp-title">' + it.title + '</span>' +
+                (it.desc ? '<span class="cp-desc">' + it.desc + '</span>' : '') +
+                '</a></li>'
+            )
+            .join('')
+        : '<li class="cp-empty">No results</li>'
+    }
+
+    function search(q) {
+      q = (q || '').trim().toLowerCase()
+      if (!q) {
+        render(PAGES)
+        return
+      }
+      const statics = ALL.filter(
+        (p) => p.title.toLowerCase().includes(q) || (p.desc || '').toLowerCase().includes(q)
+      )
+      render(statics)
+      loadPagefind()
+        .then((pf) => {
+          if (!pf) return
+          return pf.search(q).then((res) =>
+            Promise.all(res.results.slice(0, 6).map((r) => r.data())).then((datas) => {
+              const seen = new Set(statics.map((s) => s.url))
+              const extra = datas
+                .filter((d) => !seen.has(d.url))
+                .map((d) => ({
+                  title: (d.meta && d.meta.title) || d.url,
+                  url: d.url,
+                  desc: (d.excerpt || '').replace(/<[^>]+>/g, '')
+                }))
+              if (extra.length) render(statics.concat(extra))
+            })
+          )
+        })
+        .catch(() => {})
+    }
+
+    function move(delta) {
+      const items = list.querySelectorAll('li')
+      if (!items.length) return
+      if (items[active]) items[active].classList.remove('active')
+      active = (active + delta + items.length) % items.length
+      items[active].classList.add('active')
+      items[active].scrollIntoView({ block: 'nearest' })
+    }
+
+    function go() {
+      const items = list.querySelectorAll('li a[href]')
+      if (!items.length) return
+      location.href = (items[active] || items[0]).getAttribute('href')
+    }
+
+    function setOpen(v) {
+      open = v
+      backdrop.hidden = !v
+      if (v) {
+        lastFocus = document.activeElement
+        input.value = ''
+        search('')
+        input.focus()
+        document.documentElement.style.overflow = 'hidden'
+      } else {
+        document.documentElement.style.overflow = ''
+        if (lastFocus && lastFocus.focus) lastFocus.focus()
+      }
+    }
+
+    input.addEventListener('input', () => {
+      clearTimeout(timer)
+      timer = setTimeout(() => search(input.value), 150)
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setOpen(!open)
+        return
+      }
+      if (!open) return
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setOpen(false)
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        move(1)
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        move(-1)
+      } else if (e.key === 'Enter') {
+        e.preventDefault()
+        go()
+      }
+    })
+
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) setOpen(false)
+    })
+
+    document.querySelectorAll('[data-cp-open]').forEach((btn) => {
+      btn.addEventListener('click', () => setOpen(true))
+    })
+  })()
+</script>
+
+<style is:global>
+  /* Result items are JS-injected via innerHTML and never carry Astro's
+     data-astro-cid attribute — scoped selectors can't match them */
+  .cp-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 75%, transparent);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 12vh 1rem 1rem;
+  }
+
+  .cp-backdrop[hidden] {
+    display: none;
+  }
+
+  .cp-panel {
+    width: 100%;
+    max-width: 32rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+  }
+
+  #cp-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.9rem 1rem;
+    font-family: var(--sans);
+    font-size: var(--font-size-l);
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    outline: none;
+    appearance: none;
+  }
+
+  #cp-input::placeholder {
+    color: var(--text-secondary-strong);
+  }
+
+  #cp-results {
+    list-style: none;
+    margin: 0;
+    padding: 0.35rem;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  #cp-results li {
+    border-radius: 5px;
+  }
+
+  #cp-results li.active {
+    background: var(--code-bg);
+  }
+
+  #cp-results a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.55rem 0.65rem;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .cp-title {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cp-desc {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .cp-empty {
+    padding: 0.75rem;
+    font-size: var(--font-size-m);
+    color: var(--text-secondary-strong);
+  }
+
+  .cp-hint {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary-strong);
+  }
+
+  .cp-hint kbd {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 0.3rem;
+    margin-right: 0.15rem;
+  }
+</style>

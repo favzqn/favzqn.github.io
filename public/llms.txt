@@ -1,0 +1,36 @@
+# Fauzan Fathurrahman — Full-stack Engineer & Automation Specialist
+
+> Senior Software Engineer in Test at FrankieOne (KYC platform). Builds scalable products and the systems that test them: TypeScript, React, Node.js, Go, PostgreSQL on AWS, with Playwright test automation at scale. Based in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.
+
+Personal site: case studies with problem/solution/result structure, a technical blog, experience history, and a hire page. Canonical domain: https://fau.ai.id/
+
+## Pages
+
+- [Home](https://fau.ai.id/): bio, quick links, recommendations from colleagues
+- [Hire me](https://fau.ai.id/hire): services, process, availability, contact
+- [Experience](https://fau.ai.id/experience): work history with impact metrics
+- [Projects](https://fau.ai.id/projects): all case studies
+- [Blog](https://fau.ai.id/blog): technical articles on AI, automation, AWS, and engineering
+- [RSS](https://fau.ai.id/rss.xml): feed
+
+## Case studies
+
+- [UsedCheck](https://fau.ai.id/projects/usedcheck/): offline-first Android app for inspecting second-hand laptops — React Native, SQLite, 74 automated tests
+- [COCOK](https://fau.ai.id/projects/cocok/): multi-tenant financial reconciliation platform — Go, Next.js, PostgreSQL; 9.4ms p95 under load
+- [IncidentScope](https://fau.ai.id/projects/incidentscope/): public service reliability intelligence — Python pipeline, PostgreSQL analytics
+- [JobPilot](https://fau.ai.id/projects/jobpilot/): Chrome extension automating job applications — Manifest V3, client-side AI
+- [Senara](https://fau.ai.id/projects/senara/): free interactive story platform teaching life skills — Astro, i18n
+- [SpeakUp](https://fau.ai.id/projects/speakup/): offline-first PWA for English speaking practice
+- [AI Test Case Generator](https://fau.ai.id/projects/ai-test-generator/): Jira tickets to test cases in 30 seconds — AWS Bedrock
+- [Chatbiz Chatbot Platform](https://fau.ai.id/projects/chatbiz-chatbots/): 30+ chatbots handling 100k+ messages/day
+- [Fantasy Showdown](https://fau.ai.id/projects/fantasy-showdown/): fantasy sports platform with live scoring
+- [Axiomara](https://fau.ai.id/projects/axiomara/): interactive discrete mathematics simulator
+- [Narrative Tracker](https://fau.ai.id/projects/narrative-tracker/): controversy timelines and actor networks
+
+## Selected posts
+
+- [Building a Test Automation Framework that Scales](https://fau.ai.id/test-automation-at-scale/)
+- [From 0 to 180+ Mentees: Building a Mentorship Program](https://fau.ai.id/mentoring-180-engineers/)
+- [The Test Case Problem: How AI Turned Hours into Minutes](https://fau.ai.id/ai-test-case-generator/)
+- [Automating Biometric Tests with Mocked Webcam Using Playwright](https://fau.ai.id/playwright-biometric-testing/)
+- [Building a NAS and AI Assistant from a Used Set-Top Box](https://fau.ai.id/nas-stb/)

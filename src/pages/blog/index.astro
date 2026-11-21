@@ -7,6 +7,19 @@ import { getSortedFilteredPosts } from '@/utils/draft'
 const allPosts = await getSortedFilteredPosts()
 const englishPosts = allPosts.filter(post => !post.data.lang || post.data.lang === 'en')
 const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
+
+const categoryLabels: Record<string, string> = {
+  engineering: 'Engineering',
+  automation: 'Automation',
+  ai: 'AI',
+  aws: 'AWS',
+  leadership: 'Leadership',
+  personal: 'Personal',
+  reviews: 'Reviews'
+}
+const categories = Object.keys(categoryLabels).filter((c) =>
+  allPosts.some((p) => p.data.category === c)
+)
 ---
 
 <IndexLayout
@@ -31,9 +44,47 @@ const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
           showImages: false,
           showSubResults: true
         })
+      } else {
+        // Pagefind index only exists post-build (absent in `astro dev`) —
+        // collapse the reserved box instead of showing an empty gap
+        const el = document.getElementById('blog-search')
+        if (el) el.style.display = 'none'
       }
     })
   </script>
+
+  {categories.length > 0 && (
+    <div class="cat-filter" role="group" aria-label="Filter posts by category">
+      <button type="button" class="filter-chip active" data-category="all">All</button>
+      {categories.map((c) => (
+        <button type="button" class="filter-chip" data-category={c}>{categoryLabels[c]}</button>
+      ))}
+    </div>
+  )}
+
+  <script is:inline>
+    ;(function () {
+      const chips = document.querySelectorAll('.cat-filter .filter-chip')
+      if (!chips.length) return
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          chips.forEach((c) => c.classList.remove('active'))
+          chip.classList.add('active')
+          const cat = chip.dataset.category
+          document.querySelectorAll('li[data-category]').forEach((li) => {
+            li.style.display = cat === 'all' || li.dataset.category === cat ? '' : 'none'
+          })
+          document.querySelectorAll('.language-section').forEach((sec) => {
+            const any = [...sec.querySelectorAll('li[data-category]')].some(
+              (li) => li.style.display !== 'none'
+            )
+            sec.style.display = any ? '' : 'none'
+          })
+        })
+      })
+    })()
+  </script>
+
   <div style="padding-top: 3rem;">
     <PostList posts={englishPosts} />
     {indonesianPosts.length > 0 && (
@@ -47,6 +98,39 @@ const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
 
 <style>
   /* Reserve space before PagefindUI mounts (CLS) */
+  .cat-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .filter-chip {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary-strong);
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .filter-chip:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+
+  .filter-chip.active {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg);
+  }
+
   .blog-search {
     min-height: 3rem;
     margin-top: 0;

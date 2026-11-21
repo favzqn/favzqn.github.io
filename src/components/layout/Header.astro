@@ -11,6 +11,9 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
       <a href="/projects">Projects</a>
       <a href="/experience">Experience</a>
       <a href="/blog">Blog</a>
+      <button type="button" class="cp-trigger" data-cp-open aria-label="Open search" aria-haspopup="dialog">
+        <span aria-hidden="true">⌘K</span>
+      </button>
       <ThemeToggle />
     </div>
   </nav>
@@ -39,6 +42,32 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
     gap: 1.25rem;
     flex-wrap: wrap;
     align-items: center;
+  }
+
+  .cp-trigger {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    line-height: 1;
+    padding: 0.3rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary-strong);
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .cp-trigger:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+
+  @media (max-width: 768px) {
+    .cp-trigger {
+      display: none;
+    }
   }
   
   header a {

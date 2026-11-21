@@ -3,7 +3,7 @@ import type { ThemeConfig } from './types'
 export const themeConfig: ThemeConfig = {
   // SITE INFO ///////////////////////////////////////////////////////////////////////////////////////////
   site: {
-    website: 'https://feyzan.netlify.app/', // Site domain
+    website: 'https://fau.ai.id/', // Site domain
     title: 'Fauzan Fathurrahman', // Site title
     author: 'Fauzan Fathurrahman', // Author name
     description: 'Full-stack engineer & automation specialist. Building scalable products and the systems that test them.', // Site description

@@ -15,5 +15,108 @@ import { themeConfig } from '@/config'
       7 years building products — chatbots, web apps, test automation — across startups and scale-ups in Indonesia, Singapore, Australia, and the US.
     </p>
     <ExperienceWidget />
+
+    <section class="certifications" aria-labelledby="certs-heading">
+      <h2 id="certs-heading">Certifications</h2>
+      <a
+        class="cert-card"
+        href="https://www.credly.com/badges/f8a71293-48f5-4f85-a03a-86ab2fe81422/linked_in_profile"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://images.credly.com/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/linkedin_thumb_image.png"
+          alt="AWS Certified Developer – Associate badge issued by Amazon Web Services"
+          width="56"
+          height="56"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="cert-body">
+          <span class="cert-issuer">Amazon Web Services (AWS)</span>
+          <span class="cert-name">AWS Certified Developer – Associate</span>
+          <span class="cert-date">Issued Mar 2023</span>
+        </span>
+        <span class="cert-cta">View badge ↗</span>
+      </a>
+    </section>
   </div>
 </IndexLayout>
+
+<style>
+  .certifications {
+    margin-top: 3.5rem;
+  }
+
+  .certifications h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 1rem;
+  }
+
+  .cert-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+  }
+
+  .cert-card:hover {
+    background: var(--code-bg);
+  }
+
+  .cert-card img {
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .cert-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .cert-issuer {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary-strong);
+  }
+
+  .cert-name {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cert-date {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary);
+  }
+
+  .cert-cta {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .cert-card {
+      flex-wrap: wrap;
+    }
+
+    .cert-cta {
+      margin-left: 56px;
+    }
+  }
+</style>

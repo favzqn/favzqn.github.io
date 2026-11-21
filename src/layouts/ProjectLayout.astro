@@ -4,6 +4,7 @@ import BaseHead from '@/components/layout/BaseHead.astro'
 import Header from '@/components/layout/Header.astro'
 import Footer from '@/components/layout/Footer.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import GradientMask from '@/components/ui/GradientMask.astro'
 import { themeConfig } from '@/config'
 
 type TocItem = { level: number; text: string; id: string }
@@ -32,6 +33,7 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
     slot="head" 
   />
   <div class="project-container">
+    <GradientMask />
     <Header />
     <main>
       <a href="/projects" class="back-link">← Projects</a>
@@ -118,7 +120,6 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
   .project-container {
     max-width: 45rem;
     margin: 0 auto;
-    padding: 0 1.5rem;
   }
   
   .back-link {

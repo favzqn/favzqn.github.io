@@ -38,6 +38,11 @@ const filters = [...techCounts.entries()]
       <a href={`/projects/${project.id}`} class="project-main">
         {project.data.image && (
           <div class="project-image">
+            <div class="browser-bar" aria-hidden="true">
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+            </div>
             <img 
               src={`/projects/${project.data.image}`} 
               alt={project.data.title}
@@ -48,6 +53,15 @@ const filters = [...techCounts.entries()]
         <div class="project-content">
           <h3 class="project-title">{project.data.title}</h3>
           <p class="project-description">{project.data.description}</p>
+          {project.data.metrics && project.data.metrics.length > 0 && (
+            <div class="card-metrics">
+              {project.data.metrics.slice(0, 2).map((m: { value: string; label: string }) => (
+                <span class="card-metric">
+                  <strong>{m.value}</strong> {m.label}
+                </span>
+              ))}
+            </div>
+          )}
           {project.data.tech && project.data.tech.length > 0 && (
             <div class="project-tech">
               {project.data.tech.slice(0, 3).map((t: string) => (
@@ -144,13 +158,33 @@ const filters = [...techCounts.entries()]
     border-radius: 6px;
     margin-bottom: 1rem;
     background: var(--code-bg);
+    display: flex;
+    flex-direction: column;
   }
 
   .project-image img {
     width: 100%;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     object-fit: cover;
     transition: transform 0.3s ease;
+  }
+
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 1.6rem;
+    padding: 0 0.65rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .browser-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
   }
 
   .project-card:hover .project-image img {
@@ -176,6 +210,21 @@ const filters = [...techCounts.entries()]
     line-height: 1.6;
     margin: 0 0 0.75rem 0;
     flex: 1;
+  }
+
+  .card-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .card-metric strong {
+    color: var(--text-primary);
+    font-family: var(--mono);
+    font-weight: var(--font-weight-bold);
   }
 
   .project-tech {

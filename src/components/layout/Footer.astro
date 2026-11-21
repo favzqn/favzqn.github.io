@@ -12,10 +12,13 @@ const today = new Date()
       </span>
       {themeConfig.site.author}
     </div>
-    <div class="powered-by">
-      Powered by{' '}
-      <a href="https://astro.build">Astro</a> &{' '}
-      <a href="https://github.com/the3ash/astro-chiri">Chiri</a>
+    <div class="footer-links">
+      <a href="/Fauzan_Fathurrahman_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      <span class="powered-by">
+        Powered by{' '}
+        <a href="https://astro.build">Astro</a> &{' '}
+        <a href="https://github.com/the3ash/astro-chiri">Chiri</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -39,9 +42,16 @@ const today = new Date()
     width: 100%;
   }
 
-  .copyright,
-  .powered-by {
+  .copyright {
     white-space: nowrap;
+  }
+
+  .footer-links {
+    white-space: nowrap;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 360px) {
