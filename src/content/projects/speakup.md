@@ -7,6 +7,11 @@ live: "https://speakup.fauzan08fauzan.workers.dev"
 github: "https://github.com/favzqn/speakup"
 featured: true
 priority: 3
+role: 'Side project'
+metrics:
+  - { value: '64', label: 'practice phrases' }
+  - { value: '8', label: 'lessons' }
+  - { value: '0', label: 'accounts or servers' }
 ---
 
 ## The Problem

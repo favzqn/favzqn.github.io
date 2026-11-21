@@ -5,6 +5,11 @@ image: "narrative-dashboard.png"
 tech: ["JavaScript", "D3.js", "Playwright", "Node.js"]
 github: ""
 featured: false
+role: 'Side project'
+metrics:
+  - { value: '4', label: 'working views' }
+  - { value: '4', label: 'platforms collected' }
+  - { value: '8', label: 'seeded issue datasets' }
 ---
 
 ## The Problem

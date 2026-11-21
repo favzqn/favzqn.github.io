@@ -6,8 +6,22 @@ import Footer from '@/components/layout/Footer.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { themeConfig } from '@/config'
 
-const { title, description, image, tech, live, github } = Astro.props
+type TocItem = { level: number; text: string; id: string }
+
+const {
+  title,
+  description,
+  image,
+  tech,
+  live,
+  github,
+  year,
+  role,
+  metrics,
+  toc = []
+} = Astro.props
 const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boolean).pop()}.png`
+const sections = (toc as TocItem[]).filter((t) => t.level === 2)
 ---
 
 <BaseLayout title={`${title} · ${themeConfig.site.title}`} description={description}>
@@ -31,6 +45,9 @@ const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boo
         
         <header class="project-header">
           <h1>{title}</h1>
+          {(year || role) && (
+            <p class="project-meta">{[year, role].filter(Boolean).join(' · ')}</p>
+          )}
           <p class="project-desc">{description}</p>
           
           {tech && tech.length > 0 && (
@@ -54,10 +71,42 @@ const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boo
             )}
           </div>
         </header>
-        
+
+        {metrics && metrics.length > 0 && (
+          <div class="impact">
+            {metrics.map((m: { value: string; label: string }) => (
+              <div class="impact-item">
+                <span class="impact-value">{m.value}</span>
+                <span class="impact-label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {sections.length > 1 && (
+          <nav class="section-nav" aria-label="Case study sections">
+            <ul>
+              {sections.map((s) => (
+                <li>
+                  <a href={`#${s.id}`}>{s.text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+
         <div class="project-content prose">
           <slot />
         </div>
+
+        <section class="project-cta">
+          <h2>Building something similar?</h2>
+          <p>I'm open to exciting products, collaborations, and engineering opportunities.</p>
+          <div class="cta-actions">
+            <a href="/hire" class="project-link primary">Work with me</a>
+            <a href="/projects" class="project-link">More projects</a>
+          </div>
+        </section>
       </article>
     </main>
   </div>
@@ -165,4 +214,230 @@ const ogImage = `/open-graph/projects/${Astro.url.pathname.split('/').filter(Boo
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
   }
+
+  .project-content h2,
+  .project-content h3 {
+    scroll-margin-top: 3.5rem;
+  }
+
+  .project-meta {
+    margin: 0 0 1rem;
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .impact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1.25rem;
+    margin: 0 0 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .impact-value {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--spacing-s);
+    line-height: 1.2;
+  }
+
+  .impact-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.75rem;
+  }
+
+  /* Nav already provides the divider — avoid double line */
+  .section-nav + .project-content {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .section-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-nav a {
+    display: inline-block;
+    padding: 0.75rem 0;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease;
+  }
+
+  .section-nav a:hover {
+    color: var(--text-primary);
+  }
+
+  .section-nav a.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--accent, #3b82f6);
+  }
+
+  .project-cta {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-cta h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.5rem;
+  }
+
+  .project-cta p {
+    margin: 0 0 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .project-link.primary {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+  }
+
+  .project-link.primary:hover {
+    background: var(--text-primary);
+    opacity: 0.85;
+  }
+
+  @media (max-width: 640px) {
+    .section-nav a {
+      padding: 0.6rem 0;
+      font-size: 0.78rem;
+    }
+
+    .section-nav ul {
+      gap: 0 1rem;
+    }
+
+    .impact {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .impact-value {
+      font-size: 1.5rem;
+    }
+  }
 </style>
+
+<style is:global>
+  /* Markdown content isn't cid-scoped — these must be global, namespaced to project pages */
+  .project-content.prose h2,
+  .project-content.prose h3 {
+    scroll-margin-top: 3.5rem;
+  }
+
+  /* Pipeline step chains (The Problem → ... flows) */
+  .project-content.prose ol {
+    list-style: none;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 1.25em 0;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .project-content.prose ol li {
+    counter-increment: step;
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    line-height: 1.65;
+  }
+
+  .project-content.prose ol li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text-secondary-strong);
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    line-height: 1;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .project-content.prose ol li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(1.5rem - 1px);
+    top: 100%;
+    width: 2px;
+    height: 0.625rem;
+    background: var(--border);
+  }
+</style>
+
+<script is:inline>
+  ;(function () {
+    const nav = document.querySelector('.section-nav')
+    if (!nav || !('IntersectionObserver' in window)) return
+    const links = nav.querySelectorAll('a')
+    const byId = {}
+    links.forEach((a) => {
+      byId[a.getAttribute('href').slice(1)] = a
+    })
+    const headings = Object.keys(byId)
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+    if (!headings.length) return
+    let current = null
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            if (current) current.classList.remove('active')
+            current = byId[e.target.id]
+            if (current) current.classList.add('active')
+          }
+        })
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    )
+    headings.forEach((h) => io.observe(h))
+  })()
+</script>

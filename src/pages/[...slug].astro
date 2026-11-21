@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
 import { render } from 'astro:content'
+import { getSortedFilteredPosts } from '@/utils/draft'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
@@ -20,8 +21,25 @@ const { Content, remarkPluginFrontmatter } = await render(post)
 
 const readingTime = remarkPluginFrontmatter.readingTime
 const toc = remarkPluginFrontmatter.toc || []
+
+// Related posts: same category > shared tags > most recent
+const related = (await getSortedFilteredPosts())
+  .filter((p) => p.id !== post.id)
+  .map((p) => ({
+    entry: p,
+    score:
+      (p.data.category && p.data.category === post.data.category ? 2 : 0) +
+      (p.data.tags || []).filter((t) => (post.data.tags || []).includes(t)).length
+  }))
+  .sort((a, b) => b.score - a.score || b.entry.data.pubDate.getTime() - a.entry.data.pubDate.getTime())
+  .slice(0, 2)
+  .map(({ entry }) => ({
+    title: entry.data.title,
+    href: '/' + entry.id.replace(/\.(md|mdx)$/, ''),
+    description: entry.data.description || ''
+  }))
 ---
 
-<PostLayout {...post.data} readingTime={readingTime} toc={toc}>
+<PostLayout {...post.data} readingTime={readingTime} toc={toc} related={related}>
   <Content />
 </PostLayout>

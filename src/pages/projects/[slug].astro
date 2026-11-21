@@ -14,7 +14,8 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'projects'>
 
 const project = Astro.props
-const { Content } = await render(project)
+const { Content, remarkPluginFrontmatter } = await render(project)
+const toc = remarkPluginFrontmatter.toc || []
 ---
 
 <ProjectLayout 
@@ -24,6 +25,10 @@ const { Content } = await render(project)
   tech={project.data.tech}
   live={project.data.live}
   github={project.data.github}
+  year={project.data.year}
+  role={project.data.role}
+  metrics={project.data.metrics}
+  toc={toc}
 >
   <Content />
 </ProjectLayout>

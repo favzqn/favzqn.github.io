@@ -10,11 +10,31 @@ const sortedProjects = projects.sort((a, b) => {
   if (pa !== pb) return pa - pb
   return a.data.title > b.data.title ? 1 : -1
 })
+
+// Tech filters: techs used by 2+ projects, most common first
+const techCounts = new Map<string, number>()
+for (const p of projects) {
+  for (const t of p.data.tech ?? []) techCounts.set(t, (techCounts.get(t) ?? 0) + 1)
+}
+const filters = [...techCounts.entries()]
+  .filter(([, c]) => c >= 2)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6)
+  .map(([t]) => t)
 ---
+
+{filters.length > 0 && (
+  <div class="projects-filter" role="group" aria-label="Filter projects by technology">
+    <button type="button" class="filter-chip active" data-filter="all">All</button>
+    {filters.map((t) => (
+      <button type="button" class="filter-chip" data-filter={t}>{t}</button>
+    ))}
+  </div>
+)}
 
 <div class="projects-grid">
   {sortedProjects.map((project) => (
-    <div class="project-card">
+    <div class="project-card" data-techs={(project.data.tech || []).join('|')}>
       <a href={`/projects/${project.id}`} class="project-main">
         {project.data.image && (
           <div class="project-image">
@@ -57,7 +77,40 @@ const sortedProjects = projects.sort((a, b) => {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .projects-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 2rem;
+  }
+
+  .filter-chip {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary-strong);
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .filter-chip:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+
+  .filter-chip.active {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg);
   }
 
   @media (max-width: 768px) {
@@ -168,3 +221,22 @@ const sortedProjects = projects.sort((a, b) => {
     text-decoration-color: var(--text-tertiary);
   }
 </style>
+
+<script is:inline>
+  ;(function () {
+    const chips = document.querySelectorAll('.filter-chip')
+    const cards = document.querySelectorAll('.project-card')
+    if (!chips.length || !cards.length) return
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.remove('active'))
+        chip.classList.add('active')
+        const filter = chip.dataset.filter
+        cards.forEach((card) => {
+          const techs = (card.dataset.techs || '').split('|')
+          card.style.display = filter === 'all' || techs.includes(filter) ? '' : 'none'
+        })
+      })
+    })
+  })()
+</script>

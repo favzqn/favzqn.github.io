@@ -7,6 +7,11 @@ live: ""
 github: "https://github.com/favzqn/cocok"
 featured: true
 priority: 2
+role: 'Side project'
+metrics:
+  - { value: '9.4ms', label: 'p95 latency (k6)' }
+  - { value: '0%', label: 'errors under load' }
+  - { value: '7', label: 'delivery phases' }
 ---
 
 ## The Problem

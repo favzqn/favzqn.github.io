@@ -36,6 +36,10 @@ CONTENT-STRATEGY.md
 # Local agent skills (not for public repo)
 .claude/
 
+# Playwright
+test-results/
+playwright-report/
+
 # Stray lock files
 deno.lock
 

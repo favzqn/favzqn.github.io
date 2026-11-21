@@ -6,6 +6,10 @@ tech: ["TypeScript", "D3.js", "KaTeX", "Mathematics"]
 live: "https://favzqn.github.io/axiomara"
 github: "https://github.com/favzqn/axiomara"
 featured: false
+role: 'Side project'
+metrics:
+  - { value: '11', label: 'interactive math modules' }
+  - { value: '0', label: 'backend servers' }
 ---
 
 ## The Problem

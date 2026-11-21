@@ -7,6 +7,11 @@ live: ""
 github: ""
 featured: true
 priority: 2
+role: 'Side project'
+metrics:
+  - { value: '4', label: 'job boards supported' }
+  - { value: '10', label: 'unit tests in CI' }
+  - { value: '0', label: 'backend servers' }
 ---
 
 ## The Problem

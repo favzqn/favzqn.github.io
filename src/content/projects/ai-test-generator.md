@@ -7,6 +7,12 @@ live: ""
 github: ""
 featured: true
 priority: 5
+year: '2025'
+role: 'Senior Software Engineer in Test, FrankieOne'
+metrics:
+  - { value: '30s', label: 'per test case (was 15 min)' }
+  - { value: '80%', label: 'faster regression' }
+  - { value: '15-25h', label: 'saved per sprint' }
 ---
 
 ## The Problem

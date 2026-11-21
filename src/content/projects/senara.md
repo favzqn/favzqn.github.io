@@ -7,6 +7,11 @@ live: "https://senara.wasmer.app"
 github: "https://github.com/favzqn/senara"
 featured: true
 priority: 3
+role: 'Side project'
+metrics:
+  - { value: '6', label: 'story worlds' }
+  - { value: '3', label: 'languages' }
+  - { value: '0', label: 'servers needed' }
 ---
 
 ## The Problem

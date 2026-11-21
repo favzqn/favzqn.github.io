@@ -7,6 +7,12 @@ live: "https://chatbiz.id"
 github: ""
 featured: true
 priority: 4
+role: 'Software Engineer, YC W21 startup'
+metrics:
+  - { value: '30+', label: 'chatbots shipped' }
+  - { value: '100k+', label: 'messages per day' }
+  - { value: '40%', label: 'infra cost reduction' }
+  - { value: '15%', label: 'week-over-week GTV growth' }
 ---
 
 ## The Problem

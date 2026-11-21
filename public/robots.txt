@@ -4,7 +4,6 @@ Allow: /
 
 # Disallow admin/private areas (if any)
 Disallow: /api/
-Disallow: /_astro/
 
 # Sitemap location
 Sitemap: https://feyzan.netlify.app/sitemap-index.xml

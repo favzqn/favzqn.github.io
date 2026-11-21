@@ -4,10 +4,58 @@ import IndexLayout from '@/layouts/IndexLayout.astro'
 ---
 
 <IndexLayout title={`404 - ${themeConfig.site.title}`} description="Not Found">
-  <style>
-    .error-container {
-      color: var(--text-secondary);
-    }
-  </style>
-  <p class="error-container">Page Not Found...</p>
+  <div class="error-container">
+    <h1>404</h1>
+    <p>That page doesn't exist — or it moved.</p>
+    <div class="error-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/projects">Projects</a>
+      <a href="/hire">Hire me</a>
+    </div>
+  </div>
 </IndexLayout>
+
+<style>
+  .error-container {
+    margin-top: 3rem;
+  }
+
+  .error-container h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--spacing-s);
+    line-height: 1;
+    color: var(--text-secondary);
+  }
+
+  .error-container p {
+    margin: 0 0 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .error-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .error-links a {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .error-links a:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+</style>

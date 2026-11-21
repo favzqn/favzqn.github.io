@@ -2,9 +2,16 @@
 import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 
-const recommendations = (await getCollection('recommendations')).sort(
+interface Props {
+  limit?: number
+}
+
+const { limit } = Astro.props
+
+const all = (await getCollection('recommendations')).sort(
   (a, b) => (a.data.priority ?? 0) - (b.data.priority ?? 0)
 )
+const recommendations = limit ? all.slice(0, limit) : all
 ---
 
 {

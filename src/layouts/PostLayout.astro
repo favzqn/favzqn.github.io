@@ -21,7 +21,10 @@ import StructuredData from '@/components/seo/StructuredData.astro'
 
 import { themeConfig } from '@/config'
 
-const { title, pubDate, readingTime, toc, lang } = Astro.props as PostLayoutProps
+type RelatedItem = { title: string; href: string; description: string }
+type Props = PostLayoutProps & { related?: RelatedItem[] }
+
+const { title, pubDate, readingTime, toc, lang, related = [] } = Astro.props
 
 const postSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || ''
 const ogImage = `/open-graph/${postSlug}.png`
@@ -73,6 +76,27 @@ const ogImage = `/open-graph/${postSlug}.png`
           <slot />
         </div>
       </div>
+
+      {related.length > 0 && (
+        <section class="related">
+          <h2>Keep reading</h2>
+          <ul>
+            {related.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span class="related-title">{r.title}</span>
+                  {r.description && <span class="related-desc">{r.description}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section class="post-cta">
+        <p>Have a project like this in mind?</p>
+        <a href="/hire" class="post-cta-link">Work with me →</a>
+      </section>
     </main>
     <ImageOptimizer />
     <FootnoteScroll />
@@ -95,5 +119,85 @@ const ogImage = `/open-graph/${postSlug}.png`
 
   .post-container main {
     flex: 1;
+  }
+
+  .related {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .related h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+  }
+
+  .related a:hover {
+    background: var(--code-bg);
+  }
+
+  .related-title {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .related-desc {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .post-cta {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .post-cta p {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  .post-cta-link {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    padding: 0.4rem 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+  }
+
+  .post-cta-link:hover {
+    background: var(--code-bg);
   }
 </style>

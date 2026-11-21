@@ -17,6 +17,12 @@ tech:
 live: ''
 featured: true
 priority: 2
+role: 'Side project'
+metrics:
+  - { value: '48', label: 'pytest tests in CI' }
+  - { value: '8', label: 'Playwright e2e flows' }
+  - { value: '11', label: 'data-quality checks' }
+  - { value: '6h', label: 'collection cadence' }
 ---
 
 ## The Problem

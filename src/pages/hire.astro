@@ -1,5 +1,6 @@
 ---
 import IndexLayout from '@/layouts/IndexLayout.astro'
+import Recommendations from '@/components/widgets/Recommendations.astro'
 import { themeConfig } from '@/config'
 ---
 
@@ -79,6 +80,8 @@ import { themeConfig } from '@/config'
         </div>
       </div>
     </section>
+
+    <Recommendations limit={2} />
 
     <section class="cta">
       <h2>Let's Talk</h2>

@@ -6,6 +6,12 @@ tech: ["React Native", "Expo", "TypeScript", "SQLite", "Drizzle ORM", "Jest", "G
 live: ""
 featured: true
 priority: 1
+role: 'Side project'
+metrics:
+  - { value: '42', label: 'guided checks' }
+  - { value: '74', label: 'automated tests' }
+  - { value: '2', label: 'platforms: Windows + macOS' }
+  - { value: '0', label: 'backend or accounts' }
 ---
 
 ## The Problem
