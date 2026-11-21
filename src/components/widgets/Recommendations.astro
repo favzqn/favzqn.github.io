@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+
+const recommendations = (await getCollection('recommendations')).sort(
+  (a, b) => (a.data.priority ?? 0) - (b.data.priority ?? 0)
+)
+---
+
+{
+  recommendations.length > 0 && (
+    <section class="recommendations" aria-labelledby="recommendations-heading">
+      <h2 id="recommendations-heading">What they said.</h2>
+      <p class="rec-sub">From people I have worked with.</p>
+      <ul class="rec-list">
+        {recommendations.map((rec) => (
+          <li>
+            <blockquote>{rec.data.quote}</blockquote>
+            <p class="rec-author">
+              {rec.data.avatar && (
+                <Image
+                  src={rec.data.avatar}
+                  alt=""
+                  width={40}
+                  height={40}
+                  densities={[1, 2, 3]}
+                  format="webp"
+                  quality={90}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <span>
+                <strong>
+                  {rec.data.url ? (
+                    <a href={rec.data.url} target="_blank" rel="noopener noreferrer">{rec.data.name}</a>
+                  ) : (
+                    rec.data.name
+                  )}
+                </strong>
+                {[rec.data.role, rec.data.company].filter(Boolean).join(', ')}
+              </span>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .recommendations {
+    margin-top: 3.5rem;
+  }
+
+  .recommendations h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.4;
+    letter-spacing: var(--spacing-m);
+    margin: 0 0 0.25rem;
+  }
+
+  .rec-sub {
+    margin: 0 0 1.75rem;
+    color: var(--text-secondary-strong);
+  }
+
+  .rec-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .rec-list blockquote {
+    margin: 0 0 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+    font-family: var(--serif);
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  .rec-author {
+    margin: 0;
+    padding-left: 1rem;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .rec-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .rec-author strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+    margin-right: 0.35em;
+  }
+
+  .rec-author a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .rec-author a:hover {
+    text-decoration-color: var(--text-primary);
+  }
+</style>

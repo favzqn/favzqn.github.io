@@ -15,8 +15,32 @@ const projectPages = Object.fromEntries(
   projects.map(({ id, data }) => [`projects/${id}`, data])
 )
 
+// Map top-level pages (unique titles + personal OG images)
+const staticPages = {
+  home: {
+    title: `${themeConfig.site.title} — Full-stack Engineer & Automation Specialist`,
+    description: themeConfig.site.description
+  },
+  hire: {
+    title: `Work With Me · ${themeConfig.site.title}`,
+    description: themeConfig.site.description
+  },
+  experience: {
+    title: `Experience · ${themeConfig.site.title}`,
+    description: themeConfig.site.description
+  },
+  projects: {
+    title: `Projects · ${themeConfig.site.title}`,
+    description: themeConfig.site.description
+  },
+  blog: {
+    title: `Blog · ${themeConfig.site.title}`,
+    description: themeConfig.site.description
+  }
+}
+
 // Combine
-const pages = { ...postPages, ...projectPages }
+const pages = { ...postPages, ...projectPages, ...staticPages }
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: 'route',

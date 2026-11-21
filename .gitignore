@@ -33,6 +33,9 @@ IMPROVEMENTS-PART2.md
 CONTENT-IMPROVEMENTS.md
 CONTENT-STRATEGY.md
 
+# Local agent skills (not for public repo)
+.claude/
+
 # Stray lock files
 deno.lock
 

@@ -15,9 +15,9 @@ const { type, title, description, image, datePublished, dateModified, author } =
 
 const siteUrl = Astro.site?.toString() || themeConfig.site.website
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString()
-const imageUrl = image ? new URL(image, siteUrl).toString() : new URL('/og/chiri-og.png', siteUrl).toString()
+const imageUrl = image ? new URL(image, siteUrl).toString() : new URL('/open-graph/home.png', siteUrl).toString()
 
-let structuredData: any = {}
+let structuredData: Record<string, unknown> = {}
 
 if (type === 'website') {
   structuredData = {
@@ -26,6 +26,7 @@ if (type === 'website') {
     name: themeConfig.site.title,
     description: themeConfig.site.description,
     url: siteUrl,
+    image: imageUrl,
     author: {
       '@type': 'Person',
       name: themeConfig.site.author,

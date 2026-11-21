@@ -43,9 +43,18 @@ const projects = defineCollection({
   })
 })
 
-const uses = defineCollection({
-  loader: glob({ base: './src/content/uses', pattern: '**/*.md' }),
-  schema: z.object({})
+const recommendations = defineCollection({
+  loader: glob({ base: './src/content/recommendations', pattern: '**/*.md' }),
+  schema: ({ image }) =>
+    z.object({
+      quote: z.string(),
+      name: z.string(),
+      role: z.string().optional(),
+      company: z.string().optional(),
+      avatar: image().optional(),
+      url: z.string().optional(),
+      priority: z.number().optional()
+    })
 })
 
-export const collections = { posts, about, experience, projects }
+export const collections = { posts, about, experience, projects, recommendations }

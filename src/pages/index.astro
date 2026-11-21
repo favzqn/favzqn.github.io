@@ -1,9 +1,63 @@
 ---
 import IndexLayout from '@/layouts/IndexLayout.astro'
 import About from '@/components/widgets/About.astro'
+import Recommendations from '@/components/widgets/Recommendations.astro'
 import { themeConfig } from '@/config'
+
+const title = `${themeConfig.site.title} — Full-stack Engineer & Automation Specialist`
 ---
 
-<IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
+<IndexLayout
+  title={title}
+  description={themeConfig.site.description}
+  ogImage="/open-graph/home.png"
+>
   <About />
+  <nav class="quick-links" aria-label="What are you looking for">
+    <p class="quick-ask">What are you looking for?</p>
+    <div class="chips">
+      <a href="/hire">Hire me</a>
+      <a href="/projects">Case studies</a>
+      <a href="/experience">Experience</a>
+      <a href="/blog">Writing</a>
+    </div>
+  </nav>
+  <Recommendations />
 </IndexLayout>
+
+<style>
+  .quick-links {
+    margin-top: 2.5rem;
+  }
+
+  .quick-ask {
+    margin: 0 0 0.6rem;
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chips a {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .chips a:hover {
+    background: var(--code-bg);
+    border-color: var(--text-tertiary);
+  }
+</style>

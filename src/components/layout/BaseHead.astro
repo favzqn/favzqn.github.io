@@ -9,7 +9,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const plausibleDomain = new URL(themeConfig.site.website).hostname
 
 const { title, description, ogImage } = Astro.props as BaseHeadProps
-const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.png', Astro.url)
+const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/open-graph/home.png', Astro.url)
 ---
 
 <!-- Global Metadata -->
@@ -75,5 +75,5 @@ const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.p
 <script is:inline defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
 
 <!-- Structured Data for SEO -->
-<StructuredData type="website" />
+<StructuredData type="website" image={imageUrl} />
 <StructuredData type="breadcrumb" />

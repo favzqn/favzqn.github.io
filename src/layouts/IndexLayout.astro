@@ -7,11 +7,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import GradientMask from '@/components/ui/GradientMask.astro'
 import { themeConfig } from '@/config'
 
-const { title, description } = Astro.props
+const { title, description, ogImage } = Astro.props
 ---
 
 <BaseLayout title={title} description={description} type="page">
-  <BaseHead title={title} description={description} slot="head" />
+  <BaseHead title={title} description={description} ogImage={ogImage} slot="head" />
   <div class="page-content">
     <GradientMask />
     <div>

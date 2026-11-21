@@ -9,7 +9,31 @@ const englishPosts = allPosts.filter(post => !post.data.lang || post.data.lang =
 const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
 ---
 
-<IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
+<IndexLayout
+  title={`Blog · ${themeConfig.site.title}`}
+  description={themeConfig.site.description}
+  ogImage="/open-graph/blog.png"
+>
+  <div style="margin-top: 2rem;">
+    <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Blog</h1>
+    <p style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.1rem;">
+      Technical articles on AI, automation, AWS, and engineering practices.
+    </p>
+  </div>
+  <div class="blog-search" id="blog-search"></div>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js" defer></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) {
+        new window.PagefindUI({
+          element: '#blog-search',
+          showImages: false,
+          showSubResults: true
+        })
+      }
+    })
+  </script>
   <div style="padding-top: 3rem;">
     <PostList posts={englishPosts} />
     {indonesianPosts.length > 0 && (
@@ -22,6 +46,23 @@ const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
 </IndexLayout>
 
 <style>
+  /* Reserve space before PagefindUI mounts (CLS) */
+  .blog-search {
+    min-height: 3rem;
+    margin-top: 0;
+    --pagefind-ui-primary: var(--text-primary);
+    --pagefind-ui-text: var(--text-secondary-strong);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-background: transparent;
+    --pagefind-ui-font: var(--sans);
+  }
+
+  .blog-search :where(input.pagefind-ui__search-input) {
+    border-radius: 6px;
+    background: transparent;
+  }
+
   .language-section {
     margin-top: 3rem;
     padding-top: 2rem;

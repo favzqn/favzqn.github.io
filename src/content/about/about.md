@@ -2,7 +2,9 @@
 title: 'About'
 ---
 
-Hey, I'm <mark>Fauzan</mark>, a full-stack engineer in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.
+# Hi, I'm Fauzan — full-stack engineer & automation specialist
+
+<p class="lede">I build scalable products and the systems that test them. Based in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.</p>
 
 I'm a Senior Software Engineer in Test at <mark>FrankieOne</mark>, a KYC platform, where I've merged <mark>900+ pull requests</mark> across Go and TypeScript and cut regression time by <mark>80%</mark> with automated e2e flows. Before that I led test automation at TipTip and Mekari, and built <mark>30+ chatbots</mark> at Chatbiz handling <mark>100k+ messages/day</mark>.
 

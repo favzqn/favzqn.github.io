@@ -24,6 +24,13 @@ export default [
       'astro/no-set-html-directive': 'off'
     }
   },
+  {
+    // CLI scripts are expected to print to stdout
+    files: ['scripts/**/*.ts'],
+    rules: {
+      'no-console': 'off'
+    }
+  },
   prettier,
   {
     ignores: [
@@ -34,6 +41,8 @@ export default [
       '.env*',
       '.cache/**',
       '.astro/**',
+      '.netlify/**',
+      '.github/**',
       '.DS_Store',
       'coverage/**'
     ]

@@ -1,10 +1,9 @@
 # Fauzan Fathurrahman's Personal Site
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/feyzan/deploys)
+**Live Site**: [https://feyzan.netlify.app/](https://feyzan.netlify.app/)
+**Deploy status**: [app.netlify.com/sites/feyzan](https://app.netlify.com/sites/feyzan/deploys)
 
 Personal website and blog of Fauzan Fathurrahman — full-stack engineer & SDET building scalable products, chatbots, and test automation systems.
-
-🌐 **Live Site**: [https://feyzan.netlify.app/](https://feyzan.netlify.app/)
 
 ## About
 
