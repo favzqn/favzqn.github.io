@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
+import { slugifyPath } from './utils/slugify'
 
 const posts = defineCollection({
   // Load Markdown and MDX files in the `src/content/posts/` directory.
@@ -60,4 +61,25 @@ const recommendations = defineCollection({
     })
 })
 
-export const collections = { posts, about, experience, projects, recommendations }
+const notes = defineCollection({
+  // Digital-garden notes migrated from the Obsidian vault (formerly favzqn/garden).
+  loader: glob({
+    base: './src/content/notes',
+    pattern: '**/*.md',
+    generateId: ({ entry }) => slugifyPath(entry.replace(/\.[^/.]+$/, ''))
+  }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      draft: z.boolean().optional(),
+      type: z.string().optional(),
+      status: z.string().optional(),
+      tags: z.array(z.string()).optional(),
+      related: z.array(z.string()).optional(),
+      created: z.coerce.date().optional(),
+      updated: z.coerce.date().optional()
+    })
+})
+
+export const collections = { posts, about, experience, projects, recommendations, notes }

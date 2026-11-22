@@ -4,6 +4,7 @@ import { themeConfig } from '../../config'
 
 const posts = await getCollection('posts')
 const projects = await getCollection('projects')
+const notes = await getCollection('notes')
 
 // Map posts
 const postPages = Object.fromEntries(
@@ -13,6 +14,24 @@ const postPages = Object.fromEntries(
 // Map projects
 const projectPages = Object.fromEntries(
   projects.map(({ id, data }) => [`projects/${id}`, data])
+)
+
+// Map garden notes (published only — matches getPublishedNotes)
+const notePages = Object.fromEntries(
+  notes
+    .filter(
+      (n) =>
+        !n.data.draft &&
+        !n.id.startsWith('_') &&
+        !!n.data.status &&
+        ['evergreen', 'mature'].includes(n.data.status) &&
+        n.data.type !== 'meta' &&
+        n.data.type !== 'overview'
+    )
+    .map(({ id, data }) => [
+      `garden/${id}`,
+      { title: data.title, description: data.description || `${data.title} · Garden note` }
+    ])
 )
 
 // Map top-level pages (unique titles + personal OG images)
@@ -36,11 +55,15 @@ const staticPages = {
   blog: {
     title: `Blog · ${themeConfig.site.title}`,
     description: themeConfig.site.description
+  },
+  garden: {
+    title: `Garden · ${themeConfig.site.title}`,
+    description: 'Notes, book summaries, and working knowledge from the digital garden.'
   }
 }
 
 // Combine
-const pages = { ...postPages, ...projectPages, ...staticPages }
+const pages = { ...postPages, ...projectPages, ...notePages, ...staticPages }
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: 'route',

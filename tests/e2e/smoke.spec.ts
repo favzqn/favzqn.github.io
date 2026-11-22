@@ -25,8 +25,22 @@ test.describe('site smoke', () => {
     await expect(page.locator('#blog-search')).toBeAttached()
 
     await page.goto('/codeguru/')
-    await expect(page.locator('.related .related-title')).toHaveCount(2)
+    // First .related = "Keep reading" posts; later sections can be garden cross-links
+    await expect(page.locator('.related').first().locator('.related-title')).toHaveCount(2)
     await expect(page.locator('.post-cta-link')).toBeVisible()
+  })
+
+  test('garden: index sections with counts, note page renders', async ({ page }) => {
+    await page.goto('/garden/')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Garden')
+    await expect(page.locator('.garden-section h2, .garden-section-more h2')).not.toHaveCount(0)
+    await expect(page.locator('.count').first()).toBeVisible()
+    await expect(page.locator('li[data-category]')).not.toHaveCount(0)
+
+    await page.goto('/garden/books/a-mind-for-numbers/a-mind-for-numbers/')
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('A Mind for Numbers')
+    await expect(page.locator('.note-tags li')).not.toHaveCount(0)
+    await expect(page.locator('[data-pagefind-body]')).toBeAttached()
   })
 
   test('hire page: recommendations block before CTA', async ({ page }) => {

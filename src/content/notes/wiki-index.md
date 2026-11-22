@@ -1,0 +1,214 @@
+---
+type: meta
+title: "Wiki Index"
+created: 2026-05-12
+updated: 2026-05-29
+tags:
+  - meta
+  - index
+status: evergreen
+related:
+  - "[[overview]]"
+  - "[[hot]]"
+---
+
+# Wiki Index
+
+## Domains
+- [[Deep Work]] — focus, attention, and productive concentration
+- [[Influence]] — persuasion, psychology, and social dynamics
+- [[Flow]] — optimal experience and intrinsic motivation
+- [[Trauma]] — healing, the body, and recovery
+- [[Philosophy]] — meaning, desire, and the inner life
+- [[Business]] — wealth creation, negotiation, and entrepreneurship
+- [[Technology]] — digital minimalism and the attention economy
+- [[AI Engineering]] — AI agents, harnesses, and 100x teams
+- [[Spirituality]] — faith, meditation, and productive worship
+- [[Fiction]] — novels as philosophical texts
+- [[Boolean Algebra]] — logic, digital circuits, and discrete mathematics
+
+## Sources (36 Books + 1 Article)
+- [[Deep Work]] — Cal Newport, 2016, full book
+- [[Influence]] — Robert Cialdini, 2021, full book
+- [[Flow]] — Mihaly Csikszentmihalyi, 1990, full book
+- [[The Anxious Generation]] — Jonathan Haidt, 2024, full book
+- [[The Body Keeps the Score]] — Bessel van der Kolk, 2014, full book
+- [[Why We Sleep]] — Matthew Walker, 2017, full book
+- [[Digital Minimalism]] — Cal Newport, 2019, full book
+- [[Sapiens]] — Yuval Noah Harari, 2015, full book
+- [[Shoe Dog]] — Phil Knight, 2016, full book
+- [[The Personal MBA]] — Josh Kaufman, 2010, full book
+- [[The Almanack of Naval Ravikant]] — Eric Jorgenson, 2020, full book
+- [[The Productive Muslim]] — Mohammed Faris Abu, 2016, full book
+- [[The Silva Mind Control Method]] — Jose Silva, 1978, full book
+- [[How to Win Friends and Influence People]] — Dale Carnegie, 1936, full book
+- [[Never Split the Difference]] — Chris Voss, 2016, full book
+- [[Exactly What to Say]] — Phil M. Jones, 2017, full book
+- [[Letters to a Young Poet]] — Rainer Maria Rilke, 1929, full book
+- [[The Old Man and the Sea]] — Ernest Hemingway, 1952, full book
+- [[Crime and Punishment]] — Fyodor Dostoevsky, 1866, full book
+- [[No Longer Human]] — Osamu Dazai, 1948, full book
+- [[Fahrenheit 451]] — Ray Bradbury, 1953, full book
+- [[White Nights]] — Fyodor Dostoevsky, 1848, novella
+- [[How to Win Every Argument]] — Madsen Pirie, 2006, full book
+- [[White Nights]] — Fyodor Dostoevsky, 1848, novella
+- [[Tao Te Ching]] — Lao Tzu, trans. Ursula K. Le Guin, full book
+- [[The Intelligent Investor]] — Benjamin Graham, Jason Zweig, 2003, full book
+- [[Read People Like a Book]] — Patrick King, 2020, full book
+- [[Persuasion Tactics]] — Patrick King, 2017, full book
+- [[The Art of Witty Banter]] — Patrick King, 2016, full book
+- [[Conversationally Speaking]] — Patrick King, 2015, full book
+- [[The Science of Likability]] — Patrick King, 2014, full book
+- [[Upgrade Your Body & Mind]] — Peter Paulson, 2015, full book
+- [[Fat Loss Forever]] — Layne Norton, Peter Baker, 2019, full book
+- [[The Omnivore's Dilemma]] — Michael Pollan, 2006, full book
+- [[The Art of Witty Banter]] — Patrick King, 2016, full book
+- [[A Mind for Numbers]] — Barbara Oakley, 2014, full book
+- [[Aljabar Boolean]] — Rinaldi Munir, 2016, lecture slides (ITB Discrete Mathematics)
+
+## Articles
+- [[The Solo Climb]] — Ajey Gore, 2026, article (AI engineering harnesses)
+
+## Synthesis
+- [[The Attention Stack]] — focus across 6 books
+- [[Flow, Wu Wei, and Deep Focus]] — the same peak experience in 3 traditions
+- [[The Desire-Happiness Inverse]] — Naval, Dostoevsky, and Lao Tzu agree
+- [[Non-Attachment Across Traditions]] — solitude, presence, and letting go
+- [[The Body-Mind Connection]] — trauma, sleep, flow, and healing
+- [[The Influence Spectrum]] — nine books on persuasion converge on emotion before logic
+- [[The Literature of Alienation]] — five novels, five responses to being human
+- [[The Body as Battleground]] — trauma, sleep, diet, and food as one system
+- [[The Architecture of Wealth]] — Graham, Naval, Knight, and Kaufman on building wealth
+- [[Learning How to Learn]] — the brain's two modes and how to cycle between them
+- [[Faith as Framework]] — Islam, Taoism, poetry, and neuroscience as productivity systems
+
+## Entities (Key People)
+- [[Guy Montag]] — fireman turned book-preserver (Fahrenheit 451)
+- [[Clarisse McClellan]] — the girl who asked "Are you happy?" (Fahrenheit 451)
+- [[Captain Beatty]] — the well-read book-burner (Fahrenheit 451)
+- [[Ajey Gore]] — engineering leader, AI-native org design
+- [[Cal Newport]] — author, Deep Work and Digital Minimalism
+- [[Naval Ravikant]] — entrepreneur, philosopher
+- [[Mihaly Csikszentmihalyi]] — psychologist, flow researcher
+- [[Bessel van der Kolk]] — psychiatrist, trauma researcher
+- [[Robert Cialdini]] — social psychologist, influence
+- [[Chris Voss]] — FBI hostage negotiator
+- [[Dale Carnegie]] — communication expert
+- [[Jonathan Haidt]] — social psychologist
+- [[Matthew Walker]] — neuroscientist, sleep researcher
+- [[Yuval Noah Harari]] — historian
+- [[Phil Knight]] — Nike founder
+- [[Jose Silva]] — Silva Method founder
+- [[Lao Tzu]] — Tao Te Ching author
+- [[Rainer Maria Rilke]] — poet
+- [[Ernest Hemingway]] — novelist
+- [[Fyodor Dostoevsky]] — novelist
+- [[Josh Kaufman]] — business educator
+- [[Mohammed Faris Abu]] — Productive Muslim author
+- [[Osamu Dazai]] — novelist, No Longer Human
+- [[Wendell Berry]] — agrarian philosopher, farmer
+- [[Theodore Roosevelt]] — charismatic leader, Carnegie's model
+- [[Santiago Ramón y Cajal]] — neuroscientist, perseverance
+- [[Paul Ekman]] — psychologist, microexpressions
+- [[Henry David Thoreau]] — transcendentalist, Walden
+- [[George Naylor]] — Iowa corn farmer
+- [[Benjamin Graham's Mr. Market]] — the allegorical market participant
+
+## Concepts (Top 30)
+- [[Deep Work]] — distraction-free concentration
+- [[The Flow State]] — optimal experience
+- [[Specific Knowledge]] — knowledge you can't be trained for
+- [[Leverage]] — code, media, capital, labor
+- [[Desire Is Suffering]] — fewer desires = more peace
+- [[Happiness Is Learned]] — default state when nothing is missing
+- [[Wu Wei]] — action through non-action
+- [[Trauma]] — overwhelming experiences that fragment mind and body
+- [[Window of Tolerance]] — zone of optimal arousal
+- [[The Uncarved Block]] — simplicity and original nature
+- [[Solitude]] — free from input of other minds
+- [[Social Proof]] — truths are us
+- [[Reciprocation]] — the old give and take
+- [[Scarcity]] — the rule of the few
+- [[Authority]] — directed deference
+- [[Commitment and Consistency]] — hobgoblins of the mind
+- [[Mirroring]] — repeating last 1-3 words
+- [[Labeling]] — naming emotions
+- [[The Inner Voice]] — trusting intuition
+- [[Living the Questions]] — patience with uncertainty
+- [[Autotelic Self]] — finding flow naturally
+- [[The Great Rewiring]] — phone-based childhood
+- [[The Glymphatic System]] — brain's cleaning crew
+- [[Imagined Orders]] — shared myths enabling cooperation
+- [[The Iron Law of the Market]] — demand first
+- [[Cognitive Biases]] — psychology of decisions
+- [[Productivity and Barakah]] — productivity with divine blessing
+- [[Alpha Meditation]] — entering alpha brainwave states
+- [[Dignity in Defeat]] — destroyed but not defeated
+- [[Extraordinary Man Theory]] — some men above moral law
+- [[The Clown]] — humor as defense mechanism
+- [[Disqualified from Being Human]] — conviction of being fundamentally other
+- [[Fear of Human Beings]] — the terror that drives all relationships
+- [[Everything Passes]] — the exhausted truth
+- [[Magic Words Framework]] — word-level influence
+- [[Loss Aversion]] — avoiding loss drives decisions
+- [[Simple Swaps]] — changing words to control outcomes
+- [[The Columbo Method]] — "Just one more thing" — the downsell
+- [[Margin of Safety]] — buy below intrinsic value
+- [[Mr. Market]] — the manic-depressive business partner
+- [[Covert Persuasion]] — invisible influence that bypasses resistance
+- [[Persuasive Framing]] — defining options to control the outcome
+- [[Planting Ideas]] — making people think they generated the idea
+- [[HPM SBR EDR Framework]] — nine response types for any conversation topic
+- [[Free Association]] — mental mapping to escape stuck conversations
+- [[Go Beyond the Literal]] — the gateway to witty banter
+- [[Verbal Mirror]] — reflecting conversation back to the other person
+- [[Small Talk as Filtering Mechanism]] — gateway to trust, not a waste of time
+- [[Storytelling as Cornerstone]] — central point, emotional payload, paint a picture
+- [[Social Cue Reading]] — nodding, mentioning, one-word answers
+- [[Deep Listening]] — safe space, don't interrupt, determine the main message
+- [[The Ad Arguments]] — appeals to something other than logic
+- [[Formal Fallacies]] — errors in logical structure
+- [[Linguistic Fallacies]] — tricks of language
+- [[Causal Fallacies]] — post hoc, cum hoc, and false statistics
+- [[The Straw Man Family]] — misrepresentation and pre-emptive discrediting
+- [[Fallacies of Presumption]] — assuming what needs proving
+- [[The Dreamer]] — a person who lives entirely in fantasy
+- [[A Minute of Bliss]] — one moment of happiness justifies a lifetime
+- [[Mood Priming]] — trigger positive memories to improve someone's mood
+- [[Benjamin Franklin Effect]] — asking enemies for favors makes them like you
+- [[Pratfall Effect]] — vulnerability increases likability
+- [[Speed as Charisma]] — quick responses beat accurate slow ones
+- [[Sleep Optimization Tips]] — naps, temperature, blue light, sleep timing
+- [[Cognitive Enhancement Tips]] — citrus, zinc, omega-3, positive thinking
+- [[Fat Loss Strategies]] — cold exposure, fasted training, metabolism boosters
+- [[Muscle Building Principles]] — deep squats, slow negatives, rep variety
+- [[Energy Balance]] — calories in vs. calories out regulates weight
+- [[Metabolic Adaptation]] — the body's defense against sustained weight loss
+- [[The Body's Self Defense System]] — three-pronged attack: slow, restore, prevent
+- [[Flexible Dieting]] — track macros, eat what you want, reduce disinhibition
+- [[Diet Breaks]] — periodic returns to maintenance preserve LBM
+- [[Reverse Dieting]] — controlled calorie increase post-diet
+- [[Witty Comeback Machine]] — four types of clever comebacks
+- [[Conversation Resume]] — pre-prepared stories and talking points
+- [[Derail Your Train of Thought]] — parking your ego and yielding the floor
+- [[Thought Experiment Technique]] — hypotheticals that free people from inhibition
+- [[Internalised Harness]] — building safety inward before removing external protection
+- [[Load-Bearing Harness]] — systems that answer "is this change correct enough to ship?"
+- [[The Invisible Load]] — software risk that's deferred and distributed
+- [[Harness Failure Patterns]] — five ways engineering harnesses break
+- [[Agent-of-Agent Review]] — one writes, another reviews, a third tests
+- [[Boolean Algebra]] — mathematical structure for digital logic
+- [[Boolean Algebra Exam Cheatsheet]] — one-page reference for IF2120 exam
+- [[Boolean Laws]] — 11 fundamental laws (De Morgan, absorption, etc.)
+- [[Boolean Functions and Expressions]] — variables, literals, evaluation
+- [[Minterms and Maxterms]] — atomic building blocks of canonical forms
+- [[Canonical Forms SOP and POS]] — sum-of-products and product-of-sums
+- [[Karnaugh Map]] — graphical Boolean simplification method
+- [[Don't Care Conditions]] — using X values for further minimization
+- [[Logic Gates]] — AND, OR, NOT, NAND, NOR, XOR, XNOR
+- [[Logic Circuit Design]] — truth table to simplified circuit
+- [[Censorship by the People]] — voluntary ignorance, not government oppression
+- [[The Parlour Walls]] — television as replacement for human connection
+- [[Books as Living Memory]] — knowledge preserved by becoming it
+- [[The Mechanical Hound]] — technology perverted into control
+- [[Fire as Transformation]] — destruction as the first step of renewal

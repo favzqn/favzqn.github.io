@@ -1,13 +1,19 @@
 ---
 // Site-wide command palette (Ctrl/Cmd+K): static page nav + lazy Pagefind search
 import { getSortedFilteredPosts } from '@/utils/draft'
+import { getPublishedNotes } from '@/utils/garden'
 
-// Post titles/descs embedded at build time so search works even where the
+// Post/note titles/descs embedded at build time so search works even where the
 // Pagefind index is unavailable (astro dev, JS-blocked partial loads)
 const posts = (await getSortedFilteredPosts()).map((p) => ({
   title: p.data.title,
   url: '/' + p.id.replace(/\.(md|mdx)$/, '') + '/',
   desc: p.data.description || ''
+}))
+const notes = (await getPublishedNotes()).map((n) => ({
+  title: n.data.title,
+  url: '/garden/' + n.id + '/',
+  desc: (n.data.tags || []).join(', ')
 }))
 ---
 
@@ -26,7 +32,7 @@ const posts = (await getSortedFilteredPosts()).map((p) => ({
   </div>
 </div>
 
-<script is:inline define:vars={{ posts }}>
+<script is:inline define:vars={{ posts, notes }}>
   ;(function () {
     const backdrop = document.getElementById('cp-backdrop')
     const input = document.getElementById('cp-input')
@@ -37,10 +43,11 @@ const posts = (await getSortedFilteredPosts()).map((p) => ({
       { title: 'Home', url: '/', desc: 'Bio and recommendations' },
       { title: 'Projects', url: '/projects/', desc: 'All case studies' },
       { title: 'Blog', url: '/blog/', desc: 'Technical articles' },
+      { title: 'Garden', url: '/garden/', desc: 'Notes, book summaries, and working knowledge' },
       { title: 'Experience', url: '/experience/', desc: 'Work history' },
       { title: 'Hire me', url: '/hire/', desc: 'Services, availability, contact' }
     ]
-    const ALL = PAGES.concat(posts)
+    const ALL = PAGES.concat(posts, notes)
 
     let pagefind = null
     let open = false

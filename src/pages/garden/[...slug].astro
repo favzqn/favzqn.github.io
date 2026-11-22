@@ -1,0 +1,73 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content'
+import NoteLayout from '@/layouts/NoteLayout.astro'
+import { gardenHref, getBacklinks, getPublishedNotes, getRelatedPostsForNote } from '@/utils/garden'
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes')
+  return notes
+    .filter(
+      (note) =>
+        !note.data.draft &&
+        !note.id.startsWith('_') &&
+        !!note.data.status &&
+        ['evergreen', 'mature'].includes(note.data.status) &&
+        note.data.type !== 'meta' &&
+        note.data.type !== 'overview'
+    )
+    .map((note) => ({
+      params: { slug: note.id },
+      props: note
+    }))
+}
+
+type Props = CollectionEntry<'notes'>
+
+const note = Astro.props
+const { Content, remarkPluginFrontmatter } = await render(note)
+
+const readingTime = remarkPluginFrontmatter.readingTime
+const toc = remarkPluginFrontmatter.toc || []
+
+const relatedPosts = (await getRelatedPostsForNote(note)).map((p) => ({
+  title: p.data.title,
+  href: '/' + p.id.replace(/\.(md|mdx)$/, '') + '/',
+  description: p.data.description || ''
+}))
+
+const backlinks = (await getBacklinks(note)).map((n) => ({
+  title: n.data.title,
+  href: gardenHref(n.id),
+  description: ''
+}))
+
+// Curated `related: ["[[Title]]"]` frontmatter → links to published notes only
+const published = await getPublishedNotes()
+const byTitle = new Map(published.map((n) => [n.data.title.toLowerCase(), n]))
+const relatedNotes = (note.data.related ?? [])
+  .map((r) => r.replace(/^\[\[/, '').replace(/\]\]$/, '').split('#')[0].trim().toLowerCase())
+  .map((t) => byTitle.get(t))
+  .filter((n): n is NonNullable<typeof n> => !!n && n.id !== note.id)
+  .slice(0, 6)
+  .map((n) => ({
+    title: n.data.title,
+    href: gardenHref(n.id),
+    description: n.data.type || ''
+  }))
+---
+
+<NoteLayout
+  title={note.data.title}
+  noteId={note.id}
+  description={note.data.description}
+  created={note.data.created}
+  updated={note.data.updated}
+  tags={note.data.tags}
+  readingTime={readingTime}
+  toc={toc}
+  relatedPosts={relatedPosts}
+  relatedNotes={relatedNotes}
+  backlinks={backlinks}
+>
+  <Content />
+</NoteLayout>

@@ -10,6 +10,7 @@ Personal website and blog of Fauzan Fathurrahman — full-stack engineer & SDET 
 This site showcases my work in software engineering, test automation, and technical leadership. It includes:
 
 - **Blog**: Technical articles on AI, automation, AWS, and engineering practices
+- **Garden**: Public digital garden at `/garden` — book notes, synthesis, and working knowledge imported from the private `digital-garden` Jekyll repo. Only `mature`/`evergreen` notes publish; `developing` stays hidden until promoted.
 - **Experience**: Professional journey across startups and scale-ups
 - **Projects**: Open-source contributions and side projects
 
@@ -44,6 +45,9 @@ pnpm dev
 
 # Create new blog post
 pnpm new "Post Title"
+
+# Create a garden note (e.g. "Books/Atomic Habits")
+pnpm new-note "Folder/Title"
 
 # Create draft (prefix with underscore)
 pnpm new "_Draft Title"

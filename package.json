@@ -14,6 +14,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "new": "tsx scripts/new-post.ts",
+    "new-note": "tsx scripts/new-note.ts",
     "update-theme": "tsx scripts/update-theme.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",

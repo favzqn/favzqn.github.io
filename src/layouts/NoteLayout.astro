@@ -1,0 +1,241 @@
+---
+import '@/styles/global.css'
+import BaseHead from '@/components/layout/BaseHead.astro'
+import Footer from '@/components/layout/Footer.astro'
+import BackButton from '@/components/ui/BackButton.astro'
+import GradientMask from '@/components/ui/GradientMask.astro'
+import TableOfContents from '@/components/ui/TableOfContents.astro'
+import FormattedDate from '@/components/widgets/FormattedDate.astro'
+import CopyCode from '@/components/ui/CopyCode.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Header from '@/components/layout/Header.astro'
+import { themeConfig } from '@/config'
+import type { ReadingTime, TOCItem } from '@/types'
+
+type LinkItem = { title: string; href: string; description?: string }
+
+type Props = {
+  title: string
+  noteId: string
+  description?: string
+  created?: Date
+  updated?: Date
+  tags?: string[]
+  readingTime?: ReadingTime
+  toc?: TOCItem[]
+  relatedPosts?: LinkItem[]
+  relatedNotes?: LinkItem[]
+  backlinks?: LinkItem[]
+}
+
+const {
+  title,
+  noteId,
+  description,
+  created,
+  updated,
+  tags = [],
+  readingTime,
+  toc = [],
+  relatedPosts = [],
+  relatedNotes = [],
+  backlinks = []
+} = Astro.props
+
+const date = updated ?? created
+const ogImage = `/open-graph/garden/${noteId}.png`
+const pageDescription = description || themeConfig.site.description
+---
+
+<BaseLayout title={`${title} · ${themeConfig.site.title}`} description={pageDescription} type="page">
+  <BaseHead
+    title={`${title} · ${themeConfig.site.title}`}
+    description={pageDescription}
+    ogImage={ogImage}
+    slot="head"
+  />
+  <div class="note-container">
+    <Header />
+    <main>
+      <div class="prose">
+        <GradientMask />
+        <BackButton />
+        {themeConfig.post.toc && <TableOfContents toc={toc} />}
+        <div class="title" data-pagefind-meta="title">
+          <h1>{title}</h1>
+          <div class="meta">
+            {date && (
+              <p class="date font-features">
+                <FormattedDate date={date} context="post" />
+              </p>
+            )}
+            {
+              themeConfig.post.readingTime && readingTime && (
+                <span class="reading-time">
+                  <span class="separator">·</span>
+                  {readingTime.text}
+                </span>
+              )
+            }
+            {tags.length > 0 && (
+              <ul class="note-tags" aria-label="Tags">
+                {tags.map((t) => <li>{t}</li>)}
+              </ul>
+            )}
+          </div>
+        </div>
+        <div data-pagefind-body>
+          <slot />
+        </div>
+      </div>
+
+      {relatedNotes.length > 0 && (
+        <section class="related">
+          <h2>Related notes</h2>
+          <ul>
+            {relatedNotes.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span class="related-title">{r.title}</span>
+                  {r.description && <span class="related-desc">{r.description}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section class="related">
+          <h2>From the blog</h2>
+          <ul>
+            {relatedPosts.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span class="related-title">{r.title}</span>
+                  {r.description && <span class="related-desc">{r.description}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {backlinks.length > 0 && (
+        <section class="related">
+          <h2>Linked from the garden</h2>
+          <ul>
+            {backlinks.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span class="related-title">{r.title}</span>
+                  {r.description && <span class="related-desc">{r.description}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </main>
+    <CopyCode />
+    {themeConfig.general.footer && <Footer />}
+  </div>
+</BaseLayout>
+
+<style>
+  .note-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .note-container main {
+    flex: 1;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+  }
+
+  .title h1 {
+    margin: 0 0 0.5rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: var(--font-size-s);
+  }
+
+  .date {
+    margin: 0;
+  }
+
+  .note-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .note-tags li {
+    font-family: var(--mono);
+    font-size: var(--font-size-xs, 0.7rem);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-secondary-strong);
+  }
+
+  .related {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .related h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+  }
+
+  .related a:hover {
+    background: var(--code-bg);
+  }
+
+  .related-title {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .related-desc {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+</style>

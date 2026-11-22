@@ -3,14 +3,14 @@ import FormattedDate from '@/components/widgets/FormattedDate.astro'
 import type { PostListProps } from '@/types'
 import { themeConfig } from '@/config'
 
-const { posts } = Astro.props as PostListProps
+const { posts, basePath = '/' } = Astro.props as PostListProps
 ---
 
 <ul>
   {
     posts.map((post) => (
       <li data-category={post.data.category || ''}>
-        <a href={`/${post.id}/`}>
+        <a href={`${basePath}${post.id}/`}>
           <div class={`post-item ${!themeConfig.date.dateOnRight ? 'date-left' : ''}`}>
             {!themeConfig.date.dateOnRight && (
               <p class="date font-features">

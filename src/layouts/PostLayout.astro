@@ -22,9 +22,9 @@ import StructuredData from '@/components/seo/StructuredData.astro'
 import { themeConfig } from '@/config'
 
 type RelatedItem = { title: string; href: string; description: string }
-type Props = PostLayoutProps & { related?: RelatedItem[] }
+type Props = PostLayoutProps & { related?: RelatedItem[]; relatedNotes?: RelatedItem[] }
 
-const { title, pubDate, readingTime, toc, lang, related = [] } = Astro.props
+const { title, pubDate, readingTime, toc, lang, related = [], relatedNotes = [] } = Astro.props
 
 const postSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || ''
 const ogImage = `/open-graph/${postSlug}.png`
@@ -82,6 +82,22 @@ const ogImage = `/open-graph/${postSlug}.png`
           <h2>Keep reading</h2>
           <ul>
             {related.map((r) => (
+              <li>
+                <a href={r.href}>
+                  <span class="related-title">{r.title}</span>
+                  {r.description && <span class="related-desc">{r.description}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {relatedNotes.length > 0 && (
+        <section class="related">
+          <h2>From the garden</h2>
+          <ul>
+            {relatedNotes.map((r) => (
               <li>
                 <a href={r.href}>
                   <span class="related-title">{r.title}</span>

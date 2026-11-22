@@ -1,0 +1,186 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import PostList from '@/components/widgets/PostList.astro'
+import { themeConfig } from '@/config'
+import { getPublishedNotes, noteCategory, noteDate } from '@/utils/garden'
+import type { CollectionEntry } from 'astro:content'
+
+const notes = await getPublishedNotes()
+
+// Shape garden notes as post-list items (PostList expects CollectionEntry<'posts'>)
+const asItems = (list: typeof notes) =>
+  list.map((n) => ({
+    id: n.id,
+    data: {
+      title: n.data.title,
+      pubDate: noteDate(n),
+      category: noteCategory(n.id)
+    }
+  })) as unknown as CollectionEntry<'posts'>[]
+
+const isSynthesis = (n: (typeof notes)[number]) => noteCategory(n.id) === 'synthesis'
+const isArticle = (n: (typeof notes)[number]) => noteCategory(n.id) === 'articles'
+const isBookMain = (n: (typeof notes)[number]) =>
+  noteCategory(n.id) === 'books' && n.data.type === 'source'
+
+// Curated sections first; the long concept tail stays reachable but collapsed.
+const sections = [
+  { label: 'Synthesis', items: notes.filter(isSynthesis), collapsible: false },
+  { label: 'Books', items: notes.filter(isBookMain), collapsible: false },
+  { label: 'Articles', items: notes.filter(isArticle), collapsible: false },
+  {
+    label: 'Concepts & people',
+    items: notes.filter((n) => !isSynthesis(n) && !isArticle(n) && !isBookMain(n)),
+    collapsible: true
+  }
+].filter((s) => s.items.length > 0)
+---
+
+<IndexLayout
+  title={`Garden · ${themeConfig.site.title}`}
+  description="Notes, book summaries, and working knowledge from Fauzan's digital garden."
+  ogImage="/open-graph/garden.png"
+>
+  <header class="garden-head">
+    <h1>Garden</h1>
+    <p class="garden-intro">
+      {notes.length} evergreen notes — book summaries, cross-book synthesis, and working concepts.
+      The raw material behind the <a href="/blog">Blog</a>.
+    </p>
+    <div class="garden-search" id="garden-search"></div>
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <script is:inline src="/pagefind/pagefind-ui.js" defer></script>
+    <script is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (window.PagefindUI) {
+          new window.PagefindUI({
+            element: '#garden-search',
+            showImages: false,
+            showSubResults: true
+          })
+        } else {
+          const el = document.getElementById('garden-search')
+          if (el) el.style.display = 'none'
+        }
+      })
+    </script>
+  </header>
+
+  {
+    sections.map((section) =>
+      section.collapsible ? (
+        <details class="garden-section garden-section-more">
+          <summary>
+            <h2>
+              {section.label}
+              <span class="count">{section.items.length}</span>
+              <svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </h2>
+          </summary>
+          <PostList posts={asItems(section.items)} basePath="/garden/" />
+        </details>
+      ) : (
+        <section class="garden-section">
+          <h2>
+            {section.label}
+            <span class="count">{section.items.length}</span>
+          </h2>
+          <PostList posts={asItems(section.items)} basePath="/garden/" />
+        </section>
+      )
+    )
+  }
+</IndexLayout>
+
+<style>
+  .garden-head {
+    margin-top: 2rem;
+  }
+
+  .garden-head h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .garden-intro {
+    margin: 0 0 1.25rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 42rem;
+  }
+
+  .garden-search {
+    min-height: 3rem;
+    margin-top: 0;
+    --pagefind-ui-primary: var(--text-primary);
+    --pagefind-ui-text: var(--text-secondary-strong);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-background: transparent;
+    --pagefind-ui-font: var(--sans);
+  }
+
+  .garden-search :where(input.pagefind-ui__search-input) {
+    border-radius: 6px;
+    background: transparent;
+  }
+
+  .garden-section {
+    margin-top: 2.5rem;
+  }
+
+  .garden-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 0.75rem;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .count {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-secondary);
+  }
+
+  .garden-section-more summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .garden-section-more summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .garden-section-more summary h2 {
+    margin-bottom: 0;
+  }
+
+  .garden-section-more .chev {
+    transition: transform 0.15s ease;
+    color: var(--text-secondary);
+  }
+
+  .garden-section-more[open] .chev {
+    transform: rotate(180deg);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .garden-section-more summary:hover h2 {
+      color: var(--text-primary);
+    }
+
+    .garden-section-more summary:hover .count {
+      border-color: var(--text-tertiary);
+    }
+  }
+</style>
+

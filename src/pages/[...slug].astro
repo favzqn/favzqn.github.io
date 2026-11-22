@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
 import { render } from 'astro:content'
 import { getSortedFilteredPosts } from '@/utils/draft'
+import { getRelatedNotesForPost, gardenHref } from '@/utils/garden'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
@@ -38,8 +39,15 @@ const related = (await getSortedFilteredPosts())
     href: '/' + entry.id.replace(/\.(md|mdx)$/, '') + '/',
     description: entry.data.description || ''
   }))
+
+// Garden notes sharing tags with this post (rendered in PostLayout's "From the garden")
+const relatedNotes = (await getRelatedNotesForPost(post)).map((n) => ({
+  title: n.data.title,
+  href: gardenHref(n.id),
+  description: ''
+}))
 ---
 
-<PostLayout {...post.data} readingTime={readingTime} toc={toc} related={related}>
+<PostLayout {...post.data} readingTime={readingTime} toc={toc} related={related} relatedNotes={relatedNotes}>
   <Content />
 </PostLayout>
