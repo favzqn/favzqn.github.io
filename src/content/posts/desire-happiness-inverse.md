@@ -14,11 +14,11 @@ Lao Tzu wrote a version of the same claim 2,500 years earlier. Dostoevsky wrote 
 
 ## The three arguments
 
-**Naval: happiness is what remains.** In *The Almanack of Naval Ravikant*, happiness is the default state, and desire is the layer covering it up. The practical tool he names is meditation, which he calls "intermittent fasting for the mind": scheduled time without input, where mental noise settles. His ordering of freedoms matters too. Freedom from obligation and anxiety outranks freedom to buy and achieve, because the second one renews itself the moment you get it.
+**Naval: happiness is what remains.** In *The Almanack of Naval Ravikant*, <mark>happiness is the default state, and desire is the layer covering it up</mark>. The practical tool he names is meditation, which he calls "intermittent fasting for the mind": scheduled time without input, where mental noise settles. His ordering of freedoms matters too. Freedom from obligation and anxiety outranks freedom to buy and achieve, because the second one renews itself the moment you get it.
 
 **Lao Tzu: the uncarved block.** The *Tao Te Ching* describes the uncarved block as the original state: simple, full of potential, before the ego carves it into fixed identities. Wu wei is action without forcing. Softness overcomes hardness because water wins by yielding rather than striking. The text keeps making the same point through different images: usefulness grows where emptiness is allowed to stay.
 
-**Dostoevsky: the trap.** Raskolnikov's Extraordinary Man Theory is desire with a philosophy attached. He wants proof that he stands above ordinary moral law, and he murders to get it. Guilt does the rest. His redemption starts when he stops needing to be extraordinary and accepts being human. Dostoevsky shows the mechanism at full volume: desire for significance, then murder, then torment, then a slow return to ordinary love.
+**Dostoevsky: the trap.** Raskolnikov's Extraordinary Man Theory is desire with a philosophy attached. He wants proof that he stands above ordinary moral law, and he murders to get it. Guilt does the rest. <mark>His redemption starts when he stops needing to be extraordinary and accepts being human.</mark> Dostoevsky shows the mechanism at full volume: desire for significance, then murder, then torment, then a slow return to ordinary love.
 
 ## The pattern in one table
 
@@ -36,17 +36,17 @@ Santiago's battle with the marlin in *The Old Man and the Sea* turns when he sto
 
 *Flow* describes the same state from psychology. Csikszentmihalyi's research keeps finding the same profile: peak sessions are absorbing, feel effortless, and are worth doing again for their own sake. The external reward structure disappears during the activity, which is why the flow state and the desire-free state end up describing nearly the same experience from different directions. Flow is desireless action: you do the activity for its structure, not for the reward stacked behind it. The autotelic personality reaches this state naturally because external wants have been reduced enough to leave room.
 
-Harari makes the macro version of the argument in *Sapiens*. He calls the agricultural revolution "history's biggest fraud" because material output rose while human satisfaction did not. Money, status, and nations are imagined orders that generate new desires faster than they get met. Progress moved the wanting line, not the happiness line.
+Harari makes the macro version of the argument in *Sapiens*. He calls the agricultural revolution "history's biggest fraud" because <mark>material output rose while human satisfaction did not</mark>. Money, status, and nations are imagined orders that generate new desires faster than they get met. Progress moved the wanting line, not the happiness line.
 
 ## The demand side
 
-The connection back to attention is mechanical: the attention economy runs on manufactured desire, so every feed is a machine for issuing new contracts. Protect attention and fewer desires get issued; want less and the feed loses its leverage. Both directions quiet the same loop, which is why the practical moves below work better alongside the sleep and boundary work from the attention stack.
+The connection back to attention is mechanical: <mark>the attention economy runs on manufactured desire, so every feed is a machine for issuing new contracts</mark>. Protect attention and fewer desires get issued; want less and the feed loses its leverage. Both directions quiet the same loop, which is why the practical moves below work better alongside the sleep and boundary work from the attention stack.
 
 ## Why getting more does not settle it
 
 Naval's contract explains the treadmill directly: each fulfilled desire closes one contract and opens the next. Harari's agricultural example scales the same loop to a civilization. The imagined orders keep issuing new wanting faster than anyone can satisfy it, which is how material centuries and flat satisfaction curves coexist.
 
-Dostoevsky adds the psychological version inside one head. Raskolnikov has already achieved the act his theory demanded, and the theory does not pay out. Guilt arrives because the desire was never about the murder; it was about being special enough to deserve it. The achievement lands and the wanting stays, which is the inverse running at full speed.
+Dostoevsky adds the psychological version inside one head. Raskolnikov has already achieved the act his theory demanded, and the theory does not pay out. Guilt arrives because the desire was never about the murder; it was about being special enough to deserve it. <mark>The achievement lands and the wanting stays</mark>, which is the inverse running at full speed.
 
 ## What each thinker prescribes
 
@@ -58,7 +58,7 @@ Dostoevsky adds the psychological version inside one head. Raskolnikov has alrea
 
 Promotions, launches, and follower counts run the same contract. The wanting state ("once the title lands, I can stop") never matches the arriving state, because the arriving state has its own status ladder attached. People who tie output to the next milestone discover the milestone moves on arrival.
 
-The useful reframe for knowledge work: pick work whose daily structure is worth doing regardless of the announcement at the end. Deep work sessions, craft improvements, teaching someone else. Those pay in the activity itself, so external rewards become upside rather than the whole point.
+The useful reframe for knowledge work: <mark>pick work whose daily structure is worth doing regardless of the announcement at the end</mark>. Deep work sessions, craft improvements, teaching someone else. Those pay in the activity itself, so external rewards become upside rather than the whole point.
 
 ## What changes when you want less
 
@@ -78,7 +78,7 @@ Reducing desire leaves the work intact. Deep work sessions, hard negotiations, a
 3. **Run the week without it.** Notice which moments the wanting interrupts, and which moments were fine before the wanting named itself.
 4. **Keep what you dropped.** Most contracts are not renewed once you have seen the terms.
 
-Wanting less removes friction. It does not remove effort, and the effort gets better for it.
+<mark>Wanting less removes friction.</mark> It does not remove effort, and the effort gets better for it.
 
 The full synthesis, with the source notes and reading paths, is in the [garden](/garden/synthesis/the-desire-happiness-inverse/).
 

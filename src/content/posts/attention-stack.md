@@ -6,7 +6,7 @@ tags: ['attention', 'focus', 'productivity', 'reading-notes']
 category: 'personal'
 ---
 
-I spent the last year reading six books that keep describing the same structure: *Why We Sleep*, *Digital Minimalism*, *Deep Work*, *The Anxious Generation*, *The Almanack of Naval Ravikant*, and *The Personal MBA*. Call it the attention stack. Attention rests on sleep. Sleep rests on nothing. Every layer above inherits the strength of the layer below it.
+I spent the last year reading six books that keep describing the same structure: *Why We Sleep*, *Digital Minimalism*, *Deep Work*, *The Anxious Generation*, *The Almanack of Naval Ravikant*, and *The Personal MBA*. Call it the attention stack. Attention rests on sleep. Sleep rests on nothing. <mark>Every layer above inherits the strength of the layer below it.</mark>
 
 Most productivity advice starts at the top: wake earlier, ship faster, find your leverage. The stack says failures usually start two layers down, in the hours you sleep and the inputs you allow.
 
@@ -20,19 +20,19 @@ Most productivity advice starts at the top: wake earlier, ship faster, find your
 | 4. Specific knowledge | Leverage | *The Almanack of Naval Ravikant* | Income beyond wages |
 | 5. Judgment | Compounding | *The Personal MBA* | Long-term returns on all of the above |
 
-Read bottom to top. The stack only works while each layer holds the one above it.
+Read bottom to top. <mark>The stack only works while each layer holds the one above it.</mark>
 
 ## Layer 1: Sleep, the foundation
 
-**What happens at night:** Matthew Walker's research gets specific. The glymphatic system flushes metabolic waste from the brain during sleep. Memory consolidation runs through REM and NREM cycles, moving what you learned today into something you can use tomorrow.
+**What happens at night:** Matthew Walker's research gets specific. <mark>The glymphatic system flushes metabolic waste from the brain during sleep.</mark> Memory consolidation runs through REM and NREM cycles, moving what you learned today into something you can use tomorrow.
 
-**The requirement:** seven to nine hours. Not as a preference, as a load limit. Below that number, reaction time, working memory, and emotional regulation all drop, and every layer above starts absorbing the damage.
+**The requirement:** <mark>seven to nine hours</mark>. Not as a preference, as a load limit. Below that number, reaction time, working memory, and emotional regulation all drop, and every layer above starts absorbing the damage.
 
 **Why this layer is under attack:** *The Sleep-Deprived Society* documents the pattern. Late screens, shift work, and the cultural bragging about five-hour nights have pushed sleep into the position of optional lifestyle hobby. The stack treats it as structural.
 
 ## Layer 2: Digital boundaries
 
-**The reset:** Cal Newport's digital declutter is a 30-day removal of optional technology, followed by reintroduction of only what earns its place back. The point is not willpower. The point is finding out which tools you actually use versus which ones use you.
+**The reset:** Cal Newport's digital declutter is a <mark>30-day removal of optional technology</mark>, followed by reintroduction of only what earns its place back. The point is not willpower. The point is finding out which tools you actually use versus which ones use you.
 
 **Solitude is a feature:** time without input from other minds is where unstructured thought happens. No podcast, no feed, no second screen. Newport ties this directly to the quality of deep work downstream.
 
@@ -40,7 +40,7 @@ Read bottom to top. The stack only works while each layer holds the one above it
 
 ## Layer 3: Deep work, the skill
 
-**The hypothesis:** Cal Newport argues deep work is simultaneously rare and valuable, which is an economic claim: rare and valuable skills get rewarded, so people who cultivate deep work take the rewards.
+**The hypothesis:** Cal Newport argues deep work is <mark>simultaneously rare and valuable</mark>, which is an economic claim: rare and valuable skills get rewarded, so people who cultivate deep work take the rewards.
 
 **What it actually is:** distraction-free concentration that pushes your cognitive limits. Not longer hours at the same inbox, but sustained focus on a problem just past your current ability.
 
@@ -55,7 +55,7 @@ Read bottom to top. The stack only works while each layer holds the one above it
 
 **Specific knowledge:** Naval Ravikant's term for skills you cannot be trained for on a timetable. Things you do because you are genuinely better at them than most people, developed through sustained attention rather than a course syllabus.
 
-**Leverage:** code and media have near-zero marginal cost, capital compounds. Naval's claim is mechanical: you will not get rich renting your time, because rented time has a ceiling and leverage does not.
+**Leverage:** <mark>code and media have near-zero marginal cost</mark>, capital compounds. Naval's claim is mechanical: <mark>you will not get rich renting your time</mark>, because rented time has a ceiling and leverage does not.
 
 **Judgment:** knowing which long-term consequences to weight. Compound interest rewards people who apply judgment over decades, not days, and judgment is what focused attention buys once the lower layers produce something worth aiming.
 
