@@ -6,7 +6,7 @@ tags: ['attention', 'focus', 'productivity', 'reading-notes']
 category: 'personal'
 ---
 
-I spent the last year reading six books that keep describing the same structure: *Why We Sleep*, *Digital Minimalism*, *Deep Work*, *The Anxious Generation*, *The Almanack of Naval Ravikant*, and *The Personal MBA*. Call it the attention stack. Attention rests on sleep. Sleep rests on nothing. <mark>Every layer above inherits the strength of the layer below it.</mark>
+I spent the last year reading six books that keep describing the same structure: *Why We Sleep*, *Digital Minimalism*, *Deep Work*, *The Anxious Generation*, *The Almanack of Naval Ravikant*, and *The Personal MBA*. Call it the attention stack. Attention rests on sleep. Sleep rests on nothing. <mark>Every layer inherits the strength of the one below it.</mark>
 
 Most productivity advice starts at the top: wake earlier, ship faster, find your leverage. The stack says failures usually start two layers down, in the hours you sleep and the inputs you allow.
 
