@@ -80,7 +80,7 @@ An end-to-end pipeline and dashboard, from public API to production-style analyt
 
 ## Result
 
-- **Real data from day one**: 3 Atlassian status pages collected every 6 hours — currently 134 reported incidents, 521 incident updates, and 67 components with append-only snapshot history
+- <mark>**Real data from day one**</mark>: 3 Atlassian status pages collected every 6 hours — currently 134 reported incidents, 521 incident updates, and 67 components with append-only snapshot history
 - **Verified correctness**: 48 pytest tests (unit + integration against a real PostgreSQL — idempotent re-ingestion, partial source failure, disappearance handling, corrupted-data detection) plus 8 Playwright end-to-end flows, all green; ruff, ESLint, strict TypeScript, and a production build in CI
 - **Observable by design**: every run records pages attempted/succeeded/failed, records received/new/updated, duplicates blocked, per-endpoint errors, and quality-check results — the dashboard shows all of it, and a stale pipeline reports `stale`, not green
 - **Honest scope**: the About page and README state plainly what the product does _not_ measure — no uptime scores, no SLA claims, no independently verified downtime. Provider-reported is a constraint of the data, and the UI never hides it

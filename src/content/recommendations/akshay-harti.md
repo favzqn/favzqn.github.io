@@ -9,7 +9,7 @@ quote: >-
   strengthened our automated test suite so the team could catch regressions
   early and release with more confidence. I'd happily work with Fauzan
   again and recommend him to any team looking for a QA engineer who brings
-  the mindset of a senior developer to quality.
+  <mark>the mindset of a senior developer to quality</mark>.
 name: Akshay Harti
 role: Software Engineering Lead
 company: FrankieOne

@@ -57,7 +57,7 @@ const filters = [...techCounts.entries()]
             <div class="card-metrics">
               {project.data.metrics.slice(0, 2).map((m: { value: string; label: string }) => (
                 <span class="card-metric">
-                  <strong>{m.value}</strong> {m.label}
+                  <strong><mark>{m.value}</mark></strong> {m.label}
                 </span>
               ))}
             </div>

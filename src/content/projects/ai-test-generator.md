@@ -46,7 +46,7 @@ An AI-powered test case generator that creates comprehensive test cases from Jir
 
 ## Result
 
-- **15 minutes to 30 seconds** per test case
+- <mark>**15 minutes to 30 seconds**</mark> per test case
 - **15-25 hours saved** per sprint
 - **80% reduction** in regression time
 - **Consistent coverage** across all features

@@ -51,7 +51,7 @@ COCOK is a B2B reconciliation platform that ingests financial data from any chan
 
 ## Result
 
-- **MVP complete**: full ingestion to reconciliation to exceptions to settlements to reports pipeline, provider webhooks, auth recovery, in 7 implementation phases
+- <mark>**MVP complete**</mark>: full ingestion to reconciliation to exceptions to settlements to reports pipeline, provider webhooks, auth recovery, in 7 implementation phases
 - **Load tested with k6**: 5 virtual users for 15 seconds, 2,072 requests, **0% errors**, **p95 at 9.4ms** locally, ~136 requests/second
 - **Integration test suite** against real Postgres covering tenant isolation, authentication, and RBAC, run in CI on every push
 - **Real matching end to end**: imported a bank statement and a gateway settlement file, and the engine proposed a scored 1:1 match with the remaining 8 transactions queued as exceptions

@@ -76,7 +76,7 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
 
 ## Result
 
-- **The full loop runs offline on a device**: onboarding, guided inspection, status writes, force-stop, relaunch with data intact, and a valid PDF generated on disk
+- <mark>**The full loop runs offline on a device**</mark>: onboarding, guided inspection, status writes, force-stop, relaunch with data intact, and a valid PDF generated on disk
 - **42 checks across two platforms** (Windows + MacBook), a 14-check quick mode, and 100% bilingual content (en/id) with platform-specific guidance: `powercfg` on Windows, Activation Lock on macOS
 - **74 automated tests** (domain math, repositories against real in-memory SQLite, backup roundtrip, report HTML, component tests) plus strict TypeScript and ESLint, all green in CI
 - **Zero backend, zero accounts, zero analytics.** The privacy screen says exactly what the code does, and the code backs it up

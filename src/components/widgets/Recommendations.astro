@@ -22,7 +22,7 @@ const recommendations = limit ? all.slice(0, limit) : all
       <ul class="rec-list">
         {recommendations.map((rec) => (
           <li>
-            <blockquote>{rec.data.quote}</blockquote>
+            <blockquote set:html={rec.data.quote}></blockquote>
             <p class="rec-author">
               {rec.data.avatar && (
                 <Image

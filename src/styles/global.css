@@ -196,4 +196,12 @@ main {
   letter-spacing: var(--spacing-m);
 }
 
+/* Highlighted text — global so hire/projects/recs match .prose pages */
+mark {
+  background-color: var(--mark);
+  color: var(--text-primary);
+  padding: 3px 1px;
+  border-radius: 2px;
+}
+
 

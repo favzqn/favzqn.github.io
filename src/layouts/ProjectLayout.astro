@@ -78,7 +78,7 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
           <div class="impact">
             {metrics.map((m: { value: string; label: string }) => (
               <div class="impact-item">
-                <span class="impact-value">{m.value}</span>
+                <span class="impact-value"><mark>{m.value}</mark></span>
                 <span class="impact-label">{m.label}</span>
               </div>
             ))}

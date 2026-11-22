@@ -1,7 +1,7 @@
 ---
 quote: >-
-  Fauzan is really great at his job: detailed, communicates well, and
-  passionate. Very good to work with. Lucky to have him at Chatbiz!
+  Fauzan is really great at his job: <mark>detailed, communicates well, and
+  passionate</mark>. Very good to work with. Lucky to have him at Chatbiz!
 name: Terry Djony
 role: Founder
 company: Chatbiz.id
