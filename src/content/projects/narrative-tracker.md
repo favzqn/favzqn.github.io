@@ -5,6 +5,7 @@ image: "narrative-dashboard.png"
 tech: ["JavaScript", "D3.js", "Playwright", "Node.js"]
 github: ""
 featured: false
+priority: 23
 role: 'Side project'
 metrics:
   - { value: '4', label: 'working views' }

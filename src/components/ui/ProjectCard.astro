@@ -1,0 +1,197 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+---
+
+<div class="project-card" data-techs={(project.data.tech || []).join('|')}>
+  <a href={`/projects/${project.id}`} class="project-main">
+    {project.data.image && (
+      <div class="project-image">
+        <div class="browser-bar" aria-hidden="true">
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+        </div>
+        <img
+          src={`/projects/${project.data.image}`}
+          alt={project.data.title}
+          loading="lazy"
+        />
+      </div>
+    )}
+    <div class="project-content">
+      <h3 class="project-title">{project.data.title}</h3>
+      <p class="project-description">{project.data.description}</p>
+      {project.data.metrics && project.data.metrics.length > 0 && (
+        <div class="card-metrics">
+          {project.data.metrics.slice(0, 2).map((m: { value: string; label: string }) => (
+            <span class="card-metric">
+              <strong><mark>{m.value}</mark></strong> {m.label}
+            </span>
+          ))}
+        </div>
+      )}
+      {project.data.tech && project.data.tech.length > 0 && (
+        <div class="project-tech">
+          {project.data.tech.slice(0, 3).map((t: string) => (
+            <span class="tech-chip">{t}</span>
+          ))}
+        </div>
+      )}
+      <span class="project-cta">Read case study →</span>
+    </div>
+  </a>
+  {(project.data.live || project.data.github) && (
+    <div class="project-links">
+      {project.data.live && (
+        <a href={project.data.live} target="_blank" rel="noopener noreferrer">Live ↗</a>
+      )}
+      {project.data.github && (
+        <a href={project.data.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      )}
+    </div>
+  )}
+</div>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.2s ease;
+  }
+
+  .project-card:hover {
+    opacity: 0.8;
+  }
+
+  .project-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    background: var(--code-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-image img {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 1.6rem;
+    padding: 0 0.65rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .browser-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.02);
+  }
+
+  .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.375rem 0;
+    line-height: 1.4;
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-m);
+    line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+    flex: 1;
+  }
+
+  .card-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary-strong);
+  }
+
+  .card-metric strong {
+    color: var(--text-primary);
+    font-family: var(--mono);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tech-chip {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    font-family: var(--mono);
+  }
+
+  .project-cta {
+    font-size: var(--font-size-s);
+    color: var(--text-primary);
+    font-family: var(--mono);
+    margin-top: auto;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.625rem;
+  }
+
+  .project-links a {
+    font-size: var(--font-size-s);
+    color: var(--text-secondary);
+    font-family: var(--mono);
+    text-decoration: none;
+  }
+
+  .project-links a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+  }
+</style>

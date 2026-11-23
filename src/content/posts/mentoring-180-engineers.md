@@ -3,7 +3,7 @@ title: 'From 0 to 180+ Mentees: Building a Mentorship Program That Actually Work
 description: 'How I built a scalable mentorship program with 88% job placement rate, helping 180+ engineers grow their careers through structured guidance, accountability, and leverage.'
 pubDate: '2025-03-15'
 tags: ['mentorship', 'leadership', 'career-growth', 'engineering']
-category: 'leadership'
+category: 'personal'
 ---
 
 ## The Journey

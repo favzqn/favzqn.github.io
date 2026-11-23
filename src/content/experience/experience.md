@@ -7,7 +7,7 @@ title: 'Experience'
 ## <a href="https://www.frankieone.com" target="_blank" rel="noopener noreferrer">FrankieOne</a> · Senior Software Engineer in Test
 *Melbourne (Remote) · Sep 2024 – Nov 2026*
 
-KYC platform. Merged <mark>900+ pull requests</mark> across backend, frontend, and test code in Go and TypeScript. Shipped localized OCR-comparison views for <mark>15+ countries</mark> with Playwright e2e coverage, automated OneSDK flows (biometrics, liveness, OCR) cutting regression time <mark>~80%</mark>, and built an AI test-case generator from Jira acceptance criteria (<mark>~50% less</mark> manual test design) plus a 15-minute production synthetic monitor.
+KYC platform. Shipped localized OCR-comparison views for <mark>15+ countries</mark> across Go and TypeScript, built automated identity verification flows (biometrics, liveness, OCR) cutting regression time <mark>~80%</mark>, developed an AI test-case generator from Jira acceptance criteria (<mark>~50% less</mark> manual test design), and built a 15-minute production synthetic monitor. Wrote backend and frontend product code alongside test infrastructure, merging <mark>900+ pull requests</mark> over two years.
 
 Stack: Go, TypeScript, React, Playwright, K6, Grafana, AWS
 

@@ -10,12 +10,9 @@ const indonesianPosts = allPosts.filter(post => post.data.lang === 'id')
 
 const categoryLabels: Record<string, string> = {
   engineering: 'Engineering',
-  automation: 'Automation',
-  ai: 'AI',
-  aws: 'AWS',
-  leadership: 'Leadership',
-  personal: 'Personal',
-  reviews: 'Reviews'
+  building: 'Building',
+  learning: 'Learning',
+  personal: 'Personal'
 }
 const categories = Object.keys(categoryLabels).filter((c) =>
   allPosts.some((p) => p.data.category === c)
@@ -30,7 +27,7 @@ const categories = Object.keys(categoryLabels).filter((c) =>
   <div style="margin-top: 2rem;">
     <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Blog</h1>
     <p style="margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.1rem;">
-      Technical articles on <mark>AI, automation, AWS, and engineering practices</mark>.
+      Notes on <mark>software engineering, building things, technology, books, and the occasional rabbit hole</mark>.
     </p>
   </div>
   <div class="blog-search" id="blog-search"></div>

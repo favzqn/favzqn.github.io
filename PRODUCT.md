@@ -10,7 +10,7 @@ Personal portfolio website showcasing full-stack engineering and automation work
 
 ## Goals
 - Showcase real projects with case studies (Problem → Solution → Result)
-- Establish credibility as a full-stack engineer and automation specialist
+- Establish credibility as a software engineer who builds products and engineering systems, with quality engineering as a differentiator
 - Convert visitors into inquiries or job opportunities
 
 ## Tone

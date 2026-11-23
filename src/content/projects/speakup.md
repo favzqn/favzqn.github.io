@@ -5,8 +5,8 @@ image: "speakup.png"
 tech: ["JavaScript", "PWA", "Web Speech API", "Service Worker"]
 live: "https://speakup.fauzan08fauzan.workers.dev"
 github: "https://github.com/favzqn/speakup"
-featured: true
-priority: 3
+featured: false
+priority: 12
 role: 'Side project'
 metrics:
   - { value: '64', label: 'practice phrases' }

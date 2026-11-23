@@ -1,6 +1,6 @@
-# Fauzan Fathurrahman — Full-stack Engineer & Automation Specialist
+# Fauzan Fathurrahman — Software Engineer (Products, Backend Systems & Developer Tools)
 
-> Senior Software Engineer in Test at FrankieOne (KYC platform). Builds scalable products and the systems that test them: TypeScript, React, Node.js, Go, PostgreSQL on AWS, with Playwright test automation at scale. Based in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.
+> Software engineer building products, backend systems, and developer tools: TypeScript, React, Node.js, Go, Python, PostgreSQL on AWS, with deep test automation experience (Playwright, K6, CI/CD at scale). Previously Senior Software Engineer in Test at FrankieOne. Applying to backend, full-stack, frontend, and SDET/QA roles; selective freelance. Based in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.
 
 Personal site: case studies with problem/solution/result structure, a technical blog, experience history, and a hire page. Canonical domain: https://fau.ai.id/
 
@@ -10,13 +10,13 @@ Personal site: case studies with problem/solution/result structure, a technical 
 - [Hire me](https://fau.ai.id/hire): services, process, availability, contact
 - [Experience](https://fau.ai.id/experience): work history with impact metrics
 - [Projects](https://fau.ai.id/projects): all case studies
-- [Blog](https://fau.ai.id/blog): technical articles on AI, automation, AWS, and engineering
+- [Blog](https://fau.ai.id/blog): notes on software engineering, building things, technology, books, and rabbit holes
 - [RSS](https://fau.ai.id/rss.xml): feed
 
 ## Case studies
 
 - [UsedCheck](https://fau.ai.id/projects/usedcheck/): offline-first Android app for inspecting second-hand laptops — React Native, SQLite, 74 automated tests
-- [COCOK](https://fau.ai.id/projects/cocok/): multi-tenant financial reconciliation platform — Go, Next.js, PostgreSQL; 9.4ms p95 under load
+- [COCOK](https://fau.ai.id/projects/cocok/): multi-tenant financial reconciliation platform — Go, Next.js, PostgreSQL; 9.4ms p95 (local k6, 5 VU)
 - [IncidentScope](https://fau.ai.id/projects/incidentscope/): public service reliability intelligence — Python pipeline, PostgreSQL analytics
 - [JobPilot](https://fau.ai.id/projects/jobpilot/): Chrome extension automating job applications — Manifest V3, client-side AI
 - [Senara](https://fau.ai.id/projects/senara/): free interactive story platform teaching life skills — Astro, i18n

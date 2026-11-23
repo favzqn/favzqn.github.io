@@ -5,8 +5,8 @@ image: "senara-home.png"
 tech: ["Astro", "TypeScript", "Tailwind CSS", "i18n"]
 live: "https://senara.wasmer.app"
 github: "https://github.com/favzqn/senara"
-featured: true
-priority: 3
+featured: false
+priority: 22
 role: 'Side project'
 metrics:
   - { value: '6', label: 'story worlds' }

@@ -5,7 +5,7 @@ image: "usedcheck-home.png"
 tech: ["React Native", "Expo", "TypeScript", "SQLite", "Drizzle ORM", "Jest", "GitHub Actions"]
 live: ""
 featured: true
-priority: 1
+priority: 3
 role: 'Side project'
 metrics:
   - { value: '42', label: 'guided checks' }
@@ -93,3 +93,26 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
 </div>
 
 **Shows:** React Native and Expo, offline-first SQLite data, native device APIs, mobile CI
+
+## Engineering Challenges
+
+**The hardest problem: keeping data trustworthy with no backend.** Everything — inspection records, photo evidence, scores, backups — lives on one device. A corrupted backup or a schema change gone wrong destroys the only copy of evidence a buyer has. The data layer had to be correct on the first write, because there is no server-side repair.
+
+**Alternatives considered:**
+
+- **Cloud sync with accounts** — rejected: privacy is the product. The app's promise is that data never leaves the phone, and accounts would break it for a use case (standing in front of a seller) that often has no reliable connectivity
+- **Server-generated PDF reports** — rejected: inspections happen offline; report generation has to work in airplane mode
+- **Naive average score** — rejected: a perfect "screen brightness" check would mask a failed battery-health check. The score renders next to coverage, refuses to show below 40% coverage, and a failed critical check always surfaces
+
+**What bit during development:** checklist content evolves, but old inspections must stay immutable. Solved by versioning checklists as content — every inspection stores the exact checklist it started with, so a template update never rewrites history.
+
+## Scaling Notes
+
+Scaling an offline consumer app is mostly about content and distribution, not servers: checklist templates ship with app updates, the backup file format must stay backward compatible forever (it is the only migration path), and battery/diagnostic guidance has to stay accurate across OS versions and device vendors.
+
+## Limitations (documented, not hidden)
+
+- No cross-device sync — backups are manual file exports, and losing the file loses the data
+- Battery and hardware diagnostics depend on OS APIs whose accuracy varies by device and Android version
+- Checklists cover Windows and MacBook inspection; no iOS target-device flows yet
+- No crash reporting or analytics by design, so field failures surface only through user reports

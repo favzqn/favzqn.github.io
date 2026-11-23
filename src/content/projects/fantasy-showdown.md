@@ -6,6 +6,7 @@ tech: ["TypeScript", "React", "Node.js", "PostgreSQL", "Sports APIs"]
 live: "https://fantasyshowdowndev.com"
 github: ""
 featured: false
+priority: 11
 year: '2025'
 role: 'Freelance Full-Stack Engineer'
 ---

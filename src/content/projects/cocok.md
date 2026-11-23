@@ -6,10 +6,10 @@ tech: ["Go", "Next.js", "TypeScript", "PostgreSQL", "Docker"]
 live: ""
 github: "https://github.com/favzqn/cocok"
 featured: true
-priority: 2
+priority: 1
 role: 'Side project'
 metrics:
-  - { value: '9.4ms', label: 'p95 latency (k6)' }
+  - { value: '9.4ms', label: 'p95 · local k6, 5 VU' }
   - { value: '0%', label: 'errors under load' }
   - { value: '7', label: 'delivery phases' }
 ---
@@ -58,3 +58,25 @@ COCOK is a B2B reconciliation platform that ingests financial data from any chan
 - **Full audit trail**: every import, match run, and account change recorded as an append-only event with request payloads
 
 **Shows:** multi-tenant Go APIs, SQL data modeling, deterministic matching, Next.js dashboards, auth/RBAC/audit hardening
+
+## Engineering Challenges
+
+**The hardest problem: matching without lying to the finance user.** Real bank and gateway statements never match cleanly — different reference formats, split settlements, fees deducted mid-transfer. The engine has to propose matches confidently enough to save time, but every proposal must be explainable, because an accountant will audit it.
+
+**Alternatives considered:**
+
+- **Exact-match rules only** — rejected: too brittle for real-world statements; anything slightly off fell into the exceptions queue and the tool became a fancy CSV viewer
+- **ML-based fuzzy matching** — rejected for the MVP: needs labeled training data that doesn't exist yet, and model scores are hard to defend in an audit
+- **Deterministic scoring with a visible score** — chosen: every proposed match shows the score and which fields (reference, amount, date, counterparty, description) contributed, so a human can accept, reject, or unmatch with full context
+
+## Scaling Notes
+
+The k6 numbers are a local smoke test (5 virtual users, 15 seconds), not a production benchmark. At real load the shape of the system stays the same: match runs move to a background queue instead of running in the request path, reports read from replicas, the ledger and exceptions views paginate, and CSV uploads land in object storage instead of local disk. The schema was built for that — integer minor units and `organization_id` on every row mean no data migration to go multi-region.
+
+## Limitations (documented, not hidden)
+
+- Performance figures are local k6 (5 VU, 15s) — a regression signal, not a capacity claim
+- Single Postgres, single region; no read replicas or connection pooling tuning yet
+- Matching heuristics tuned for Indonesian bank and gateway CSV formats; other regions need new column maps
+- Session-based auth only — no SSO/OIDC, which a real B2B customer would eventually require
+- Webhook ingestion exists, but settlement flows are exercised off uploaded files, not live provider traffic

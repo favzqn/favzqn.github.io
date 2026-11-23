@@ -3,7 +3,7 @@ title: 'Building a Test Automation Framework That Scales: Lessons from 10,000+ T
 description: 'Enterprise test automation framework using Ruby, Selenium, and Cucumber. Reduced regression time by 85%, achieved 90% coverage, and cut bug escapes by 90%.'
 pubDate: '2025-03-10'
 tags: ['test-automation', 'qa', 'selenium', 'ruby', 'ci-cd']
-category: 'automation'
+category: 'engineering'
 ---
 
 ## The Challenge

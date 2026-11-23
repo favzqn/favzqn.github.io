@@ -3,7 +3,7 @@ title: 'The Test Case Problem: How AI Turned Hours into Minutes'
 description: 'AI-powered test case generation using AWS Bedrock. Reduced test case creation from 15 minutes to 30 seconds, saving 15-25 hours per sprint.'
 pubDate: '2025-11-01'
 tags: ['ai', 'automation', 'aws-bedrock', 'testing', 'qa']
-category: 'ai'
+category: 'engineering'
 ---
 
 ![Jira AI Automation](./_assets/tc-gen-jira.png)

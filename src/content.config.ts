@@ -13,7 +13,7 @@ const posts = defineCollection({
       pubDate: z.coerce.date(),
       image: z.string().optional(),
       tags: z.array(z.string()).optional(),
-      category: z.enum(['engineering', 'automation', 'ai', 'aws', 'leadership', 'personal', 'reviews']).optional(),
+      category: z.enum(['engineering', 'building', 'learning', 'personal']).optional(),
       lang: z.string().optional()
     })
 })

@@ -37,7 +37,7 @@ const notePages = Object.fromEntries(
 // Map top-level pages (unique titles + personal OG images)
 const staticPages = {
   home: {
-    title: `${themeConfig.site.title} — Full-stack Engineer & Automation Specialist`,
+    title: `${themeConfig.site.title} — Software Engineer · Products, Backend Systems & Developer Tools`,
     description: themeConfig.site.description
   },
   hire: {

@@ -3,7 +3,7 @@ title: 'The Influence Spectrum: Nine Persuasion Books Compared'
 description: 'Carnegie, Voss, Cialdini, and six more persuasion books map onto three layers: likability, technique, and reading people. Five principles repeat across all of them.'
 pubDate: '2026-11-22'
 tags: ['influence', 'persuasion', 'communication', 'psychology']
-category: 'personal'
+category: 'learning'
 ---
 
 Nine books on influence and persuasion sit on my shelf, and they agree on the starting point: <mark>people decide emotionally and then justify logically</mark>. Carnegie says "arouse in the other person an eager want." Chris Voss built a career on tactical empathy. Robert Cialdini published the research that names the triggers everyone else uses intuitively. The disagreement is about tactics, not about where decisions happen.

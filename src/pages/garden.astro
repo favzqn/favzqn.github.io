@@ -23,6 +23,47 @@ const isArticle = (n: (typeof notes)[number]) => noteCategory(n.id) === 'article
 const isBookMain = (n: (typeof notes)[number]) =>
   noteCategory(n.id) === 'books' && n.data.type === 'source'
 
+// Curated entry points so visitors don't need to know note titles already.
+// ponytail: hand-picked IDs; promote to frontmatter-driven paths when list grows past ~6
+const byId = new Map(notes.map((n) => [n.id, n]))
+const startPaths = [
+  {
+    label: 'Attention & focus',
+    blurb: 'Why focus is a sleep-and-energy problem before it is a willpower problem.',
+    ids: [
+      'synthesis/the-attention-stack',
+      'synthesis/flow-wu-wei-and-deep-focus',
+      'books/a-mind-for-numbers/a-mind-for-numbers'
+    ]
+  },
+  {
+    label: 'Communication & persuasion',
+    blurb: 'What actually works in conversations, from nine books compared.',
+    ids: [
+      'synthesis/the-influence-spectrum',
+      'books/conversationally-speaking/conversationally-speaking',
+      'books/exactly-what-to-say/exactly-what-to-say',
+      'books/persuasion-tactics/persuasion-tactics'
+    ]
+  },
+  {
+    label: 'Wealth & behavior',
+    blurb: 'Money as a side effect of temperament and systems.',
+    ids: [
+      'synthesis/the-architecture-of-wealth',
+      'books/the-intelligent-investor/the-intelligent-investor',
+      'synthesis/the-desire-happiness-inverse'
+    ]
+  },
+  {
+    label: 'Learning how to learn',
+    blurb: 'Techniques with evidence, and the illusions that undermine them.',
+    ids: ['synthesis/learning-how-to-learn', 'books/a-mind-for-numbers/a-mind-for-numbers']
+  }
+]
+  .map((p) => ({ ...p, items: p.ids.map((id) => byId.get(id)).filter((n) => !!n) }))
+  .filter((p) => p.items.length > 0)
+
 // Curated sections first; the long concept tail stays reachable but collapsed.
 const sections = [
   { label: 'Synthesis', items: notes.filter(isSynthesis), collapsible: false },
@@ -65,6 +106,35 @@ const sections = [
       })
     </script>
   </header>
+
+  {
+    startPaths.length > 0 && (
+      <section class="garden-section garden-start">
+        <h2>
+          Start here
+          <span class="count">{startPaths.length} paths</span>
+        </h2>
+        <div class="path-grid">
+          {startPaths.map((path) => (
+            <div class="path-card">
+              <h3>{path.label}</h3>
+              <p class="path-blurb">{path.blurb}</p>
+              <ul>
+                {path.items.map(
+                  (n) =>
+                    n && (
+                      <li>
+                        <a href={`/garden/${n.id}/`}>{n.data.title}</a>
+                      </li>
+                    )
+                )}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   {
     sections.map((section) =>
@@ -130,6 +200,63 @@ const sections = [
 
   .garden-section {
     margin-top: 2.5rem;
+  }
+
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .path-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .path-card {
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+  }
+
+  .path-card:hover {
+    border-color: var(--text-tertiary);
+  }
+
+  .path-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .path-blurb {
+    margin: 0 0 0.65rem;
+    font-size: var(--font-size-s);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .path-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .path-card a {
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .path-card a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
   }
 
   .garden-section h2 {

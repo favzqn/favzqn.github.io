@@ -12,37 +12,40 @@ import { themeConfig } from '@/config'
   <div style="margin-top: 2rem;">
     <h1 style="margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700;">Work With Me</h1>
     <p style="margin-bottom: 3rem; color: var(--text-secondary); font-size: 1.1rem;">
-      Full-stack engineering (Go, TypeScript, React, Node.js, AWS) and test automation (Playwright, K6, CI/CD). <mark>Available for freelance, contract, and consulting.</mark>
+      I build software that ships and stays reliable: backend systems, web apps, and the automation around them. <mark>Open to full-time roles</mark> — see my experience or CV — and <mark>selective freelance work</mark> below.
     </p>
 
     <section class="services">
       <h2>What I Do</h2>
       <div class="service-grid">
         <div class="service">
-          <h3>Full-Stack Development</h3>
-          <p>End-to-end product development with TypeScript, React, Node.js, Go, and AWS. <mark>From MVP to production.</mark></p>
+          <h3>MVP Development</h3>
+          <p>A working web application: API, database, frontend, deployment, and tests in CI. <mark>Something real users can touch, not a prototype.</mark></p>
+          <p class="service-example"><strong>Example:</strong> COCOK — multi-tenant reconciliation platform from CSV ingestion to dashboards, shipped in 7 phases (Go, Next.js, PostgreSQL).</p>
           <div class="service-tags">
+            <span>Go</span>
             <span>TypeScript</span>
             <span>React</span>
-            <span>Node.js</span>
-            <span>Go</span>
+            <span>PostgreSQL</span>
             <span>AWS</span>
           </div>
         </div>
         <div class="service">
-          <h3>Test Automation</h3>
-          <p>QA frameworks, load tests, and CI/CD pipelines <mark>that hold up in production</mark>. Playwright, Selenium, K6, Jenkins.</p>
+          <h3>Engineering Automation</h3>
+          <p>CI/CD pipelines, Playwright test infrastructure, load tests, and production monitoring. <mark>A test suite your team trusts and a dashboard that's honest.</mark></p>
+          <p class="service-example"><strong>Example:</strong> Cut FrankieOne regression ~80%; ~90%+ API/web coverage at TipTip; K6 load tests that improved API latency ~30%.</p>
           <div class="service-tags">
             <span>Playwright</span>
-            <span>Selenium</span>
             <span>K6</span>
             <span>Jenkins</span>
             <span>CI/CD</span>
+            <span>Grafana</span>
           </div>
         </div>
         <div class="service">
-          <h3>AI Integration</h3>
-          <p>AI features in your product or test workflow: chatbots, test-case generation, synthetic monitoring. <mark>Built with AWS Bedrock and LLM APIs.</mark></p>
+          <h3>Internal AI Tools</h3>
+          <p>Workflow automation and AI-powered utilities wired into the tools you already use (Jira, Slack, docs). <mark>A tool your team opens every day.</mark></p>
+          <p class="service-example"><strong>Example:</strong> AI test-case generator: Jira acceptance criteria → test cases in 30s (was 15 min); 30+ production chatbots at Chatbiz handling 100k+ messages/day.</p>
           <div class="service-tags">
             <span>AWS Bedrock</span>
             <span>LLMs</span>
@@ -138,6 +141,18 @@ import { themeConfig } from '@/config'
     color: var(--text-secondary);
     margin: 0 0 0.75rem 0;
     line-height: 1.6;
+  }
+
+  .service-example {
+    font-size: var(--font-size-s) !important;
+    color: var(--text-secondary-strong) !important;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+  }
+
+  .service-example strong {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
   }
   
   .service-tags {

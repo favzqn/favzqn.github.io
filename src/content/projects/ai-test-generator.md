@@ -5,8 +5,8 @@ image: "ai-test-allure.png"
 tech: ["Python", "AWS Bedrock", "GitHub Actions", "Jira API"]
 live: ""
 github: ""
-featured: true
-priority: 5
+featured: false
+priority: 21
 year: '2025'
 role: 'Senior Software Engineer in Test, FrankieOne'
 metrics:

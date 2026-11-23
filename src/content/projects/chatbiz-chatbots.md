@@ -5,8 +5,8 @@ image: "chatbiz-portfolio.png"
 tech: ["TypeScript", "Node.js", "NLP", "Webhooks", "Redis"]
 live: "https://chatbiz.id"
 github: ""
-featured: true
-priority: 4
+featured: false
+priority: 20
 role: 'Software Engineer, YC W21 startup'
 metrics:
   - { value: '30+', label: 'chatbots shipped' }

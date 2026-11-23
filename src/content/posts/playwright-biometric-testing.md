@@ -3,7 +3,7 @@ title: 'Automating Biometric Tests with Mocked Webcam Using Playwright'
 description: 'How to automate biometric authentication testing by mocking webcam input in Playwright for face recognition and liveness detection tests.'
 pubDate: '2024-09-19'
 tags: ['playwright', 'testing', 'automation', 'biometric', 'e2e']
-category: 'automation'
+category: 'engineering'
 ---
 
 ## The Problem

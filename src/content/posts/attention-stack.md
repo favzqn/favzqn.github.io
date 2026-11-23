@@ -3,7 +3,7 @@ title: 'The Attention Stack: Why Focus Starts with Sleep'
 description: 'Six books on attention describe the same structure: sleep holds up digital boundaries, deep work, and judgment. Break the base layer and everything above it fails.'
 pubDate: '2026-11-22'
 tags: ['attention', 'focus', 'productivity', 'reading-notes']
-category: 'personal'
+category: 'learning'
 ---
 
 I spent the last year reading six books that keep describing the same structure: *Why We Sleep*, *Digital Minimalism*, *Deep Work*, *The Anxious Generation*, *The Almanack of Naval Ravikant*, and *The Personal MBA*. Call it the attention stack. Attention rests on sleep. Sleep rests on nothing. <mark>Every layer inherits the strength of the one below it.</mark>
