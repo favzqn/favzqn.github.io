@@ -88,7 +88,7 @@ const title = `${themeConfig.site.title} — Software Engineer · Products, Back
 
   .home-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.25rem;
     margin: 2rem 0;
     padding: 1.25rem 0;
@@ -98,10 +98,11 @@ const title = `${themeConfig.site.title} — Software Engineer · Products, Back
 
   .stat-value {
     display: block;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--spacing-s);
     line-height: 1.2;
+    font-variant-numeric: tabular-nums;
   }
 
   .stat-label {
@@ -109,6 +110,41 @@ const title = `${themeConfig.site.title} — Software Engineer · Products, Back
     margin-top: 0.25rem;
     font-size: var(--font-size-s);
     color: var(--text-secondary-strong);
+  }
+
+  @media (max-width: 640px) {
+    .home-stats {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0;
+    }
+
+    .stat {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .stat:first-child {
+      padding-top: 0;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+    }
+
+    .stat-label {
+      margin-top: 0;
+      text-align: right;
+    }
   }
 
   .quick-links {
