@@ -62,6 +62,20 @@ claimpro-cobol/
 
 Programs exchange data through `CALL ... USING` with `LINKAGE SECTION` declarations: the main program owns the policy table and batch summary and passes them by reference to the loader, the claim processor, and the report generator. Business logic stays out of the orchestrator — the payout formula lives in its own ten-line program, date validation in another, so neither is duplicated when the loader and the claim processor both need them.
 
+```mermaid
+flowchart LR
+    PD["policies.dat<br/>99-byte records"] --> LP["LOAD-POLICIES"]
+    LP --> PT[("Policy table<br/>10,000 × OCCURS")]
+    CD["claims.dat<br/>101-byte records"] --> PC["PROCESS-CLAIMS"]
+    PT --> PC
+    PC --> CP["CALC-PAYOUT"]
+    PC --> DT["CHECK-DATE"]
+    PC -->|approved| AD["approved.dat<br/>111-byte records"]
+    PC -->|rejected| RD["rejected.dat<br/>79-byte records"]
+    PC --> GR["GENERATE-REPORT"]
+    GR --> RP["report.txt"]
+```
+
 Files are `ORGANIZATION IS LINE SEQUENTIAL` with `FILE STATUS` checked on every open, read, and write. A malformed claim never kills the batch; a missing input file always does, with a nonzero exit code.
 
 ## Record layouts

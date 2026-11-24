@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header.astro'
 import Footer from '@/components/layout/Footer.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import GradientMask from '@/components/ui/GradientMask.astro'
+import ImageViewer from '@/components/ui/ImageViewer.astro'
 import { themeConfig } from '@/config'
 
 type TocItem = { level: number; text: string; id: string }
@@ -34,6 +35,7 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
   />
   <div class="project-container">
     <GradientMask />
+    {themeConfig.post.imageViewer && <ImageViewer />}
     <Header />
     <main>
       <a href="/projects" class="back-link">← Projects</a>
@@ -359,6 +361,30 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
     scroll-margin-top: 3.5rem;
   }
 
+  /* Mermaid diagrams rendered from ```mermaid fences */
+  .project-content.prose .mermaid {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  .project-content.prose .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .project-content.prose .mermaid:not([data-processed]) {
+    color: var(--text-secondary);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+  }
+
   /* Pipeline step chains (The Problem → ... flows) */
   .project-content.prose ol {
     list-style: none;
@@ -441,4 +467,62 @@ const sections = (toc as TocItem[]).filter((t) => t.level === 2)
     )
     headings.forEach((h) => io.observe(h))
   })()
+</script>
+
+<script>
+  // Render ```mermaid fences as diagrams. Mermaid is imported lazily —
+  // pages without diagrams never download it.
+  let mermaidModule: Promise<typeof import('mermaid').default> | null = null
+
+  function getMermaid() {
+    if (!mermaidModule) {
+      mermaidModule = import('mermaid').then((m) => m.default)
+    }
+    return mermaidModule
+  }
+
+  async function renderMermaidDiagrams() {
+    // Convert any not-yet-converted shiki mermaid blocks
+    document.querySelectorAll('pre[data-language="mermaid"]').forEach((pre) => {
+      const code = pre.querySelector('code')
+      const source = (code?.textContent ?? pre.textContent ?? '').trim()
+      const div = document.createElement('div')
+      div.className = 'mermaid'
+      div.setAttribute('data-source', source)
+      div.textContent = source
+      pre.replaceWith(div)
+    })
+
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>('.mermaid[data-source]'))
+    if (!nodes.length) return
+
+    const mermaid = await getMermaid()
+    const dark = document.documentElement.classList.contains('dark')
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: dark ? 'dark' : 'neutral',
+      securityLevel: 'loose'
+    })
+
+    for (const div of nodes) {
+      div.removeAttribute('data-processed')
+      div.textContent = div.getAttribute('data-source') || ''
+    }
+    try {
+      await mermaid.run({ nodes })
+    } catch (err) {
+      console.error('Mermaid render failed', err)
+    }
+  }
+
+  renderMermaidDiagrams()
+
+  // Re-render diagrams when the theme switches (light <-> dark)
+  let themeTimer: ReturnType<typeof setTimeout> | undefined
+  new MutationObserver(() => {
+    clearTimeout(themeTimer)
+    themeTimer = setTimeout(() => {
+      renderMermaidDiagrams()
+    }, 200)
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
 </script>
