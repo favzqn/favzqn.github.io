@@ -51,6 +51,6 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ## Result
 
-Live at senara.wasmer.app with <mark>6 stories, 3 languages, and growing</mark>. Open source with contribution guidelines for educators and translators to add new stories.
+<mark>Live at senara.wasmer.app with 6 stories in 3 languages, and growing</mark>. Open source with contribution guidelines for educators and translators to add new stories.
 
 **Shows:** Astro, custom i18n, static content architecture, open-source maintenance

@@ -137,7 +137,7 @@ Compiles clean with `cobc -fformat=free -Wall` — zero warnings, free-format so
 
 ## Result
 
-- <mark>**63/63 automated checks passing**</mark> on GnuCOBOL 3.2, compiled warning-free
+- <mark>All 63 automated checks pass on GnuCOBOL 3.2, compiled warning-free</mark>
 - **100-claim sample batch** splits 50/50 approved/rejected across all eleven rejection codes, Rp452,850,000.00 total payout, every figure reconciled between output files and report
 - **Six programs, seven copybooks** — modular `CALL`/`LINKAGE` structure instead of one monolithic source file
 - **Zero floating-point money** — `COMP-3` packed decimal and integer cents end to end

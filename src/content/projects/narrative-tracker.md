@@ -43,7 +43,7 @@ A narrative analysis dashboard that treats a topic as something with a history, 
 
 ## Result
 
-- <mark>**Four working views**</mark>: dashboard, issues list, timeline, and network graph, all from one dataset
+- <mark>Four working views — dashboard, issues list, timeline, and network graph — all rendered from one dataset</mark>
 - **Second-level timeline resolution** showing narrative shifts as they happened, not daily aggregates
 - **Multi-platform collection** across Twitter, Threads, YouTube, and Reddit behind one interface
 

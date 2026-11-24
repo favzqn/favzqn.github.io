@@ -48,7 +48,7 @@ A multi-tenant chatbot platform at a YC W21 company, building and scaling 30+ ch
 
 ## Result
 
-- <mark>**30+ chatbots**</mark> deployed for brands across Indonesia
+- <mark>30+ chatbots shipped for brands across Indonesia</mark>
 - **100k+ messages/day** processed with sub-second response times
 - **15% week-over-week growth** in gross transaction value
 - **40% infrastructure cost reduction** through optimization
