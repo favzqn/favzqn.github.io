@@ -44,6 +44,17 @@ UsedCheck is a guided inspection companion that turns a risky purchase into a ch
   </a>
 </div>
 
+```mermaid
+flowchart TD
+    C["Create<br/>mode + preset"] --> I["Inspect<br/>checks · severity · photos"]
+    I --> M["Measure<br/>battery health (guarded)"]
+    M --> D["Decide<br/>score + coverage"]
+    D --> R["PDF report<br/>generated on device"]
+    I --> DB[("SQLite via Drizzle<br/>offline, on-device")]
+    R --> DB
+    DB -.-> B["Backup<br/>single-file export"]
+```
+
 ## Technical Decisions
 
 - **Offline by design**: no backend, no account, no analytics. Inspection records, photos, and reports live on the phone and never leave it

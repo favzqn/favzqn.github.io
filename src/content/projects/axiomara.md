@@ -30,6 +30,16 @@ A virtual math laboratory where abstract concepts become interactive experiences
 - **Proofs**: Direct, contrapositive, contradiction, induction
 - **And more**
 
+```mermaid
+flowchart TD
+    U["User in browser"] --> M["Math modules<br/>sets · logic · proofs · 11 total"]
+    M --> D["D3.js<br/>interactive visuals"]
+    M --> K["KaTeX<br/>math rendering"]
+    D --> R["Real-time<br/>results"]
+    K --> R
+    R --> U
+```
+
 ## Technical Decisions
 
 ![Set theory module with interactive Venn diagram](/projects/axiomara-sets.png)

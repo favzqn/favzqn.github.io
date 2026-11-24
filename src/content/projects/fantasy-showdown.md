@@ -25,6 +25,17 @@ A full-stack platform that imports existing fantasy teams and turns them into co
 - **Matchmaking Engine**: Real-time head-to-head competitions with live scoring and dynamic leaderboards.
 - **Subscription System**: Tiered access with payment processing and user dashboard.
 
+```mermaid
+flowchart LR
+    E["ESPN API"] --> T["Team import"]
+    Y["Yahoo API"] --> T
+    S["Sports APIs<br/>live player stats"] --> P["Matchmaking<br/>+ live scoring"]
+    T --> P
+    P --> L["Leaderboards<br/>PostgreSQL"]
+    P --> G["NFT gear<br/>smart contracts"]
+    P --> U["Subscription<br/>payments"]
+```
+
 ## Technical Decisions
 
 ![Fantasy Showdown landing page](/projects/fantasy-home.jpg)

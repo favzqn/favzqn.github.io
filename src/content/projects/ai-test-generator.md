@@ -29,6 +29,14 @@ An AI-powered test case generator that creates comprehensive test cases from Jir
 3. **Generate**: AI analyzes the ticket and generates test cases
 4. **Create**: Automatically creates linked Jira issues with proper formatting
 
+```mermaid
+flowchart LR
+    J["Jira automation button<br/>or GitHub Action"] --> F["Fetch ticket<br/>requirements + criteria"]
+    F --> B["AWS Bedrock<br/>Claude model"]
+    B --> G["Generate<br/>test cases"]
+    G --> C["Create linked<br/>Jira issues"]
+```
+
 ## Technical Decisions
 
 ![Jira automation button triggering test case generation](/projects/tcgen-jira.jpg)

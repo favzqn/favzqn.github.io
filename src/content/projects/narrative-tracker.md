@@ -30,6 +30,17 @@ A narrative analysis dashboard that treats a topic as something with a history, 
 
 ![Narrative Tracker timeline view](/projects/narrative-timeline.png)
 
+```mermaid
+flowchart LR
+    P["Twitter · Threads<br/>YouTube · Reddit"] --> S["Playwright/Patchright<br/>scrapers"]
+    S --> A["Node.js API"]
+    A --> F["Static frontend"]
+    F --> V1["Issue dashboard"]
+    F --> V2["Timeline (D3)"]
+    F --> V3["Actor network (D3)"]
+    F --> V4["Sentiment views"]
+```
+
 ## Technical Decisions
 
 ![Issues list with filters and tracked topics](/projects/narrative-issues.jpg)

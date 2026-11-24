@@ -35,6 +35,17 @@ A multi-tenant chatbot platform at a YC W21 company, building and scaling 30+ ch
 
 ![Case study: Courtina](/projects/chatbiz-case.png)
 
+```mermaid
+flowchart LR
+    W1["WhatsApp"] --> E["Multi-channel<br/>engine"]
+    W2["Instagram"] --> E
+    W3["Web chat"] --> E
+    E --> N["NLP pipeline<br/>intent + entities (Bahasa ID)"]
+    N --> R["Reply + routing"]
+    R --> CRM["Client CRM<br/>via webhooks"]
+    E --> D["Real-time dashboard<br/>analytics + conversion"]
+```
+
 ## Technical Decisions
 
 ![Chatbiz platform features](/projects/chatbiz-features.jpg)

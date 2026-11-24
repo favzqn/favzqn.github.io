@@ -58,6 +58,17 @@ An end-to-end pipeline and dashboard, from public API to production-style analyt
   </a>
 </div>
 
+```mermaid
+flowchart LR
+    SP["Statuspage APIs<br/>3 providers"] --> C["Collector<br/>GitHub Actions, every 6h"]
+    C --> RAW["Raw JSONB<br/>SHA-256 versioned"]
+    RAW --> N["Normalize<br/>canonical upserts"]
+    N --> Q["11 data-quality<br/>checks"]
+    N --> V["SQL views<br/>facts + dimensions"]
+    V --> D["Next.js dashboard<br/>Recharts"]
+    Q --> D
+```
+
 ## Technical Decisions
 
 - **Absence is not resolution.** The incidents endpoint returns only the latest 50 records. A record that disappears from a later response is never updated, never deleted, never marked resolved — only explicit source `status` and `resolved_at` values resolve an incident. This single rule prevents the most dangerous class of data corruption a pipeline like this can have

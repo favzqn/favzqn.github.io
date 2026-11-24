@@ -29,6 +29,15 @@ A free, offline-first progressive web app that works on low-end Android devices 
 - **Offline support** via service worker (works without internet after first load)
 - **No account, no backend, no cost** (everything runs in the browser)
 
+```mermaid
+flowchart LR
+    L["Lessons<br/>8 lessons · 64 phrases"] --> P["Practice screen<br/>listen + record"]
+    P --> S["Web Speech API<br/>browser-native recognition"]
+    S --> D["Word-level diff<br/>instant feedback"]
+    P -.-> SW["Service Worker<br/>cache-first offline"]
+    H["Cloudflare Workers<br/>static CDN"] -.-> P
+```
+
 ## Technical Decisions
 
 ![SpeakUp lesson list on a low-end device layout](/projects/speakup-lessons.png)

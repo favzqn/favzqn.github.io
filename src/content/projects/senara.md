@@ -38,6 +38,15 @@ A free, nonprofit interactive story platform that teaches life skills through vi
 
 ![VN player in action](/projects/senara-vn-playing.png)
 
+```mermaid
+flowchart LR
+    C["Story content<br/>6 story worlds"] --> A["Astro<br/>static build"]
+    A --> I["Custom i18n<br/>id · en · ja"]
+    I --> H["Static hosting<br/>no server, no database"]
+    H --> U["Readers<br/>VN player + choices"]
+    U -.->|service worker| H
+```
+
 ## Technical Decisions
 
 ![Story collection with filters and search](/projects/senara-collection.jpg)

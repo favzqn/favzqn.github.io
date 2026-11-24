@@ -26,11 +26,22 @@ COCOK is a B2B reconciliation platform that ingests financial data from any chan
 
 1. **Ingest**: upload CSV statements (Indonesian headers like `Tanggal`, `Nominal`, `masuk`/`keluar` auto-detected) into a typed import batch with row-level validation before anything touches the ledger
 2. **Normalize**: every row becomes an integer-minor-unit transaction in one canonical schema, defaulting to IDR and `Asia/Jakarta`
-3. **Match**: deterministic scoring across reference, amount, date, counterparty, and description proposes 1:1 and 1:N groups with a visible score
+3. **Match**: deterministic scoring across reference, amount, date, counterparty, and description proposes one-to-one and one-to-many match groups, each with an explainable score
 4. **Investigate**: unmatched transactions become exceptions with resolve/dismiss workflows; matches can be approved, rejected, or unmatched
 5. **Report**: match rate, value flows, per-account breakdowns, and CSV exports of transactions, match groups, exceptions, and settlements
 
 ![COCOK reports with match rate, value flows, and per-account charts](/projects/cocok-reports.png)
+
+```mermaid
+flowchart LR
+    S["CSV statements<br/>banks · gateways · e-wallets"] --> I["Ingest<br/>typed import batch"]
+    WH["Provider webhooks"] --> I
+    I --> N["Normalize<br/>integer minor units"]
+    N --> M["Deterministic<br/>matching engine"]
+    M -->|matched| R["Reports +<br/>CSV exports"]
+    M -->|unmatched| X["Exceptions queue"]
+    X --> H["Human review<br/>resolve / dismiss"]
+```
 
 ## Technical Decisions
 
