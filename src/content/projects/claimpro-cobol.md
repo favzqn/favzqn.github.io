@@ -76,6 +76,24 @@ flowchart LR
     GR --> RP["report.txt"]
 ```
 
+Batch orchestration as a sequence — main coordinates, subprograms own their files:
+
+```mermaid
+sequenceDiagram
+    participant M as CLAIMPRO-MAIN
+    participant L as LOAD-POLICIES
+    participant P as PROCESS-CLAIMS
+    participant R as GENERATE-REPORT
+    M->>L: CALL USING policies.dat
+    L-->>M: policy table (10,000 OCCURS)
+    M->>P: CALL USING claims.dat + paths
+    P->>P: validate, CALC-PAYOUT, CHECK-DATE
+    P-->>M: approved.dat + rejected.dat
+    M->>R: CALL USING batch summary
+    R-->>M: report.txt
+    M-->>M: exit status 0 / 2 / 8
+```
+
 Files are `ORGANIZATION IS LINE SEQUENTIAL` with `FILE STATUS` checked on every open, read, and write. A malformed claim never kills the batch; a missing input file always does, with a nonzero exit code.
 
 ## Record layouts

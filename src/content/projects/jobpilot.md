@@ -31,12 +31,18 @@ JobPilot is a Manifest V3 Chrome extension that turns job applications into a on
 4. **Apply**: cover letter fields are auto-filled and the application is logged to the dashboard
 
 ```mermaid
-flowchart LR
-    B["Job boards<br/>Upwork · LinkedIn · RemoteOK · Indeed"] --> CS["Content script<br/>listing parser"]
-    CS --> S["Skill match<br/>fit score"]
-    CS --> T["AI resume tailoring<br/>OpenAI API, direct"]
-    CS --> F["Auto-fill + apply"]
-    F --> D["Side panel dashboard<br/>Chrome Storage"]
+sequenceDiagram
+    participant B as Job board page
+    participant C as Content script
+    participant E as Extension panel
+    participant AI as OpenAI API
+    B->>C: listing rendered
+    C->>C: parse title, company, skills
+    C->>E: listing + fit score
+    E->>AI: tailor resume (direct call)
+    AI-->>E: tailored resume
+    E->>B: auto-fill cover letter fields
+    E->>E: log application to storage
 ```
 
 ## Technical Decisions

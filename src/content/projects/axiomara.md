@@ -32,13 +32,28 @@ A virtual math laboratory where abstract concepts become interactive experiences
 - **And more**
 
 ```mermaid
-flowchart TD
-    U["User in browser"] --> M["Math modules<br/>sets · logic · proofs · 11 total"]
-    M --> D["D3.js<br/>interactive visuals"]
-    M --> K["KaTeX<br/>math rendering"]
-    D --> R["Real-time<br/>results"]
-    K --> R
-    R --> U
+mindmap
+  root((Discrete math lab))
+    Set theory
+      Union and intersection
+      Venn diagrams
+      Power set and Cartesian product
+    Logic
+      Truth tables step by step
+      AND OR NOT XOR
+    Boolean algebra
+      De Morgan laws
+      Karnaugh maps
+    Relations
+      Reflexive symmetric transitive
+      Equivalence
+    Functions
+      Injective surjective bijective
+      Composition
+    Proofs
+      Direct and contrapositive
+      Contradiction
+      Induction
 ```
 
 ## Technical Decisions

@@ -41,11 +41,21 @@ Incident Queue is a turn-based card game where players manage a shared incident 
 ![Gameplay: turn panel, draw pile, action hand](/projects/incident-queue-4-game.png)
 
 ```mermaid
-flowchart LR
-    P1["Player 1-5<br/>React client"] <-->|"Socket.IO rooms"| S["Express server<br/>authoritative engine"]
-    SP["Spectators<br/>zero write access"] <-->|"read-only"| S
-    S --> D["In-memory rooms<br/>deck = server secret"]
-    S --> H["Turn history feed<br/>rollback with evidence"]
+sequenceDiagram
+    participant P1 as Player 1
+    participant P2 as Player 2
+    participant S as Express server
+    participant SP as Spectator
+    P1->>S: join room by code
+    P2->>S: join room by code
+    SP->>S: watch (read-only)
+    S-->>P1: public state + own hand only
+    S-->>P2: public state + own hand only
+    S-->>SP: public state only
+    P1->>S: play card or draw
+    S->>S: resolve against hidden deck
+    S-->>P2: turn result broadcast
+    S-->>SP: turn result broadcast
 ```
 
 ## Technical Decisions

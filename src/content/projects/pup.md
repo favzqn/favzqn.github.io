@@ -56,6 +56,17 @@ flowchart TD
     RN -->|"offline-first local writes,<br/>sync when online"| B
 ```
 
+Data lifecycle for a single log entry:
+
+```mermaid
+stateDiagram-v2
+    [*] --> OnDevice: guest logs offline
+    OnDevice --> OnDevice: write stays on device
+    OnDevice --> PendingSync: sign in + back online
+    PendingSync --> Synced: sync complete
+    Synced --> OnDevice: offline edit queues again
+```
+
 ## Technical Decisions
 
 - **Offline-first, guest-first**: the app opens and logs with no account. Writes land in local storage immediately ("Saved on this device. We will sync when you are online" is a product promise the code has to keep), and sync is an enhancement, not a gate

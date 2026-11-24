@@ -31,11 +31,18 @@ An AI-powered test case generator that creates comprehensive test cases from Jir
 4. **Create**: Automatically creates linked Jira issues with proper formatting
 
 ```mermaid
-flowchart LR
-    J["Jira automation button<br/>or GitHub Action"] --> F["Fetch ticket<br/>requirements + criteria"]
-    F --> B["AWS Bedrock<br/>Claude model"]
-    B --> G["Generate<br/>test cases"]
-    G --> C["Create linked<br/>Jira issues"]
+sequenceDiagram
+    participant U as QA engineer
+    participant J as Jira ticket
+    participant G as GitHub Action
+    participant B as AWS Bedrock (Claude)
+    U->>J: press automation button
+    J->>G: trigger run
+    G->>J: fetch requirements + criteria
+    G->>B: generate from ticket context
+    B-->>G: structured test cases
+    G->>J: create linked issues
+    J-->>U: test cases ready (~30s)
 ```
 
 ## Technical Decisions

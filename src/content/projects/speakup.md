@@ -31,12 +31,16 @@ A free, offline-first progressive web app that works on low-end Android devices 
 - **No account, no backend, no cost** (everything runs in the browser)
 
 ```mermaid
-flowchart LR
-    L["Lessons<br/>8 lessons · 64 phrases"] --> P["Practice screen<br/>listen + record"]
-    P --> S["Web Speech API<br/>browser-native recognition"]
-    S --> D["Word-level diff<br/>instant feedback"]
-    P -.-> SW["Service Worker<br/>cache-first offline"]
-    H["Cloudflare Workers<br/>static CDN"] -.-> P
+sequenceDiagram
+    participant L as Learner
+    participant A as SpeakUp (browser)
+    participant S as Web Speech API
+    L->>A: open lesson (offline via SW)
+    L->>A: play phrase, then record
+    A->>S: speech recognition
+    S-->>A: transcript
+    A->>A: word-level diff
+    A-->>L: right and wrong words highlighted
 ```
 
 ## Technical Decisions

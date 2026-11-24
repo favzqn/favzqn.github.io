@@ -32,14 +32,21 @@ A narrative analysis dashboard that treats a topic as something with a history, 
 ![Narrative Tracker timeline view](/projects/narrative-timeline.png)
 
 ```mermaid
-flowchart LR
-    P["Twitter · Threads<br/>YouTube · Reddit"] --> S["Playwright/Patchright<br/>scrapers"]
-    S --> A["Node.js API"]
-    A --> F["Static frontend"]
-    F --> V1["Issue dashboard"]
-    F --> V2["Timeline (D3)"]
-    F --> V3["Actor network (D3)"]
-    F --> V4["Sentiment views"]
+mindmap
+  root((One dataset))
+    Issue dashboard
+      Stats and sentiment split
+    Temporal timeline
+      Second-level resolution
+    Actor network
+      Force-directed D3
+    Sentiment views
+      Per-issue trend
+    Collection
+      Twitter
+      Threads
+      YouTube
+      Reddit
 ```
 
 ## Technical Decisions

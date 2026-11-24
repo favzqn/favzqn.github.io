@@ -44,6 +44,19 @@ flowchart LR
     X --> H["Human review<br/>resolve / dismiss"]
 ```
 
+The relational model behind the pipeline:
+
+```mermaid
+erDiagram
+    ORGANIZATION ||--o{ ACCOUNT : owns
+    ORGANIZATION ||--o{ MEMBERSHIP : grants
+    ORGANIZATION ||--o{ AUDIT_EVENT : records
+    ACCOUNT ||--o{ TRANSACTION : holds
+    IMPORT_BATCH ||--o{ TRANSACTION : contains
+    MATCH_GROUP ||--o{ TRANSACTION : includes
+    TRANSACTION ||--o| EXCEPTION : flags
+```
+
 ## Technical Decisions
 
 ![Reconciliation view with a proposed 1:1 match and score](/projects/cocok-reconciliation.png)
