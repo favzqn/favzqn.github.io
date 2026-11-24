@@ -12,11 +12,6 @@ const { project } = Astro.props
   <a href={`/projects/${project.id}`} class="project-main">
     {project.data.image && (
       <div class="project-image">
-        <div class="browser-bar" aria-hidden="true">
-          <span class="browser-dot"></span>
-          <span class="browser-dot"></span>
-          <span class="browser-dot"></span>
-        </div>
         <img
           src={`/projects/${project.data.image}`}
           alt={project.data.title}
@@ -25,13 +20,14 @@ const { project } = Astro.props
       </div>
     )}
     <div class="project-content">
+      {project.data.kind && <p class="project-kind">{project.data.kind}</p>}
       <h3 class="project-title">{project.data.title}</h3>
       <p class="project-description">{project.data.description}</p>
       {project.data.metrics && project.data.metrics.length > 0 && (
         <div class="card-metrics">
           {project.data.metrics.slice(0, 2).map((m: { value: string; label: string }) => (
             <span class="card-metric">
-              <strong><mark>{m.value}</mark></strong> {m.label}
+              <strong>{m.value}</strong> {m.label}
             </span>
           ))}
         </div>
@@ -83,33 +79,24 @@ const { project } = Astro.props
     border-radius: 6px;
     margin-bottom: 1rem;
     background: var(--code-bg);
-    display: flex;
-    flex-direction: column;
+    border: 1px solid var(--border);
   }
 
   .project-image img {
     width: 100%;
-    flex: 1;
-    min-height: 0;
+    height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform 0.3s ease;
   }
 
-  .browser-bar {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    height: 1.6rem;
-    padding: 0 0.65rem;
-    flex-shrink: 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .browser-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--text-tertiary);
+  .project-kind {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin: 0 0 0.3rem;
   }
 
   .project-card:hover .project-image img {

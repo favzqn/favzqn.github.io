@@ -1,5 +1,6 @@
 ---
 title: "Chatbiz Chatbot Platform"
+kind: 'Chatbot platform · YC W21'
 description: "30+ chatbots handling 100k+ messages/day for brands across Indonesia"
 image: "chatbiz-portfolio.png"
 tech: ["TypeScript", "Node.js", "NLP", "Webhooks", "Redis"]

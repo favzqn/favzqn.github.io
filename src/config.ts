@@ -6,7 +6,7 @@ export const themeConfig: ThemeConfig = {
     website: 'https://fau.ai.id/', // Site domain
     title: 'Fauzan Fathurrahman', // Site title
     author: 'Fauzan Fathurrahman', // Author name
-    description: 'Software engineer building products, backend systems, and developer tools — with deep test automation and quality engineering experience.', // Site description
+    description: 'Product-minded software engineer with a strong quality and reliability background. Builds products and engineering tools from first API to production.', // Site description
     language: 'en-US' // Default language
   },
 

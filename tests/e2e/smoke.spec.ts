@@ -5,7 +5,7 @@ test.describe('site smoke', () => {
     await page.goto('/')
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Fauzan')
     await expect(page.locator('.status-pill')).toBeVisible()
-    await expect(page.locator('.home-stats .stat')).toHaveCount(4)
+    await expect(page.locator('.home-stats .stat')).toHaveCount(5)
     await expect(page.locator('.chips a')).toHaveCount(5)
     await expect(page.locator('blockquote')).toHaveCount(9)
     await expect(page.locator('.rec-author a')).toHaveCount(9)
@@ -52,7 +52,7 @@ test.describe('site smoke', () => {
   test('projects filter renders and all cards present', async ({ page }) => {
     await page.goto('/projects/')
     await expect(page.locator('.filter-chip')).not.toHaveCount(0)
-    await expect(page.locator('.project-card')).toHaveCount(11)
+    await expect(page.locator('.project-card')).toHaveCount(14)
   })
 
   test('internal links from homepage resolve', async ({ page, request }) => {

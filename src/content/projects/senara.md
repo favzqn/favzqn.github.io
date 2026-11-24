@@ -1,5 +1,6 @@
 ---
 title: "Senara"
+kind: 'Interactive story platform'
 description: "Free interactive story platform teaching life skills through visual novels"
 image: "senara-home.png"
 tech: ["Astro", "TypeScript", "Tailwind CSS", "i18n"]

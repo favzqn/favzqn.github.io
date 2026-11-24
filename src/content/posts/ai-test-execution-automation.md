@@ -1,124 +1,66 @@
 ---
-title: 'From Hours to Seconds: Automating Test Execution Tickets'
+title: 'I Got Tired of Creating Jira Test Executions Manually, So I Automated It'
 pubDate: '2025-11-02'
-description: 'How I built a GitHub Action that automatically creates and links Jira test execution tickets, cutting manual QA planning time by 90%.'
+description: 'A Python GitHub Action that turns linked test cases into ready-to-run Jira execution tickets: what it does, how it fits the workflow, and what it deliberately does not do.'
 tags: ['automation', 'qa', 'jira', 'github-actions', 'python']
 category: 'engineering'
 ---
 
 ![Test Execution Automation](./_assets/tx-gen.png)
 
-## The Challenge
+## The part of QA nobody puts on their resume
 
-Once test cases are created for a story, QA teams need to create test execution tickets to track which tests have been run and their results. Manually creating these tickets and including all test case details is tedious and error-prone.
+Test cases exist. They're linked to the story. And then someone — usually me — opens Jira and manually creates the execution ticket, copies the case details in, fixes the naming, links it back to the story, and does it again for the next story.
 
-Without automation, this becomes a bottleneck that slows down the testing workflow and creates inconsistency.
+Every sprint. For every story. Ten minutes per story sounds fine until you're three sprints in and realize you've spent a day and a half on ticket clerical work. Worse: every manual ticket is slightly different. Naming drifts, steps get half-copied, and a week later nobody can tell which execution belongs to which version.
 
-## The Solution
+The bottleneck was never writing test cases. It was the administrative gap between "cases are ready" and "execution can start."
 
-I built a <mark>Python-based GitHub Action</mark> that <mark>automatically creates test execution tickets</mark> in Jira. The tool fetches all linked test cases from a story, creates an execution ticket, and includes all test case details—ready for QA execution tracking.
+## What I built
 
-## How It Works
+A Python GitHub Action that closes that gap. You give it story IDs; it does the rest:
 
-### 1. Initialize Clients
+1. Connects to the Jira API with the credentials it's configured with
+2. Fetches every test case linked to the story
+3. Creates an execution ticket with all case details and steps embedded
+4. Links the execution back to the story, with consistent naming and pre-configured fields
+5. Optionally tags a version parameter, so release tracking stays clean
 
-When triggered, the automation:
-- Establishes connection to Jira API
-- Validates credentials and permissions
-- Prepares for ticket creation
-
-### 2. Create Test Execution
-
-The system creates test execution tickets with:
-- <mark>All linked test cases included</mark> from the story
-- Test case details and steps embedded
-- Standardized naming conventions
-- Pre-configured fields and metadata
-- Optional version tracking
-
-### 3. Link to Stories
-
-Generated test execution tickets are automatically:
-- Linked to the original story tickets
-- Tagged with execution metadata
-- Ready for QA team assignment
-- Tracked in test dashboards
-
-## The 3-Step Process
+The whole flow, compressed:
 
 ```
 Story IDs
-       ↓
-[Trigger Automation]
-       ↓
-Initialize Jira Clients → Fetch Linked Test Cases → Prepare Test Data
-       ↓
-Create Test Execution Tickets (with all test cases included)
-       ↓
-Populate Test Steps → Link to Stories → Ready for Execution
-       ↓
-Test Execution Tickets Ready with All Test Cases
+   ↓
+Fetch linked test cases → Prepare test data
+   ↓
+Create execution ticket (all test cases embedded)
+   ↓
+Populate steps → Link to story → Ready for QA
 ```
 
-## Key Features
+Nothing exotic — no framework, no service to run. It's an action in the same repo as the code it tests, triggered where the work already happens.
 
-### Automated Ticket Creation
-- <mark>No manual ticket creation</mark>
-- <mark>All test cases automatically included</mark>
-- Consistent naming and structure across all tickets
-- Pre-populated with story context and test details
-- Standardized fields and metadata
+## How it fits the workflow
 
-### Smart Linking
-- Automatically links to parent story tickets
-- Maintains traceability throughout workflow
-- Supports version tracking
-- Creates audit trail
+The action is one step in a chain that was already half-automated:
 
-## Technical Architecture
+1. Story gets written with acceptance criteria
+2. Test cases get generated and linked to the story (I built a separate AI test-case generator for this part)
+3. The action fires and the execution ticket appears, complete
+4. QA executes and records results on that ticket
 
-| Component | Details |
-|-----------|----------|
-| **Language** | Python |
-| **Platform** | GitHub Actions |
-| **Input** | Story IDs |
-| **Processing** | Jira API client initialization |
-| **Output** | Linked test execution tickets |
+Before this, steps 3 and 4 were separated by copy-paste. Now they're separated by a trigger.
 
-## Real-World Impact
+## What it doesn't do
 
-- <mark>**Faster Test Planning**</mark>: Test execution tickets with all test cases created in seconds
-- <mark>**Complete Coverage**</mark>: All test cases automatically included in execution tickets
-- <mark>**Consistency**</mark>: Every test execution ticket follows the same structure
-- <mark>**Traceability**</mark>: Clear links between stories, test cases, and executions
-- <mark>**Scalability**</mark>: Works for any number of stories and test cases simultaneously
+Worth being explicit, because tools like this get oversold:
 
-## Benefits for QA Teams
+- It creates execution tickets. It does not run tests or report results — execution is still human
+- It's a GitHub Action with configuration, not a product. No UI, no queue, no multi-cloud story
+- It trusts its credentials and its Jira project setup; misconfigured permissions fail the workflow run, which is exactly where you'd want to notice
 
-1. <mark>**Reduced Manual Work**</mark>: Eliminate repetitive ticket creation tasks
-2. <mark>**Better Organization**</mark>: Standardized structure makes tracking easier
-4. <mark>**Faster Onboarding**</mark>: New QA members get consistent ticket structure
+## What changed
 
-## Use Cases
+Creating an execution for a story went from minutes of manual work to seconds of waiting, and — the part I actually care about — every execution ticket now has the same structure, the same links, and the same metadata. Planning overhead dropped around 90%, but the consistency is the win that compounds: dashboards parse cleanly, and onboarding a new QA member means reading one ticket instead of reverse-engineering five different conventions.
 
-- **Sprint Planning**: Create test execution tickets with all test cases for sprint stories
-- **Release Management**: Track test execution across versions with version parameter
-- **Bulk Testing**: Handle multiple stories and their test cases without manual work
-- **Test Dashboards**: Maintain clear hierarchy with test cases embedded in executions
-- **Test Tracking**: Execute and track results for all test cases in one ticket
-
-## Workflow Integration
-
-This automation fits perfectly into your Jira workflow:
-1. Stories are created with acceptance criteria
-2. Test cases are created and linked to stories (via AI Test Case Generator)
-3. Trigger test execution creation
-4. Test execution tickets appear with all test cases included
-5. QA team executes tests and tracks results
-6. Results tracked in execution tickets
-
-## The Takeaway
-
-<mark>Automation removes friction from workflows</mark>. By automating test execution ticket creation, QA teams can focus on actual testing instead of administrative overhead.
-
-The future of QA isn't about managing tickets—it's about managing quality. Let automation handle the busywork.
+Automation here wasn't about intelligence. It was about removing a repetitive gap that sat between two systems and made both of them worse.

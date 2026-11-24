@@ -1,5 +1,6 @@
 ---
 title: "COCOK"
+kind: 'Financial reconciliation platform'
 description: "Multi-tenant financial reconciliation platform: bank and gateway statements in, matched transactions and exceptions out"
 image: "cocok-reports.png"
 tech: ["Go", "Next.js", "TypeScript", "PostgreSQL", "Docker"]

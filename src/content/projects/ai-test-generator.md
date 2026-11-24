@@ -1,5 +1,6 @@
 ---
 title: "AI Test Case Generator"
+kind: 'AI developer tool'
 description: "Tool that generates test cases from Jira tickets in 30 seconds using AI"
 image: "ai-test-allure.png"
 tech: ["Python", "AWS Bedrock", "GitHub Actions", "Jira API"]

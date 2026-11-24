@@ -6,11 +6,11 @@ title: 'About'
 
 <p class="lede">Full-stack engineering, distributed systems, automation, and AI-powered tooling. Based in Bandung, working remotely with teams in Australia, the US, and Indonesia since 2021.</p>
 
-I was previously a Senior Software Engineer in Test at <mark>FrankieOne</mark>, a KYC platform, where I shipped production features across Go and TypeScript — localized OCR comparison views for <mark>15+ countries</mark>, automated identity verification flows, and AI-assisted test tooling — merging <mark>900+ pull requests</mark> along the way. Before that I led test automation at TipTip and Mekari, and as Lead Software Engineer at Chatbiz (YC W21) I built <mark>30+ chatbots</mark> handling <mark>100k+ messages/day</mark>.
+I was previously a Senior Software Engineer in Test at <mark>FrankieOne</mark>, a KYC platform, where I shipped production features across Go and TypeScript — localized OCR comparison views for <mark>15+ countries</mark>, automated identity verification flows, and internal AI tooling. Before that I led test automation at TipTip and Mekari, and as Lead Software Engineer at Chatbiz (YC W21) I built <mark>30+ chatbots</mark> handling <mark>100k+ messages/day</mark>.
 
 My path went from quality engineering into product engineering: I learned how software breaks, then started building systems that are hard to break. Today I'm <mark>open to full-time roles</mark> across backend, full-stack, frontend, and SDET/quality engineering, and I take selective freelance work.
 
-I work in <mark>TypeScript, React, Node.js, Go, Python, Postgres</mark> on AWS. I design APIs and data models as often as I write Playwright tests — most candidates treat those as two different jobs.
+I work in <mark>TypeScript, React, Node.js, Go, Python, Postgres</mark> on AWS. I work across the full development lifecycle, from API and data modeling to frontend implementation, automated testing, and production monitoring.
 
 **How I work:** start from the failure modes, make trade-offs explicit, document limitations instead of hiding them, and leave tests behind for anything non-trivial.
 

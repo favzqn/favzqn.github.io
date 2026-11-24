@@ -1,5 +1,6 @@
 ---
 title: "JobPilot"
+kind: 'Chrome extension'
 description: "Chrome extension that automates job applications with AI resume tailoring and smart match scoring"
 image: "jobpilot-popup.png"
 tech: ["TypeScript", "React", "Manifest V3", "Vite", "Vitest", "GitHub Actions"]

@@ -17,7 +17,9 @@ Personal site: case studies with problem/solution/result structure, a technical 
 
 - [UsedCheck](https://fau.ai.id/projects/usedcheck/): offline-first Android app for inspecting second-hand laptops — React Native, SQLite, 74 automated tests
 - [COCOK](https://fau.ai.id/projects/cocok/): multi-tenant financial reconciliation platform — Go, Next.js, PostgreSQL; 9.4ms p95 (local k6, 5 VU)
-- [IncidentScope](https://fau.ai.id/projects/incidentscope/): public service reliability intelligence — Python pipeline, PostgreSQL analytics
+- [IncidentScope](https://fau.ai.id/projects/incidentscope/): third-party service reliability intelligence — Python pipeline, PostgreSQL analytics
+- [Incident Queue](https://fau.ai.id/projects/incident-queue/): real-time multiplayer card game — Express, Socket.IO, React, Playwright e2e
+- [PUP](https://fau.ai.id/projects/pup/): production bowel-movement tracker on Google Play — React Native, NestJS, offline-first monorepo
 - [JobPilot](https://fau.ai.id/projects/jobpilot/): Chrome extension automating job applications — Manifest V3, client-side AI
 - [Senara](https://fau.ai.id/projects/senara/): free interactive story platform teaching life skills — Astro, i18n
 - [SpeakUp](https://fau.ai.id/projects/speakup/): offline-first PWA for English speaking practice

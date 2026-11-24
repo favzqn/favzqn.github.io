@@ -1,6 +1,7 @@
 ---
 title: 'IncidentScope'
-description: 'Public service reliability intelligence platform: collects incident history from public status pages, preserves raw payloads, normalizes into PostgreSQL, and ships analytical dashboards plus pipeline observability'
+kind: 'Reliability data pipeline'
+description: 'Third-party service reliability intelligence platform: collects incident history from public status pages of third-party providers, preserves raw payloads, normalizes into PostgreSQL, and ships analytical dashboards plus pipeline observability'
 image: 'incidentscope-overview.png'
 tech:
   [

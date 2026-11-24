@@ -1,5 +1,6 @@
 ---
 title: "UsedCheck"
+kind: 'Offline-first Android app'
 description: "Offline-first Android app that guides buyers through inspecting second-hand laptops before purchase: guided checklists, battery diagnostics, photo evidence, and on-device PDF reports"
 image: "usedcheck-home.png"
 tech: ["React Native", "Expo", "TypeScript", "SQLite", "Drizzle ORM", "Jest", "GitHub Actions"]

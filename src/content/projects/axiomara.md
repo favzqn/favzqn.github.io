@@ -1,5 +1,6 @@
 ---
 title: "Axiomara"
+kind: 'Interactive math tool'
 description: "Interactive Discrete Mathematics Simulator with D3.js visualizations and KaTeX math"
 image: "axiomara.png"
 tech: ["TypeScript", "D3.js", "KaTeX", "Mathematics"]

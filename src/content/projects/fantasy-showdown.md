@@ -1,5 +1,6 @@
 ---
 title: "Fantasy Showdown"
+kind: 'Full-stack web platform'
 description: "Fantasy sports platform with ESPN/Yahoo team imports, live scoring, and a gear marketplace"
 image: "fantasy-showdown.png"
 tech: ["TypeScript", "React", "Node.js", "PostgreSQL", "Sports APIs"]

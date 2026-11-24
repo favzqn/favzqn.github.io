@@ -1,5 +1,6 @@
 ---
 title: "SpeakUp"
+kind: 'Offline-first PWA'
 description: "Offline-first PWA for English speaking practice, designed for low-end Android devices"
 image: "speakup.png"
 tech: ["JavaScript", "PWA", "Web Speech API", "Service Worker"]

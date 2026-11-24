@@ -34,6 +34,7 @@ const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
   schema: z.object({
     title: z.string(),
+    kind: z.string().optional(),
     description: z.string(),
     image: z.string().optional(),
     tech: z.array(z.string()).optional(),
