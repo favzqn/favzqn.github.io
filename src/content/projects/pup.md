@@ -15,6 +15,8 @@ metrics:
   - { value: 'Live', label: 'on Google Play' }
 ---
 
+<video src="/projects/pup-brag.mp4" poster="/projects/pup-brag.jpg" controls muted playsinline preload="metadata" width="1920" height="1080"></video>
+
 ## The Problem
 
 Health-tracking apps usually demand an account before they'll do anything, then lose your data the moment you're offline — which is exactly when you're standing away from your phone's best network, trying to log something you'd rather not say out loud a second time.
