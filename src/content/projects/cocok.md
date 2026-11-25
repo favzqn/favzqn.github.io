@@ -15,6 +15,8 @@ metrics:
   - { value: '7', label: 'delivery phases' }
 ---
 
+<video src="/projects/cocok-brag.mp4" poster="/projects/cocok-brag.jpg" controls muted playsinline preload="metadata" width="1920" height="1080"></video>
+
 ## The Problem
 
 Indonesian businesses collect money through banks, payment gateways like Xendit and Midtrans, e-wallets, and marketplaces, then try to reconcile all of it in spreadsheets. Every channel exports a different CSV format, nothing lines up, and month-end close turns into days of copy-paste. Existing accounting tools assume one currency and one channel and never handle the mess in between.
