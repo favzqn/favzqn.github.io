@@ -15,6 +15,8 @@ metrics:
   - { value: '0', label: 'servers needed' }
 ---
 
+<video src="/projects/senara-brag.mp4" poster="/projects/senara-brag.jpg" controls muted playsinline preload="metadata" width="1920" height="1080"></video>
+
 ## The Problem
 
 Life skills education (mental health, financial literacy, communication) is usually delivered through lectures, textbooks, or boring compliance modules. Nobody remembers them. Young people in Indonesia needed something engaging that doesn't feel like school.
