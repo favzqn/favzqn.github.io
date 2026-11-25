@@ -14,6 +14,8 @@ metrics:
   - { value: '0', label: 'backend servers' }
 ---
 
+<video src="/projects/axiomara-brag.mp4" poster="/projects/axiomara-brag.jpg" controls muted playsinline preload="metadata" width="1920" height="1080"></video>
+
 ## The Problem
 
 Discrete mathematics is abstract and hard to visualize. Students struggle with set theory, logic, and proofs because they can't see what's happening. Textbooks show static diagrams. Nothing is interactive.

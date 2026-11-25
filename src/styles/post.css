@@ -142,6 +142,15 @@
   margin: 1.5em auto;
 }
 
+.prose video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 8px;
+  background: var(--code-bg);
+}
+
 /* Side-by-side screenshot rows for tall phone captures */
 .prose .shot-row {
   display: flex;
